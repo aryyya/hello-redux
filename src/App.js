@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import TodoList from './containers/todo-list'
+
 class App extends Component {
   render() {
     return (
       <div>
-        hello-redux
+        <TodoList />
       </div>
     )
   }
