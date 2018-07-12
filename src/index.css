@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+.todo-item:hover {
+  cursor: pointer;
+}
+
+.todo-item--completed .todo-item__text {
+  text-decoration: line-through;
+}
+
+.filter {
+  display: flex;
+}
+
+.filter__option {
+  margin: 0 10px;
+}
