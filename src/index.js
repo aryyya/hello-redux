@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
-import reducers from './redux/reducers'
+import store from './redux/store'
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
-const store = createStore(reducers, composeWithDevTools(applyMiddleware()))
 
 ReactDOM.render(
   <Provider store={store}>
