@@ -15,6 +15,14 @@ const defaultState = [
   {
     text: 'Plan for the weekend.',
     completed: false
+  },
+  {
+    text: 'Call the moving company.',
+    completed: true
+  },
+  {
+    text: 'See a movie.',
+    completed: false
   }
 ]
 
