@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import './todo-item.css'
 
-const TodoItem = props => {
-  const { completed, text, index, toggleTodo } = props
+const TodoItem = ({ completed, text, index, toggleTodo }) => {
   return (
     <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`} onClick={() => toggleTodo(index)}>
       <span className="todo-item__text">{text}</span>

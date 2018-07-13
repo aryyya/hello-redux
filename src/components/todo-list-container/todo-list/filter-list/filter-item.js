@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import './filter-item.css'
 
-const FilterItem = props => {
-  const { name, currentVisibilityFilter, visibilityFilter, setVisibilityFilter } = props
+const FilterItem = ({ name, currentVisibilityFilter, visibilityFilter, setVisibilityFilter }) => {
   return (
     <li
       className="filter-item"

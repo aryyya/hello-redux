@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import Filter from './filter-list/filter-list'
 import TodoItem from './todo-item'
 
-const TodoList = props => {
-  const { todos, toggleTodo, visibilityFilter, setVisibilityFilter } = props
+const TodoList = ({ todos, toggleTodo, visibilityFilter, setVisibilityFilter }) => {
   return (
     <div>
       <Filter

@@ -7,13 +7,13 @@ import { VisibilityFilters } from '../../../../redux/actions/action-types'
 
 import FilterItem from './filter-item'
 
-const Filter = props => {
-  const { visibilityFilter, setVisibilityFilter } = props
-  const filters = [
-    { name: 'Show all', visibilityFilter: VisibilityFilters.SHOW_ALL },
-    { name: 'Show complete', visibilityFilter: VisibilityFilters.SHOW_COMPLETE },
-    { name: 'Show incomplete', visibilityFilter: VisibilityFilters.SHOW_INCOMPLETE }
-  ]
+const filters = [
+  { name: 'Show all', visibilityFilter: VisibilityFilters.SHOW_ALL },
+  { name: 'Show complete', visibilityFilter: VisibilityFilters.SHOW_COMPLETE },
+  { name: 'Show incomplete', visibilityFilter: VisibilityFilters.SHOW_INCOMPLETE }
+]
+
+const Filter = ({ visibilityFilter, setVisibilityFilter }) => {
   return (
     <ul className="filter-list">
       {filters.map(filter => (
