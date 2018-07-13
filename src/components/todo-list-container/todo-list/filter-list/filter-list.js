@@ -19,10 +19,9 @@ const Filter = ({ visibilityFilter, setVisibilityFilter }) => {
       {filters.map(filter => (
         <FilterItem
           name={filter.name}
-          currentVisibilityFilter={visibilityFilter}
-          visibilityFilter={filter.visibilityFilter}
-          setVisibilityFilter={setVisibilityFilter}
-          key={filter.visibilityFilter}
+          active={visibilityFilter === filter.visibilityFilter}
+          setVisibilityFilter={() => setVisibilityFilter(filter.visibilityFilter)}
+          key={filter.name}
         />
       ))}
     </ul>

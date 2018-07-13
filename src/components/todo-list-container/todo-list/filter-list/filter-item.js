@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 
 import './filter-item.css'
 
-const FilterItem = ({ name, currentVisibilityFilter, visibilityFilter, setVisibilityFilter }) => {
+const FilterItem = ({ name, active, setVisibilityFilter }) => {
   return (
     <li
       className="filter-item"
-      onClick={() => setVisibilityFilter(visibilityFilter)}
+      onClick={setVisibilityFilter}
     >
       <input
         type="checkbox"
         readOnly
-        checked={visibilityFilter === currentVisibilityFilter}
+        checked={active}
       />
       {name}
     </li>
@@ -21,8 +21,7 @@ const FilterItem = ({ name, currentVisibilityFilter, visibilityFilter, setVisibi
 
 FilterItem.propTypes = {
   name: PropTypes.string.isRequired,
-  currentVisibilityFilter: PropTypes.string.isRequired,
-  visibilityFilter: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
   setVisibilityFilter: PropTypes.func.isRequired
 }
 
