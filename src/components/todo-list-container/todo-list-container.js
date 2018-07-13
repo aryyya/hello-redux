@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { toggleTodo, setVisibilityFilter } from '../../redux/actions'
 import { VisibilityFilters } from '../../redux/actions/action-types'
 
-import TodoList from '../presentational/todo-list'
+import TodoList from './todo-list/todo-list'
 
 class TodoListContainer extends Component {
   render () {

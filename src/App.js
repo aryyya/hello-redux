@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import TodoListContainer from './components/container/todo-list-container'
+import TodoListContainer from './components/todo-list-container/todo-list-container'
 
 class App extends Component {
   render() {

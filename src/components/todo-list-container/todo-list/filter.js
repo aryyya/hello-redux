@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { VisibilityFilters } from '../../redux/actions/action-types'
+import { VisibilityFilters } from '../../../redux/actions/action-types'
 
 const Filter = props => {
   const { visibilityFilter, setVisibilityFilter } = props
