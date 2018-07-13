@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './todo-item.css'
+
 const TodoItem = props => {
   const { completed, text, index, toggleTodo } = props
   return (

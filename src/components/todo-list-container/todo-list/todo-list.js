@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Filter from './filter'
+import Filter from './filter-list/filter-list'
 import TodoItem from './todo-item'
 
 const TodoList = props => {
