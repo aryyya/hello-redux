@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Filter from './filter-list/filter-list'
+import FilterList from './filter-list/filter-list'
+import TodoInput from './todo-input/todo-input'
 import TodoItem from './todo-item'
 
-const TodoList = ({ todos, toggleTodo, visibilityFilter, setVisibilityFilter }) => {
+const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityFilter }) => {
   return (
     <div>
-      <Filter
+      <FilterList
         visibilityFilter={visibilityFilter}
         setVisibilityFilter={setVisibilityFilter}
       />
+      <TodoInput onSubmit={addTodo} />
       <ul>
         {todos.map((todo, index) =>
           <TodoItem
@@ -29,6 +31,7 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, setVisibilityFilter }) 
 TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
   visibilityFilter: PropTypes.string.isRequired,
   setVisibilityFilter: PropTypes.func.isRequired
 }
