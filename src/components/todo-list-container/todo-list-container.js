@@ -1,23 +1,9 @@
-import React, { Component } from 'react'
-
 import { connect } from 'react-redux'
+
 import { toggleTodo, setVisibilityFilter } from '../../redux/actions'
 import { VisibilityFilters } from '../../redux/actions/action-types'
 
 import TodoList from './todo-list/todo-list'
-
-class TodoListContainer extends Component {
-  render () {
-    const { todos, toggleTodo, visibilityFilter, setVisibilityFilter } = this.props
-    return (
-      <TodoList
-        todos={todos}
-        toggleTodo={toggleTodo}
-        visibilityFilter={visibilityFilter}
-        setVisibilityFilter={setVisibilityFilter} />
-    )
-  }
-}
 
 const mapStateToProps = state => {
   return {
@@ -40,4 +26,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
