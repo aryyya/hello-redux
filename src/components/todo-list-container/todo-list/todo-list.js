@@ -9,16 +9,18 @@ const TodoList = ({ todos, toggleTodo, visibilityFilter, setVisibilityFilter }) 
     <div>
       <Filter
         visibilityFilter={visibilityFilter}
-        setVisibilityFilter={setVisibilityFilter} />
+        setVisibilityFilter={setVisibilityFilter}
+      />
       <ul>
-        {todos.map((todo, index) => (
+        {todos.map((todo, index) =>
           <TodoItem
             completed={todo.completed}
             text={todo.text}
             index={index}
             toggleTodo={toggleTodo}
-            key={todo.text} />
-        ))}
+            key={todo.text}
+          />
+        )}
       </ul>
     </div>
   )

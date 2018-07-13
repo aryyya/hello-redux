@@ -16,14 +16,14 @@ const filters = [
 const Filter = ({ visibilityFilter, setVisibilityFilter }) => {
   return (
     <ul className="filter-list">
-      {filters.map(filter => (
+      {filters.map(filter =>
         <FilterItem
           name={filter.name}
           active={visibilityFilter === filter.visibilityFilter}
           setVisibilityFilter={() => setVisibilityFilter(filter.visibilityFilter)}
           key={filter.name}
         />
-      ))}
+      )}
     </ul>
   )
 }
