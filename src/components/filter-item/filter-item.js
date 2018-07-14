@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import './filter-item.css'
 
 const FilterItem = ({ name, active, setVisibilityFilter }) => {

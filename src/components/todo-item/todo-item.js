@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import './todo-item.css'
 
 const TodoItem = ({ completed, text, index, toggleTodo }) => {

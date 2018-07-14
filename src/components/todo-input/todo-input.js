@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import './todo-input.css'
 
 class TodoInput extends Component {

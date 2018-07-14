@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import FilterList from './filter-list/filter-list'
-import TodoInput from './todo-input/todo-input'
-import TodoItem from './todo-item'
+import FilterList from '../filter-list/filter-list'
+import TodoInput from '../todo-input/todo-input'
+import TodoItem from '../todo-item/todo-item'
 
 const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityFilter }) => {
   return (
