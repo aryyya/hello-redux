@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import './filter-list.css'
-
-import { VisibilityFilters } from '../../../../redux/actions/action-types'
-
+import { VisibilityFilters } from '../../../../redux/visibility-filter'
 import FilterItem from './filter-item'
 
 const filters = [

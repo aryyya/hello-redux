@@ -1,7 +1,41 @@
-import {
-  ADD_TODO,
-  TOGGLE_TODO
-} from '../actions/action-types'
+// action types
+
+export const ADD_TODO = 'ADD_TODO'
+export const TOGGLE_TODO = 'TOGGLE_TODO'
+export const REQUEST_TODOS = 'REQUEST_TODOS'
+export const RECEIVE_TODOS = 'RECEIVE_TODOS'
+
+// action creators
+
+export const addTodo = text => {
+  return {
+    type: ADD_TODO,
+    payload: {
+      text
+    }
+  }
+}
+
+export const toggleTodo = index => {
+  return {
+    type: TOGGLE_TODO,
+    payload: {
+      index
+    }
+  }
+}
+
+export const receiveTodos = json => {
+  return {
+    type: RECEIVE_TODOS,
+    payload: {
+      json,
+      receivedAt: Date.now()
+    }
+  }
+}
+
+// default state
 
 const defaultState = [
   {
@@ -25,6 +59,8 @@ const defaultState = [
     completed: false
   }
 ]
+
+// reducers
 
 const todos = (state = defaultState, action) => {
   switch (action.type) {
