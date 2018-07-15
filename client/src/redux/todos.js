@@ -31,11 +31,11 @@ export const requestTodos = () => {
   }
 }
 
-export const receiveTodos = json => {
+export const receiveTodos = todos => {
   return {
     type: RECEIVE_TODOS,
     payload: {
-      json,
+      todos,
       receivedAt: Date.now()
     }
   }
@@ -53,9 +53,8 @@ export const fetchTodos = () => {
           console.error(`An error occurred: ${err}`)
         }
       )
-      .then(json => {
-        console.log(json)
-        dispatch(receiveTodos(json))
+      .then(todos => {
+        dispatch(receiveTodos(todos))
       })
   }
 }
@@ -63,28 +62,12 @@ export const fetchTodos = () => {
 // default state
 
 const defaultState = {
-  todos: [
-    {
-      text: 'Walk to a coffee shop.',
-      completed: true
-    },
-    {
-      text: 'Finish project.',
-      completed: false
-    },
-    {
-      text: 'Plan for the weekend.',
-      completed: false
-    },
-    {
-      text: 'Call the moving company.',
-      completed: true
-    },
-    {
-      text: 'See a movie.',
+  todos: {
+    0: {
+      text: 'Wake up.',
       completed: false
     }
-  ],
+  },
   isFetching: false
 }
 
@@ -118,7 +101,8 @@ const todos = (state = defaultState, action) => {
     case RECEIVE_TODOS:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        todos: action.payload.todos
       }
     default:
       return state

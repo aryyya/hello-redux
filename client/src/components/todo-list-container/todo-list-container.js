@@ -1,7 +1,26 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleTodo, addTodo } from '../../redux/todos'
+import { toggleTodo, addTodo, fetchTodos } from '../../redux/todos'
 import { setVisibilityFilter, VisibilityFilters } from '../../redux/visibility-filter' 
 import TodoList from '../todo-list/todo-list'
+
+class TodoListContainer extends Component {
+  componentDidMount () {
+    this.props.fetchTodos()
+  }
+  render () {
+    const { todos, visibilityFilter, toggleTodo, addTodo, setVisibilityFilter } = this.props
+    return (
+      <TodoList
+        todos={todos}
+        visibilityFilter={visibilityFilter}
+        toggleTodo={toggleTodo}
+        addTodo={addTodo}
+        setVisibilityFilter={setVisibilityFilter}
+      />
+    )
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +30,11 @@ const mapStateToProps = state => {
         [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
         [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
       }
-      return state.todos.todos.filter(filters[state.visibilityFilter])
+      const { todos } = state.todos
+      const todosArray = Object.keys(todos).map(id => {
+        return todos[id]
+      })
+      return todosArray.filter(filters[state.visibilityFilter])
     })(),
     visibilityFilter: state.visibilityFilter
   }
@@ -21,8 +44,9 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleTodo: index => dispatch(toggleTodo(index)),
     addTodo: text => dispatch(addTodo(text)),
-    setVisibilityFilter: visibilityFilter => dispatch(setVisibilityFilter(visibilityFilter))
+    setVisibilityFilter: visibilityFilter => dispatch(setVisibilityFilter(visibilityFilter)),
+    fetchTodos: () => dispatch(fetchTodos())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer)
