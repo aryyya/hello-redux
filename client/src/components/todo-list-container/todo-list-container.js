@@ -11,7 +11,7 @@ const mapStateToProps = state => {
         [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
         [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
       }
-      return state.todos.filter(filters[state.visibilityFilter])
+      return state.todos.todos.filter(filters[state.visibilityFilter])
     })(),
     visibilityFilter: state.visibilityFilter
   }
