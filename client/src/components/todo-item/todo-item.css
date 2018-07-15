@@ -1,3 +1,7 @@
+.todo-item {
+  user-select: none;
+}
+
 .todo-item:hover {
   cursor: pointer;
   color: #333;
