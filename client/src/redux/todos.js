@@ -8,11 +8,25 @@ export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 // action creators
 
 export const addTodo = text => {
-  return {
-    type: ADD_TODO,
-    payload: {
-      text
-    }
+  return dispatch => {
+    fetch('/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text })
+    })
+      .then(
+        res => {
+          return res.json()
+        },
+        err => {
+          console.error(`An error occurred: ${err}`)
+        }
+      )
+      .then(todos => {
+        dispatch(receiveTodos(todos))
+      })
   }
 }
 
@@ -75,17 +89,6 @@ const defaultState = {
 
 const todos = (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [
-          ...state.todos,
-          {
-            text: action.payload.text,
-            completed: false
-          }
-        ]
-      }
     case TOGGLE_TODO:
       return {
         ...state,
