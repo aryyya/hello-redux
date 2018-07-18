@@ -30,12 +30,22 @@ export const addTodo = text => {
   }
 }
 
-export const toggleTodo = index => {
-  return {
-    type: TOGGLE_TODO,
-    payload: {
-      index
-    }
+export const toggleTodo = id => {
+  return dispatch => {
+    return fetch(`/todos/${id}`, {
+      method: 'PATCH'
+    })
+      .then(
+        res => {
+          return res.json()
+        },
+        err => {
+          console.error(`An error occurred: ${err}`)
+        }
+      )
+      .then(todos => {
+        dispatch(receiveTodos(todos))
+      })
   }
 }
 
