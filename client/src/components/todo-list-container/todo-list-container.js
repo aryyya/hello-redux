@@ -9,7 +9,7 @@ class TodoListContainer extends Component {
     this.props.fetchTodos()
   }
   render () {
-    const { todos, visibilityFilter, toggleTodo, addTodo, setVisibilityFilter } = this.props
+    const { todos, visibilityFilter, toggleTodo, addTodo, setVisibilityFilter, isFetching } = this.props
     return (
       <TodoList
         todos={todos}
@@ -17,6 +17,7 @@ class TodoListContainer extends Component {
         toggleTodo={toggleTodo}
         addTodo={addTodo}
         setVisibilityFilter={setVisibilityFilter}
+        isFetching={isFetching}
       />
     )
   }
@@ -36,7 +37,8 @@ const mapStateToProps = state => {
       })
       return todosArray.filter(filters[state.visibilityFilter])
     })(),
-    visibilityFilter: state.visibilityFilter
+    visibilityFilter: state.visibilityFilter,
+    isFetching: state.todos.isFetching
   }
 }
 

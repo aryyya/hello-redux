@@ -9,6 +9,7 @@ export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 
 export const addTodo = text => {
   return dispatch => {
+    dispatch(requestTodos())
     fetch('/todos', {
       method: 'POST',
       headers: {
@@ -32,6 +33,7 @@ export const addTodo = text => {
 
 export const toggleTodo = id => {
   return dispatch => {
+    dispatch(requestTodos())
     return fetch(`/todos/${id}`, {
       method: 'PATCH'
     })
@@ -99,13 +101,6 @@ const defaultState = {
 
 const todos = (state = defaultState, action) => {
   switch (action.type) {
-    case TOGGLE_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((todo, index) => {
-          return index === action.payload.index ? { ...todo, completed: !todo.completed } : todo
-        })
-      }
     case REQUEST_TODOS:
       return {
         ...state,
