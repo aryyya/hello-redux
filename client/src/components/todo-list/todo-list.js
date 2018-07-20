@@ -20,7 +20,7 @@ const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityF
             text={todo.text}
             id={todo.id}
             toggleTodo={toggleTodo}
-            key={todo.text}
+            key={todo.id}
           />
         )}
       </ul>
