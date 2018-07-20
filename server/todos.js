@@ -1,20 +1,18 @@
-const todos = {}
+const uuid = require('uuid/v4')
 
-const getUniqueId = (() => {
-  let uniqueId = 0
-  return () => {
-    return uniqueId++
-  }
-})()
+const todos = {}
 
 const getTodos = () => {
   return todos
 }
 
 const addTodo = text => {
-  todos[getUniqueId()] = {
+  const id = uuid()
+  todos[id] = {
+    id,
+    createdAt: new Date().toISOString(),
     text,
-    completed: false
+    completed: false,
   }
 }
 
@@ -27,6 +25,8 @@ addTodo('Get out of bed.')
 addTodo('Brush teeth.')
 addTodo('Eat breakfast.')
 addTodo('Catch the school bus.')
+
+console.log(todos)
 
 module.exports = {
   getTodos,

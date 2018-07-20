@@ -28,13 +28,13 @@ server.get('/todos', (req, res) => {
 server.post('/todos', (req, res) => {
   const { text } = req.body
   addTodo(text)
-  res.json(getTodos())
+  res.json({ status: 'ok' })
 })
 
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
   toggleTodo(id)
-  res.json(getTodos())
+  res.json({ status: 'ok' })
 })
 
 // start

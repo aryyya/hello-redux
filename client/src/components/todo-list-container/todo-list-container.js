@@ -31,13 +31,8 @@ const mapStateToProps = state => {
         [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
         [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
       }
-      const { todos } = state.todos
-      const todosArray = Object.keys(todos).map(id => {
-        return {
-          ...todos[id],
-          id: Number(id)
-        }
-      })
+      const todos = state.todos.todos
+      const todosArray = Object.keys(todos).map(id => todos[id])
       return todosArray.filter(filters[state.visibilityFilter])
     })(),
     visibilityFilter: state.visibilityFilter,

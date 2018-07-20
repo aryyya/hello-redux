@@ -1,4 +1,5 @@
 import store from '../redux/store'
+import uuid from 'uuid/v4'
 
 // action types
 
@@ -100,7 +101,9 @@ export const fetchTodos = () => {
         }
       )
       .then(todos => {
-        dispatch(receiveTodos(todos))
+        if (todos) {
+          dispatch(receiveTodos(todos))
+        }
       })
   }
 }
@@ -109,7 +112,9 @@ export const fetchTodos = () => {
 
 const defaultState = {
   todos: {
-    0: {
+    '0': {
+      id: '0',
+      createdAt: new Date().toISOString(),
       text: 'Wake up.',
       completed: false
     }
@@ -122,11 +127,14 @@ const defaultState = {
 const todos = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO:
+      let id = uuid()
       return {
         ...state,
         todos: {
           ...state.todos,
-          [Object.keys(state.todos).length]: {
+          [id]: {
+            id,
+            createdAt: new Date().toISOString(),
             text: action.payload.text,
             completed: false
           }

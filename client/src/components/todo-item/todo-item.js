@@ -13,7 +13,7 @@ const TodoItem = ({ completed, text, id, toggleTodo }) => {
 TodoItem.propTypes = {
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   toggleTodo: PropTypes.func.isRequired
 }
 
