@@ -33,7 +33,10 @@ const mapStateToProps = state => {
       }
       const { todos } = state.todos
       const todosArray = Object.keys(todos).map(id => {
-        return todos[id]
+        return {
+          ...todos[id],
+          id: Number(id)
+        }
       })
       return todosArray.filter(filters[state.visibilityFilter])
     })(),

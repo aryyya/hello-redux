@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './todo-item.css'
 
-const TodoItem = ({ completed, text, index, toggleTodo }) => {
+const TodoItem = ({ completed, text, id, toggleTodo }) => {
   return (
-    <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`} onClick={() => toggleTodo(index)}>
+    <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`} onClick={() => toggleTodo(id)}>
       <span className="todo-item__text">{text}</span>
     </li>
   )
@@ -13,7 +13,7 @@ const TodoItem = ({ completed, text, index, toggleTodo }) => {
 TodoItem.propTypes = {
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   toggleTodo: PropTypes.func.isRequired
 }
 

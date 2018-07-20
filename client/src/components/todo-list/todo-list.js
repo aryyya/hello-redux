@@ -14,11 +14,11 @@ const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityF
       />
       <TodoInput onSubmit={addTodo} />
       <ul>
-        {todos.map((todo, index) =>
+        {todos.map(todo =>
           <TodoItem
             completed={todo.completed}
             text={todo.text}
-            index={index}
+            id={todo.id}
             toggleTodo={toggleTodo}
             key={todo.text}
           />
