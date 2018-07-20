@@ -126,7 +126,7 @@ const todos = (state = defaultState, action) => {
         ...state,
         todos: {
           ...state.todos,
-          [Object.keys(state.todos).length + 1]: {
+          [Object.keys(state.todos).length]: {
             text: action.payload.text,
             completed: false
           }
