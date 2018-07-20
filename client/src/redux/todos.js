@@ -1,3 +1,5 @@
+import store from '../redux/store'
+
 // action types
 
 export const ADD_TODO = 'ADD_TODO'
@@ -8,8 +10,17 @@ export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 // action creators
 
 export const addTodo = text => {
+  store.dispatch(serverAddTodo(text))
+  return {
+    type: ADD_TODO,
+    payload: {
+      text
+    }
+  }
+}
+
+export const serverAddTodo = text => {
   return dispatch => {
-    dispatch(requestTodos())
     fetch('/todos', {
       method: 'POST',
       headers: {
@@ -26,14 +37,23 @@ export const addTodo = text => {
         }
       )
       .then(todos => {
-        dispatch(receiveTodos(todos))
+
       })
   }
 }
 
 export const toggleTodo = id => {
+  store.dispatch(serverToggleTodo(id))
+  return {
+    type: TOGGLE_TODO,
+    payload: {
+      id
+    }
+  }
+}
+
+export const serverToggleTodo = id => {
   return dispatch => {
-    dispatch(requestTodos())
     return fetch(`/todos/${id}`, {
       method: 'PATCH'
     })
@@ -46,7 +66,7 @@ export const toggleTodo = id => {
         }
       )
       .then(todos => {
-        dispatch(receiveTodos(todos))
+
       })
   }
 }
@@ -101,6 +121,28 @@ const defaultState = {
 
 const todos = (state = defaultState, action) => {
   switch (action.type) {
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          [Object.keys(state.todos).length + 1]: {
+            text: action.payload.text,
+            completed: false
+          }
+        }
+      }
+    case TOGGLE_TODO:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          [action.payload.id]: {
+            ...state.todos[action.payload.id],
+            completed: !state.todos[action.payload.id].completed
+          }
+        }
+      }
     case REQUEST_TODOS:
       return {
         ...state,
