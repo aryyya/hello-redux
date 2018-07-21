@@ -13,7 +13,7 @@ const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityF
         setVisibilityFilter={setVisibilityFilter}
       />
       <TodoInput onSubmit={addTodo} />
-      <ul>
+      <ul className="todo-list__list">
         {todos.map(todo =>
           <TodoItem
             completed={todo.completed}
