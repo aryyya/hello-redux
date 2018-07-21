@@ -6,13 +6,9 @@ const getTodos = () => {
   return todos
 }
 
-const addTodo = text => {
-  const id = uuid()
-  todos[id] = {
-    id,
-    createdAt: new Date().toISOString(),
-    text,
-    completed: false,
+const addTodo = todo => {
+  todos[todo.id] = {
+    ...todo
   }
 }
 
@@ -20,13 +16,26 @@ const toggleTodo = id => {
   todos[id].completed = !todos[id].completed
 }
 
-addTodo('Wake up.')
-addTodo('Get out of bed.')
-addTodo('Brush teeth.')
-addTodo('Eat breakfast.')
-addTodo('Catch the school bus.')
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
+  text: 'Wake up.',
+  completed: true
+})
 
-console.log(todos)
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
+  text: 'Get out of bed.',
+  completed: false
+})
+
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
+  text: 'Catch the school bus.',
+  completed: false
+})
 
 module.exports = {
   getTodos,

@@ -11,23 +11,29 @@ export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 // action creators
 
 export const addTodo = text => {
-  store.dispatch(serverAddTodo(text))
+  const todo = {
+    id: uuid(),
+    createdAt: new Date().toISOString(),
+    text,
+    completed: false
+  }
+  store.dispatch(serverAddTodo(todo))
   return {
     type: ADD_TODO,
     payload: {
-      text
+      todo
     }
   }
 }
 
-export const serverAddTodo = text => {
+export const serverAddTodo = todo => {
   return dispatch => {
     fetch('/todos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ text })
+      body: JSON.stringify({ todo })
     })
       .then(
         res => {
@@ -127,16 +133,12 @@ const defaultState = {
 const todos = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      let id = uuid()
       return {
         ...state,
         todos: {
           ...state.todos,
-          [id]: {
-            id,
-            createdAt: new Date().toISOString(),
-            text: action.payload.text,
-            completed: false
+          [action.payload.todo.id]: {
+            ...action.payload.todo
           }
         }
       }

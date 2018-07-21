@@ -26,8 +26,8 @@ server.get('/todos', (req, res) => {
 })
 
 server.post('/todos', (req, res) => {
-  const { text } = req.body
-  addTodo(text)
+  const { todo } = req.body
+  addTodo(todo)
   res.json({ status: 'ok' })
 })
 
