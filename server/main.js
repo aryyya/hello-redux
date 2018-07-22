@@ -3,7 +3,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const { getTodos, addTodo, toggleTodo } = require('./todos')
+const { getTodos, addTodo, toggleTodo, deleteTodo } = require('./todos')
 
 // server
 
@@ -34,6 +34,12 @@ server.post('/todos', (req, res) => {
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
   toggleTodo(id)
+  res.json({ status: 'ok' })
+})
+
+server.delete('/todos/:id', (req, res) => {
+  const { id } = req.params
+  deleteTodo(id)
   res.json({ status: 'ok' })
 })
 

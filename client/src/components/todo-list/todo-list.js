@@ -5,7 +5,7 @@ import FilterList from '../filter-list/filter-list'
 import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
 
-const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityFilter, isFetching }) => {
+const TodoList = ({ todos, toggleTodo, deleteTodo, addTodo, visibilityFilter, setVisibilityFilter, isFetching }) => {
   return (
     <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
       <FilterList
@@ -20,6 +20,7 @@ const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityF
             text={todo.text}
             id={todo.id}
             toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
             key={todo.id}
           />
         )}
@@ -31,6 +32,7 @@ const TodoList = ({ todos, toggleTodo, addTodo, visibilityFilter, setVisibilityF
 TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
   visibilityFilter: PropTypes.string.isRequired,
   setVisibilityFilter: PropTypes.func.isRequired,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleTodo, addTodo, fetchTodos } from '../../redux/todos'
+import { toggleTodo, deleteTodo, addTodo, fetchTodos } from '../../redux/todos'
 import { setVisibilityFilter, VisibilityFilters } from '../../redux/visibility-filter' 
 import TodoList from '../todo-list/todo-list'
 
@@ -9,12 +9,13 @@ class TodoListContainer extends Component {
     this.props.fetchTodos()
   }
   render () {
-    const { todos, visibilityFilter, toggleTodo, addTodo, setVisibilityFilter, isFetching } = this.props
+    const { todos, visibilityFilter, toggleTodo, deleteTodo, addTodo, setVisibilityFilter, isFetching } = this.props
     return (
       <TodoList
         todos={todos}
         visibilityFilter={visibilityFilter}
         toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
         addTodo={addTodo}
         setVisibilityFilter={setVisibilityFilter}
         isFetching={isFetching}
@@ -43,6 +44,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleTodo: index => dispatch(toggleTodo(index)),
+    deleteTodo: id => dispatch(deleteTodo(id)),
     addTodo: text => dispatch(addTodo(text)),
     setVisibilityFilter: visibilityFilter => dispatch(setVisibilityFilter(visibilityFilter)),
     fetchTodos: () => dispatch(fetchTodos())

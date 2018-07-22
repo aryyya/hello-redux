@@ -16,6 +16,10 @@ const toggleTodo = id => {
   todos[id].completed = !todos[id].completed
 }
 
+const deleteTodo = id => {
+  delete todos[id]
+}
+
 addTodo({
   id: uuid(),
   createdAt: new Date().toISOString(),
@@ -40,5 +44,6 @@ addTodo({
 module.exports = {
   getTodos,
   addTodo,
-  toggleTodo
+  toggleTodo,
+  deleteTodo
 }

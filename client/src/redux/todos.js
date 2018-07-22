@@ -5,6 +5,7 @@ import uuid from 'uuid/v4'
 
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
+export const DELETE_TODO = 'DELETE_TODO'
 export const REQUEST_TODOS = 'REQUEST_TODOS'
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 
@@ -76,6 +77,35 @@ export const serverToggleTodo = id => {
 
       })
   }
+}
+
+export const deleteTodo = id => {
+  store.dispatch(serverDeleteTodo(id))
+  return {
+    type: DELETE_TODO,
+    payload: {
+      id
+    }
+  }
+}
+
+export const serverDeleteTodo = id => {
+  return dispatch => {
+    return fetch(`/todos/${id}`, {
+      method: 'DELETE'
+    })
+      .then(
+        res => {
+          return res.json()
+        },
+        err => {
+          console.error(`An error occurred: ${err}`)
+        }
+      )
+      .then(() => {
+
+      })
+    }
 }
 
 export const requestTodos = () => {
@@ -153,6 +183,10 @@ const todos = (state = defaultState, action) => {
           }
         }
       }
+    case DELETE_TODO:
+      let newState = { ...state }
+      delete newState.todos[action.payload.id]
+      return newState
     case REQUEST_TODOS:
       return {
         ...state,

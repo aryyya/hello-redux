@@ -4,13 +4,30 @@
   background-color: #eee;
   border: 1px solid #ddd;
   margin: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .todo-item:hover {
-  cursor: pointer;
   color: #333;
 }
 
-.todo-item--completed {
+.todo-item--completed .todo-item__text {
   text-decoration: line-through;
+}
+
+.todo-item__check {
+
+}
+
+.todo-item__check {
+  cursor: pointer;
+}
+
+.todo-item__text {
+
+}
+
+.todo-item__delete:hover {
+  cursor: pointer;
 }
