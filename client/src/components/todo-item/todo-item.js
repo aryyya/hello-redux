@@ -8,17 +8,18 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
   return (
     <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`}>
       <div className="todo-item__top">
-        <span className="todo-item__text">{text}</span>
-        <Checkbox
-          checked={completed}
-          onClick={() => toggleTodo(id)}
-        />
-        <img
-          src="settings-icon.svg"
-          width="20px"
-          height="20px"
-          onClick={() => selectTodo(id)}
-        />
+        <div className="todo-item__text">{text}</div>
+        <div className="todo-item__buttons">
+          <Checkbox
+            checked={completed}
+            onClick={() => toggleTodo(id)}
+          />
+          <img
+            className="todo-item__settings"
+            src="settings-icon.svg"
+            onClick={() => selectTodo(id)}
+          />
+        </div>
       </div>
       {
         selectedTodoId === id
