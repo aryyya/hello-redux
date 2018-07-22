@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './todo-item.css'
+import Checkbox from '../checkbox/checkbox'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
 
 const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, selectedTodoId }) => {
@@ -8,7 +9,10 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
     <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`}>
       <div className="todo-item__top" onClick={() => selectTodo(id)}>
         <span className="todo-item__text">{text}</span>
-        <input className="todo-item__check" type="checkbox" checked={completed} readOnly onClick={() => toggleTodo(id)} />
+        <Checkbox
+          checked={completed}
+          onClick={() => toggleTodo(id)}
+        />
       </div>
       {
         selectedTodoId === id
