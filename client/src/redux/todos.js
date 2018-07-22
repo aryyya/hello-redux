@@ -8,6 +8,7 @@ export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 export const REQUEST_TODOS = 'REQUEST_TODOS'
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
+export const SELECT_TODO = 'SELECT_TODO'
 
 // action creators
 
@@ -144,6 +145,15 @@ export const fetchTodos = () => {
   }
 }
 
+export const selectTodo = id => {
+  return {
+    type: SELECT_TODO,
+    payload: {
+      id
+    }
+  }
+}
+
 // default state
 
 const defaultState = {
@@ -155,7 +165,8 @@ const defaultState = {
       completed: false
     }
   },
-  isFetching: false
+  isFetching: false,
+  selectedTodoId: ''
 }
 
 // reducers
@@ -197,6 +208,11 @@ const todos = (state = defaultState, action) => {
         ...state,
         isFetching: false,
         todos: action.payload.todos
+      }
+    case SELECT_TODO:
+      return {
+        ...state,
+        selectedTodoId: state.selectedTodoId !== action.payload.id ? action.payload.id : ''
       }
     default:
       return state

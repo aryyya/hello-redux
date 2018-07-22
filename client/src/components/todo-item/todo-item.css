@@ -4,8 +4,15 @@
   background-color: #eee;
   border: 1px solid #ddd;
   margin: 5px;
+}
+
+.todo-item__top {
   display: flex;
   justify-content: space-between;
+}
+
+.todo-item__top:hover {
+  cursor: pointer;
 }
 
 .todo-item:hover {
