@@ -1,9 +1,8 @@
 .todo-item {
   user-select: none;
-  padding: 5px 8px;
-  background-color: #eee;
-  border: 1px solid #ddd;
   margin: 5px;
+  font-size: 15px;
+  padding: 15px;
 }
 
 .todo-item__top {
@@ -23,11 +22,7 @@
   text-decoration: line-through;
 }
 
-.todo-item__check {
-
-}
-
-.todo-item__check {
+.todo-item__check:hover {
   cursor: pointer;
 }
 
