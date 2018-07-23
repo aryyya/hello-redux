@@ -5,7 +5,7 @@ import './todo-item.css'
 import Checkbox from '../checkbox/checkbox'
 import Circle from '../circle/circle'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
-import * as todosActions from '../../redux/todos'
+import { todosActions } from '../../redux/todos'
 
 const TodoItem = props => {
   return (
@@ -50,7 +50,7 @@ TodoItem.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    selectedTodoId: state.todos.selectedTodoId
+    selectedTodoId: state.todosReducer.selectedTodoId
   }
 }
 

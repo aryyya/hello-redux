@@ -6,7 +6,7 @@ import FilterList from '../filter-list/filter-list'
 import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
 import { VisibilityFilters } from '../../redux/visibility-filter'
-import * as todosActions from '../../redux/todos'
+import { todosActions } from '../../redux/todos'
 
 class TodoList extends Component {
   componentDidMount () {
@@ -48,11 +48,11 @@ const mapStateToProps = state => {
         [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
         [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
       }
-      const todosArray = Object.keys(state.todos.todos).map(id => state.todos.todos[id])
-      return todosArray.filter(filters[state.visibilityFilter])
+      const todosArray = Object.keys(state.todosReducer.todos).map(id => state.todosReducer.todos[id])
+      return todosArray.filter(filters[state.visibilityFilterReducer])
     })(),
-    visibilityFilter: state.visibilityFilter,
-    isFetching: state.todos.isFetching
+    visibilityFilter: state.visibilityFilterReducer,
+    isFetching: state.todosReducer.isFetching
   }
 }
 

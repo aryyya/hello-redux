@@ -2,7 +2,7 @@ import React from 'react'
 import './todo-item-panel.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import * as todosActions from '../../redux/todos'
+import { todosActions } from '../../redux/todos'
 
 const TodoItemPanel = props => {
   return (

@@ -10,7 +10,7 @@ export const VisibilityFilters = {
 
 // action creators
 
-export const setVisibilityFilter = visibilityFilter => {
+const setVisibilityFilter = visibilityFilter => {
   return {
     type: SET_VISIBILITY_FILTER,
     payload: {
@@ -19,13 +19,17 @@ export const setVisibilityFilter = visibilityFilter => {
   }
 }
 
+export const visibilityFilterActions = {
+  setVisibilityFilter
+}
+
 // default state
 
 const defaultState = VisibilityFilters.SHOW_ALL
 
 // reducers
 
-const visibilityFilter = (state = defaultState, action) => {
+export const visibilityFilterReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.payload.visibilityFilter
@@ -33,5 +37,3 @@ const visibilityFilter = (state = defaultState, action) => {
       return state
   }
 }
-
-export default visibilityFilter

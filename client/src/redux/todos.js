@@ -14,7 +14,7 @@ const SET_PRIORITY = 'SET_PRIORITY'
 
 // action creators
 
-export const addTodo = text => {
+const addTodo = text => {
   const todo = {
     id: uuid(),
     createdAt: new Date().toISOString(),
@@ -54,7 +54,7 @@ const serverAddTodo = todo => {
   }
 }
 
-export const toggleTodo = id => {
+const toggleTodo = id => {
   store.dispatch(serverToggleTodo(id))
   return {
     type: TOGGLE_TODO,
@@ -89,7 +89,7 @@ const serverToggleTodo = id => {
   }
 }
 
-export const deleteTodo = id => {
+const deleteTodo = id => {
   store.dispatch(serverDeleteTodo(id))
   return {
     type: DELETE_TODO,
@@ -134,7 +134,7 @@ const receiveTodos = todos => {
   }
 }
 
-export const fetchTodos = () => {
+const fetchTodos = () => {
   return dispatch => {
     dispatch(requestTodos())
     return fetch('/todos')
@@ -154,7 +154,7 @@ export const fetchTodos = () => {
   }
 }
 
-export const selectTodo = id => {
+const selectTodo = id => {
   return {
     type: SELECT_TODO,
     payload: {
@@ -163,7 +163,7 @@ export const selectTodo = id => {
   }
 }
 
-export const setPriority = (id, priority) => {
+const setPriority = (id, priority) => {
   store.dispatch(serverSetPriority(id, priority))
   return {
     type: SET_PRIORITY,
@@ -199,6 +199,15 @@ const serverSetPriority = (id, priority) => {
   }
 }
 
+export const todosActions = {
+  addTodo,
+  toggleTodo,
+  deleteTodo,
+  selectTodo,
+  fetchTodos,
+  setPriority
+}
+
 // default state
 
 const defaultState = {
@@ -218,7 +227,7 @@ const defaultState = {
 
 // reducers
 
-const todos = (state = defaultState, action) => {
+export const todosReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -276,5 +285,3 @@ const todos = (state = defaultState, action) => {
       return state
   }
 }
-
-export default todos

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './todo-input.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import * as todosActions from '../../redux/todos'
+import { todosActions } from '../../redux/todos'
 
 class TodoInput extends Component {
   constructor (props) {

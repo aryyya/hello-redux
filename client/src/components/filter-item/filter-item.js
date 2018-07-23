@@ -2,7 +2,7 @@ import React from 'react'
 import './filter-item.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import * as visibilityFilterActions from '../../redux/visibility-filter'
+import { visibilityFilterActions } from '../../redux/visibility-filter'
 
 const FilterItem = props => {
   return (
@@ -28,7 +28,7 @@ FilterItem.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    visibilityFilter: state.visibilityFilter
+    visibilityFilter: state.visibilityFilterReducer
   }
 }
 
