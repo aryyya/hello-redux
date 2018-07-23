@@ -23,6 +23,7 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
           <img
             className="todo-item__settings icon"
             src="settings-icon.svg"
+            alt="Change todo item settings."
             onClick={() => selectTodo(id)}
           />
         </div>

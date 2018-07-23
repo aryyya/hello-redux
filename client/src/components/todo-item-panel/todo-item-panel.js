@@ -9,6 +9,7 @@ const TodoItemPanel = props => {
       <img
         className="todo-item-panel__delete icon"
         src="trash-icon.svg"
+        alt="Delete todo item."
         onClick={() => deleteTodo(id)}
       />
       <button
