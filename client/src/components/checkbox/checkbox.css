@@ -1,12 +1,12 @@
 .checkbox {
-  border: 2px solid #666;
-  width: 13px;
-  height: 13px;
+  border: 2px solid #333;
+  width: 15px;
+  height: 15px;
   display: inline-block;
 }
 
 .checkbox--checked {
-  background-color: #666;
+  background-color: #333;
 }
 
 .checkbox--unchecked {

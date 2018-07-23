@@ -5,6 +5,10 @@
   padding: 15px;
 }
 
+.todo-item--selected {
+  background-color: #eee;
+}
+
 .todo-item__top {
   display: flex;
   justify-content: space-between;
@@ -32,9 +36,6 @@
 }
 
 .todo-item__settings {
-  opacity: 0.4;
-  width: 20px;
-  height: 20px;
   margin-left: 5px;
 }
 

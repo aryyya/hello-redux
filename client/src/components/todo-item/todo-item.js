@@ -6,7 +6,7 @@ import TodoItemPanel from '../todo-item-panel/todo-item-panel'
 
 const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, selectedTodoId }) => {
   return (
-    <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`}>
+    <li className={`todo-item ${completed ? 'todo-item--completed' : ''} ${id === selectedTodoId ? 'todo-item--selected' : ''}`}>
       <div className="todo-item__top">
         <div className="todo-item__text">{text}</div>
         <div className="todo-item__buttons">
@@ -15,7 +15,7 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
             onClick={() => toggleTodo(id)}
           />
           <img
-            className="todo-item__settings"
+            className="todo-item__settings icon"
             src="settings-icon.svg"
             onClick={() => selectTodo(id)}
           />

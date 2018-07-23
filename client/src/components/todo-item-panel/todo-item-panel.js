@@ -6,7 +6,11 @@ const TodoItemPanel = props => {
   const { id, deleteTodo } = props
   return (
     <div className="todo-item-panel">
-      <span className="todo-item-panel__delete" onClick={() => deleteTodo(id)}>delete</span>
+      <img
+        className="todo-item-panel__delete icon"
+        src="trash-icon.svg"
+        onClick={() => deleteTodo(id)}
+      />
     </div>
   )
 }
