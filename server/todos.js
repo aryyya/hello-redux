@@ -20,30 +20,38 @@ const deleteTodo = id => {
   delete todos[id]
 }
 
+const setPriority = (id, priority) => {
+  todos[id].priority = priority
+}
+
 addTodo({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Wake up.',
-  completed: true
+  completed: true,
+  priority: 'low'
 })
 
 addTodo({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Get out of bed.',
-  completed: false
+  completed: false,
+  priority: 'medium'
 })
 
 addTodo({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Catch the school bus.',
-  completed: false
+  completed: false,
+  priority: 'high'
 })
 
 module.exports = {
   getTodos,
   addTodo,
   toggleTodo,
-  deleteTodo
+  deleteTodo,
+  setPriority
 }

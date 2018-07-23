@@ -3,5 +3,16 @@
   width: 7px;
   height: 7px;
   border-radius: 100%;
-  background-color: #b493ff;
+}
+
+.circle--low {
+  background-color: #47e4c2;
+}
+
+.circle--medium {
+  background-color: #fcc300;
+}
+
+.circle--high {
+  background-color: #ff88a6;
 }

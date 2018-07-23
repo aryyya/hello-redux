@@ -5,12 +5,14 @@ import Checkbox from '../checkbox/checkbox'
 import Circle from '../circle/circle'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
 
-const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, selectedTodoId }) => {
+const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, selectedTodoId, setPriority, priority }) => {
   return (
     <li className={`todo-item ${completed ? 'todo-item--completed' : ''} ${id === selectedTodoId ? 'todo-item--selected' : ''}`}>
       <div className="todo-item__top">
         <div className="todo-item__text-wrapper">
-          <Circle />
+          <Circle
+            priority={priority}
+          />
           <span className="todo-item__text">{text}</span>
         </div>
         <div className="todo-item__buttons">
@@ -30,6 +32,7 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
           ? <TodoItemPanel
               id={id}
               deleteTodo={deleteTodo}
+              setPriority={setPriority}
             />
           : null
       }
@@ -44,7 +47,8 @@ TodoItem.propTypes = {
   toggleTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
   selectTodo: PropTypes.func.isRequired,
-  selectedTodoId: PropTypes.string.isRequired
+  selectedTodoId: PropTypes.string.isRequired,
+  setPriority: PropTypes.func.isRequired
 }
 
 export default TodoItem

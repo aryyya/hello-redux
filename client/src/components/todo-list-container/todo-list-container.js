@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleTodo, deleteTodo, addTodo, fetchTodos, selectTodo } from '../../redux/todos'
+import { toggleTodo, deleteTodo, addTodo, fetchTodos, selectTodo, setPriority } from '../../redux/todos'
 import { setVisibilityFilter, VisibilityFilters } from '../../redux/visibility-filter' 
 import TodoList from '../todo-list/todo-list'
 
@@ -9,7 +9,7 @@ class TodoListContainer extends Component {
     this.props.fetchTodos()
   }
   render () {
-    const { todos, visibilityFilter, toggleTodo, deleteTodo, addTodo, selectTodo, selectedTodoId, setVisibilityFilter, isFetching } = this.props
+    const { todos, visibilityFilter, toggleTodo, deleteTodo, addTodo, selectTodo, selectedTodoId, setVisibilityFilter, isFetching, setPriority } = this.props
     return (
       <TodoList
         todos={todos}
@@ -21,6 +21,7 @@ class TodoListContainer extends Component {
         selectedTodoId={selectedTodoId}
         setVisibilityFilter={setVisibilityFilter}
         isFetching={isFetching}
+        setPriority={setPriority}
       />
     )
   }
@@ -51,7 +52,8 @@ const mapDispatchToProps = dispatch => {
     addTodo: text => dispatch(addTodo(text)),
     setVisibilityFilter: visibilityFilter => dispatch(setVisibilityFilter(visibilityFilter)),
     fetchTodos: () => dispatch(fetchTodos()),
-    selectTodo: id => dispatch(selectTodo(id))
+    selectTodo: id => dispatch(selectTodo(id)),
+    setPriority: (id, priority) => dispatch(setPriority(id, priority))
   }
 }
 

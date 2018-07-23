@@ -5,7 +5,7 @@ import FilterList from '../filter-list/filter-list'
 import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, addTodo, selectTodo, selectedTodoId, visibilityFilter, setVisibilityFilter, isFetching }) => {
+const TodoList = ({ todos, toggleTodo, deleteTodo, addTodo, selectTodo, selectedTodoId, visibilityFilter, setVisibilityFilter, isFetching, setPriority }) => {
   return (
     <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
       <FilterList
@@ -21,8 +21,10 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, addTodo, selectTodo, selected
             id={todo.id}
             toggleTodo={toggleTodo}
             deleteTodo={deleteTodo}
+            setPriority={setPriority}
             selectTodo={selectTodo}
             selectedTodoId={selectedTodoId}
+            priority={todo.priority}
             key={todo.id}
           />
         )}
@@ -40,7 +42,8 @@ TodoList.propTypes = {
   setVisibilityFilter: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   selectTodo: PropTypes.func.isRequired,
-  selectedTodoId: PropTypes.string.isRequired
+  selectedTodoId: PropTypes.string.isRequired,
+  setPriority: PropTypes.func.isRequired
 }
 
 export default TodoList

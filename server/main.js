@@ -3,7 +3,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const { getTodos, addTodo, toggleTodo, deleteTodo } = require('./todos')
+const { getTodos, addTodo, toggleTodo, deleteTodo, setPriority } = require('./todos')
 
 // server
 
@@ -13,7 +13,8 @@ const port = process.env.PORT || 8080
 // middleware
 
 server.use(morgan('dev'))
-server.use(bodyParser.json())
+// server.use(bodyParser.json())
+server.use(express.json())
 
 // routes
 
@@ -33,7 +34,16 @@ server.post('/todos', (req, res) => {
 
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
-  toggleTodo(id)
+  const { toggle, priority } = req.body
+
+  console.log(req.body)
+
+  if (toggle) {
+    toggleTodo(id)
+  }
+  if (priority) {
+    setPriority(id, priority)
+  }
   res.json({ status: 'ok' })
 })
 

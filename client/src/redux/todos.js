@@ -9,6 +9,7 @@ export const DELETE_TODO = 'DELETE_TODO'
 export const REQUEST_TODOS = 'REQUEST_TODOS'
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 export const SELECT_TODO = 'SELECT_TODO'
+export const SET_PRIORITY = 'SET_PRIORITY'
 
 // action creators
 
@@ -17,7 +18,8 @@ export const addTodo = text => {
     id: uuid(),
     createdAt: new Date().toISOString(),
     text,
-    completed: false
+    completed: false,
+    priority: 'low'
   }
   store.dispatch(serverAddTodo(todo))
   return {
@@ -64,7 +66,13 @@ export const toggleTodo = id => {
 export const serverToggleTodo = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
-      method: 'PATCH'
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        toggle: 1
+      })
     })
       .then(
         res => {
@@ -154,6 +162,42 @@ export const selectTodo = id => {
   }
 }
 
+export const setPriority = (id, priority) => {
+  store.dispatch(serverSetPriority(id, priority))
+  return {
+    type: SET_PRIORITY,
+    payload: {
+      id,
+      priority
+    }
+  }
+}
+
+export const serverSetPriority = (id, priority) => {
+  return dispatch => {
+    return fetch(`/todos/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        priority
+      })
+    })
+      .then(
+        res => {
+          return res.json()
+        },
+        err => {
+          console.error(`An error occurred: ${err}`)
+        }
+      )
+      .then(todos => {
+
+      })
+  }
+}
+
 // default state
 
 const defaultState = {
@@ -162,7 +206,8 @@ const defaultState = {
       id: '0',
       createdAt: new Date().toISOString(),
       text: 'Wake up.',
-      completed: false
+      completed: false,
+      priority: 'low'
     }
   },
   isFetching: false,
@@ -213,6 +258,17 @@ const todos = (state = defaultState, action) => {
       return {
         ...state,
         selectedTodoId: state.selectedTodoId !== action.payload.id ? action.payload.id : ''
+      }
+    case SET_PRIORITY:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          [action.payload.id]: {
+            ...state.todos[action.payload.id],
+            priority: action.payload.priority
+          }
+        }
       }
     default:
       return state
