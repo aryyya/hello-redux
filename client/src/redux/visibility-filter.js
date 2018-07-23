@@ -1,6 +1,6 @@
 // action types
 
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',

@@ -1,23 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './filter-list.css'
 import { VisibilityFilters } from '../../redux/visibility-filter'
 import FilterItem from '../filter-item/filter-item'
 
 const filters = [
-  { name: 'Show all', visibilityFilter: VisibilityFilters.SHOW_ALL },
-  { name: 'Show complete', visibilityFilter: VisibilityFilters.SHOW_COMPLETE },
-  { name: 'Show incomplete', visibilityFilter: VisibilityFilters.SHOW_INCOMPLETE }
+  { name: 'Show all', code: VisibilityFilters.SHOW_ALL },
+  { name: 'Show complete', code: VisibilityFilters.SHOW_COMPLETE },
+  { name: 'Show incomplete', code: VisibilityFilters.SHOW_INCOMPLETE }
 ]
 
-const Filter = ({ visibilityFilter, setVisibilityFilter }) => {
+const FilterList = props => {
   return (
     <ul className="filter-list">
       {filters.map(filter =>
         <FilterItem
-          name={filter.name}
-          active={visibilityFilter === filter.visibilityFilter}
-          setVisibilityFilter={() => setVisibilityFilter(filter.visibilityFilter)}
+          filter={filter}
           key={filter.name}
         />
       )}
@@ -25,9 +22,4 @@ const Filter = ({ visibilityFilter, setVisibilityFilter }) => {
   )
 }
 
-Filter.propTypes = {
-  visibilityFilter: PropTypes.string.isRequired,
-  setVisibilityFilter: PropTypes.func.isRequired
-}
-
-export default Filter
+export default FilterList

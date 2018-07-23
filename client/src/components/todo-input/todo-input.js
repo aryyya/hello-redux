@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import './todo-input.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as todosActions from '../../redux/todos'
 
 class TodoInput extends Component {
   constructor (props) {
@@ -11,7 +13,7 @@ class TodoInput extends Component {
   }
   submit (event) {
     event.preventDefault()
-    this.props.onSubmit(this.state.text)
+    this.props.addTodo(this.state.text)
     this.setState({ text: '' })
   }
   render () {
@@ -25,7 +27,13 @@ class TodoInput extends Component {
 }
 
 TodoInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  addTodo: PropTypes.func.isRequired
 }
 
-export default TodoInput
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => dispatch(todosActions.addTodo(text))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TodoInput)

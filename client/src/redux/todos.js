@@ -1,15 +1,16 @@
 import store from '../redux/store'
 import uuid from 'uuid/v4'
+import { VisibilityFilters } from './visibility-filter';
 
 // action types
 
-export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const DELETE_TODO = 'DELETE_TODO'
-export const REQUEST_TODOS = 'REQUEST_TODOS'
-export const RECEIVE_TODOS = 'RECEIVE_TODOS'
-export const SELECT_TODO = 'SELECT_TODO'
-export const SET_PRIORITY = 'SET_PRIORITY'
+const ADD_TODO = 'ADD_TODO'
+const TOGGLE_TODO = 'TOGGLE_TODO'
+const DELETE_TODO = 'DELETE_TODO'
+const REQUEST_TODOS = 'REQUEST_TODOS'
+const RECEIVE_TODOS = 'RECEIVE_TODOS'
+const SELECT_TODO = 'SELECT_TODO'
+const SET_PRIORITY = 'SET_PRIORITY'
 
 // action creators
 
@@ -30,7 +31,7 @@ export const addTodo = text => {
   }
 }
 
-export const serverAddTodo = todo => {
+const serverAddTodo = todo => {
   return dispatch => {
     fetch('/todos', {
       method: 'POST',
@@ -63,7 +64,7 @@ export const toggleTodo = id => {
   }
 }
 
-export const serverToggleTodo = id => {
+const serverToggleTodo = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'PATCH',
@@ -98,7 +99,7 @@ export const deleteTodo = id => {
   }
 }
 
-export const serverDeleteTodo = id => {
+const serverDeleteTodo = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'DELETE'
@@ -117,13 +118,13 @@ export const serverDeleteTodo = id => {
     }
 }
 
-export const requestTodos = () => {
+const requestTodos = () => {
   return {
     type: REQUEST_TODOS
   }
 }
 
-export const receiveTodos = todos => {
+const receiveTodos = todos => {
   return {
     type: RECEIVE_TODOS,
     payload: {
@@ -173,7 +174,7 @@ export const setPriority = (id, priority) => {
   }
 }
 
-export const serverSetPriority = (id, priority) => {
+const serverSetPriority = (id, priority) => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'PATCH',
@@ -210,6 +211,7 @@ const defaultState = {
       priority: 'low'
     }
   },
+  visibilityFilter: VisibilityFilters.SHOW_ALL,
   isFetching: false,
   selectedTodoId: ''
 }

@@ -1,39 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import './todo-item.css'
 import Checkbox from '../checkbox/checkbox'
 import Circle from '../circle/circle'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
+import * as todosActions from '../../redux/todos'
 
-const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, selectedTodoId, setPriority, priority }) => {
+const TodoItem = props => {
   return (
-    <li className={`todo-item ${completed ? 'todo-item--completed' : ''} ${id === selectedTodoId ? 'todo-item--selected' : ''}`}>
+    <li className={`todo-item ${props.todo.completed ? 'todo-item--completed' : ''} ${props.todo.id === props.selectedTodoId ? 'todo-item--selected' : ''}`}>
       <div className="todo-item__top">
         <div className="todo-item__text-wrapper">
           <Circle
-            priority={priority}
+            priority={props.todo.priority}
           />
-          <span className="todo-item__text">{text}</span>
+          <span className="todo-item__text">{props.todo.text}</span>
         </div>
         <div className="todo-item__buttons">
           <Checkbox
-            checked={completed}
-            onClick={() => toggleTodo(id)}
+            checked={props.todo.completed}
+            onClick={() => props.toggleTodo(props.todo.id)}
           />
           <img
             className="todo-item__settings icon"
             src="settings-icon.svg"
             alt="Change todo item settings."
-            onClick={() => selectTodo(id)}
+            onClick={() => props.selectTodo(props.todo.id)}
           />
         </div>
       </div>
       {
-        selectedTodoId === id
+        props.selectedTodoId === props.todo.id
           ? <TodoItemPanel
-              id={id}
-              deleteTodo={deleteTodo}
-              setPriority={setPriority}
+              todo={props.todo}
             />
           : null
       }
@@ -42,14 +42,23 @@ const TodoItem = ({ completed, text, id, toggleTodo, deleteTodo, selectTodo, sel
 }
 
 TodoItem.propTypes = {
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  todo: PropTypes.object.isRequired,
   toggleTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
   selectTodo: PropTypes.func.isRequired,
-  selectedTodoId: PropTypes.string.isRequired,
-  setPriority: PropTypes.func.isRequired
+  selectedTodoId: PropTypes.string.isRequired
 }
 
-export default TodoItem
+const mapStateToProps = state => {
+  return {
+    selectedTodoId: state.todos.selectedTodoId
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleTodo: id => dispatch(todosActions.toggleTodo(id)),
+    selectTodo: id => dispatch(todosActions.selectTodo(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem)

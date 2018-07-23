@@ -1,27 +1,41 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './filter-item.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as visibilityFilterActions from '../../redux/visibility-filter'
 
-const FilterItem = ({ name, active, setVisibilityFilter }) => {
+const FilterItem = props => {
   return (
     <li
       className="filter-item"
-      onClick={setVisibilityFilter}
+      onClick={() => props.setVisibilityFilter(props.filter.code)}
     >
       <input
         type="checkbox"
         readOnly
-        checked={active}
+        checked={props.filter.code === props.visibilityFilter}
       />
-      {name}
+      {props.filter.name}
     </li>
   )
 }
 
 FilterItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
+  filter: PropTypes.object.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
   setVisibilityFilter: PropTypes.func.isRequired
 }
 
-export default FilterItem
+const mapStateToProps = state => {
+  return {
+    visibilityFilter: state.visibilityFilter
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setVisibilityFilter: code => dispatch(visibilityFilterActions.setVisibilityFilter(code))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterItem)

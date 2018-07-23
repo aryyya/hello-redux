@@ -1,49 +1,65 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import './todo-list.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import FilterList from '../filter-list/filter-list'
 import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
+import { VisibilityFilters } from '../../redux/visibility-filter'
+import * as todosActions from '../../redux/todos'
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, addTodo, selectTodo, selectedTodoId, visibilityFilter, setVisibilityFilter, isFetching, setPriority }) => {
-  return (
-    <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
-      <FilterList
-        visibilityFilter={visibilityFilter}
-        setVisibilityFilter={setVisibilityFilter}
-      />
-      <TodoInput onSubmit={addTodo} />
-      <ul className="todo-list__list">
-        {todos.map(todo =>
-          <TodoItem
-            completed={todo.completed}
-            text={todo.text}
-            id={todo.id}
-            toggleTodo={toggleTodo}
-            deleteTodo={deleteTodo}
-            setPriority={setPriority}
-            selectTodo={selectTodo}
-            selectedTodoId={selectedTodoId}
-            priority={todo.priority}
-            key={todo.id}
-          />
-        )}
-      </ul>
-    </div>
-  )
+class TodoList extends Component {
+  componentDidMount () {
+    this.props.fetchTodos()
+  }
+  render () {
+    const props = this.props
+    return (
+      <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
+        <FilterList
+          visibilityFilter={props.visibilityFilter}
+        />
+        <TodoInput />
+        <ul className="todo-list__list">
+          {props.todos.map(todo =>
+            <TodoItem
+              todo={todo}
+              key={todo.id}
+            />
+          )}
+        </ul>
+      </div>
+    )
+  }
 }
 
 TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
-  toggleTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
-  addTodo: PropTypes.func.isRequired,
   visibilityFilter: PropTypes.string.isRequired,
-  setVisibilityFilter: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  selectTodo: PropTypes.func.isRequired,
-  selectedTodoId: PropTypes.string.isRequired,
-  setPriority: PropTypes.func.isRequired
+  fetchTodos: PropTypes.func.isRequired
 }
 
-export default TodoList
+const mapStateToProps = state => {
+  return {
+    todos: (() => {
+      const filters = {
+        [VisibilityFilters.SHOW_ALL]: todo => todo,
+        [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
+        [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
+      }
+      const todosArray = Object.keys(state.todos.todos).map(id => state.todos.todos[id])
+      return todosArray.filter(filters[state.visibilityFilter])
+    })(),
+    visibilityFilter: state.visibilityFilter,
+    isFetching: state.todos.isFetching
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchTodos: () => dispatch(todosActions.fetchTodos())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
