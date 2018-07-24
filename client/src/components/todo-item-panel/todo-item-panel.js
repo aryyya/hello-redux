@@ -13,21 +13,6 @@ const TodoItemPanel = props => {
         alt="Delete todo item."
         onClick={() => props.deleteTodo(props.todo.id)}
       />
-      <button
-        onClick={() => props.setPriority(props.todo.id, 'low')}
-      >
-        low
-      </button>
-      <button
-        onClick={() => props.setPriority(props.todo.id, 'medium')}
-      >
-        medium
-      </button>
-      <button
-        onClick={() => props.setPriority(props.todo.id, 'high')}
-      >
-        high
-      </button>
     </div>
   )
 }

@@ -18,16 +18,16 @@ const TodoItem = props => {
           <span className="todo-item__text">{props.todo.text}</span>
         </div>
         <div className="todo-item__buttons">
+          <img
+            className="todo-item__settings icon icon--subtle"
+            src="hammer-icon.svg"
+            alt="Change todo item settings."
+            onClick={() => props.selectTodo(props.todo.id)}
+          />
           <Checkbox
             checked={props.todo.completed}
             onClick={() => props.toggleTodo(props.todo.id)}
           />
-          {/* <img
-            className="todo-item__settings icon"
-            src="settings-icon.svg"
-            alt="Change todo item settings."
-            onClick={() => props.selectTodo(props.todo.id)}
-          /> */}
         </div>
       </div>
       {
