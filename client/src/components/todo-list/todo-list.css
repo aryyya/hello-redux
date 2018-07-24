@@ -70,7 +70,8 @@
 }
 
 .todo-list__subtitle {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: #777;
+  padding-left: 5px;
 }

@@ -17,8 +17,8 @@ class TodoList extends Component {
     return (
       <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
         <div className="todo-list__title-section">
-          <h1 className="todo-list__title">Task list</h1>
-          <h2 className="todo-list__subtitle">{new Date().toString()}</h2>
+          <h1 className="todo-list__title">Task List.</h1>
+          <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
         </div>
         <div className="todo-list__todos-section">
           {/* <FilterList
