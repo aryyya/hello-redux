@@ -15,7 +15,7 @@ const TodoItem = props => {
           <Priority
             todo={props.todo}
           />
-          <span className="todo-item__text">{props.todo.text}</span>
+          <span className={`todo-item__text todo-item__text--${props.todo.priority}`}>{props.todo.text}</span>
         </div>
         <div className="todo-item__buttons">
           <img

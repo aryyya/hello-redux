@@ -53,3 +53,15 @@
 .todo-item__delete:hover {
   cursor: pointer;
 }
+
+.todo-item__text--low {
+  font-weight: 300;
+}
+
+.todo-item__text--medium {
+  font-weight: 400;
+}
+
+.todo-item__text--high {
+  font-weight: 500;
+}
