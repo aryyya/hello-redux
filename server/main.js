@@ -2,7 +2,7 @@
 
 const express = require('express')
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
+const path = require('path')
 const { getTodos, addTodo, toggleTodo, deleteTodo, setPriority } = require('./todos')
 
 // server
@@ -12,15 +12,25 @@ const port = process.env.PORT || 8080
 
 // middleware
 
-server.use(morgan('dev'))
-// server.use(bodyParser.json())
-server.use(express.json())
+server.use(
+  morgan(
+    process.env.NODE_ENV === 'production' ? 'short' : 'dev'
+  )
+)
+
+server.use(
+  express.json()
+)
+
+if (process.env.NODE_ENV === 'production') {
+  server.use(
+    express.static(
+      path.join(`${__dirname}/../client/build`)
+    )
+  )
+}
 
 // routes
-
-server.get('/', (req, res) => {
-  res.end('hello-redux')
-})
 
 server.get('/todos', (req, res) => {
   res.json(getTodos())
@@ -35,9 +45,6 @@ server.post('/todos', (req, res) => {
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
   const { toggle, priority } = req.body
-
-  console.log(req.body)
-
   if (toggle) {
     toggleTodo(id)
   }
@@ -56,5 +63,10 @@ server.delete('/todos/:id', (req, res) => {
 // start
 
 server.listen(port, () => {
+  if (process.env.NODE_ENV === 'production') {
+    console.log('The server is in production mode.')
+  } else {
+    console.log('The server is in development mode.')
+  }
   console.log(`The server is listening on port ${port}.`)
 })
