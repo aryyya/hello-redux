@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './todo-list.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import FilterList from '../filter-list/filter-list'
-import TodoInput from '../todo-input/todo-input'
+// import FilterList from '../filter-list/filter-list'
+// import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
 import { VisibilityFilters } from '../../redux/visibility-filter'
 import { todosActions } from '../../redux/todos'
@@ -21,9 +21,6 @@ class TodoList extends Component {
           <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
         </div>
         <div className="todo-list__todos-section">
-          {/* <FilterList
-            visibilityFilter={props.visibilityFilter}
-          /> */}
           <ul className="todo-list__list">
             {props.todos.map(todo =>
               <TodoItem
