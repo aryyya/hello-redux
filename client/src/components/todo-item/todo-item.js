@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './todo-item.css'
 import Checkbox from '../checkbox/checkbox'
-import Circle from '../circle/circle'
+import Priority from '../priority/priority'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
 import { todosActions } from '../../redux/todos'
 
@@ -12,8 +12,8 @@ const TodoItem = props => {
     <li className={`todo-item ${props.todo.completed ? 'todo-item--completed' : ''} ${props.todo.id === props.selectedTodoId ? 'todo-item--selected' : ''}`}>
       <div className="todo-item__top">
         <div className="todo-item__text-wrapper">
-          <Circle
-            priority={props.todo.priority}
+          <Priority
+            todo={props.todo}
           />
           <span className="todo-item__text">{props.todo.text}</span>
         </div>

@@ -1,0 +1,34 @@
+.priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priority__options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priority__selected {
+  width: 11px;
+  height: 11px;
+}
+
+.priority__selection {
+  width: 11px;
+  height: 11px;
+  margin-left: 8px;
+}
+
+.priority__selection--low {
+  background-color: #47e4c2;
+}
+
+.priority__selection--medium {
+  background-color: #fcc300;
+}
+
+.priority__selection--high {
+  background-color: #ff88a6;
+}
