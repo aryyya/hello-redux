@@ -8,7 +8,9 @@ const Checkbox = props => {
     <span
       className={`checkbox checkbox--${checked ? 'checked' : 'unchecked'}`}
       onClick={onClick}
-    />
+    >
+      ✓
+    </span>
   )
 }
 

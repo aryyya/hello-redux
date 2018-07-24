@@ -22,12 +22,12 @@ const TodoItem = props => {
             checked={props.todo.completed}
             onClick={() => props.toggleTodo(props.todo.id)}
           />
-          <img
+          {/* <img
             className="todo-item__settings icon"
             src="settings-icon.svg"
             alt="Change todo item settings."
             onClick={() => props.selectTodo(props.todo.id)}
-          />
+          /> */}
         </div>
       </div>
       {

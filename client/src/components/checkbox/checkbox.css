@@ -3,12 +3,16 @@
   width: 15px;
   height: 15px;
   display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .checkbox--checked {
-  background-color: #333;
+  color: black;
 }
 
 .checkbox--unchecked {
-
+  color: transparent;
 }
