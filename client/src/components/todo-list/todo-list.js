@@ -16,18 +16,28 @@ class TodoList extends Component {
     const props = this.props
     return (
       <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
-        <FilterList
-          visibilityFilter={props.visibilityFilter}
-        />
-        <TodoInput />
-        <ul className="todo-list__list">
-          {props.todos.map(todo =>
-            <TodoItem
-              todo={todo}
-              key={todo.id}
-            />
-          )}
-        </ul>
+        <div className="todo-list__title-section">
+          <h1 className="todo-list__title">Task list</h1>
+          <h2 className="todo-list__subtitle">{new Date().toString()}</h2>
+        </div>
+        <div className="todo-list__todos-section">
+          {/* <FilterList
+            visibilityFilter={props.visibilityFilter}
+          /> */}
+          <ul className="todo-list__list">
+            {props.todos.map(todo =>
+              <TodoItem
+                todo={todo}
+                key={todo.id}
+              />
+            )}
+          </ul>
+        </div>
+        <div className="todo-list__controls-section">
+          <div className="todo-list__add-button">
+            +
+          </div>
+        </div>
       </div>
     )
   }

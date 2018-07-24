@@ -11,14 +11,16 @@
 }
 
 .priority__selected {
-  width: 11px;
-  height: 11px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
 }
 
 .priority__selection {
-  width: 11px;
-  height: 11px;
+  width: 9px;
+  height: 9px;
   margin-left: 8px;
+  border-radius: 50%;
 }
 
 .priority__selection:hover {
