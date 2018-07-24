@@ -21,6 +21,10 @@
   margin-left: 8px;
 }
 
+.priority__selection:hover {
+  opacity: 0.8;
+}
+
 .priority__selection--low {
   background-color: #47e4c2;
 }
