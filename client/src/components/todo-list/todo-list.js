@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './todo-list.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 // import FilterList from '../filter-list/filter-list'
 // import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
@@ -31,9 +32,12 @@ class TodoList extends Component {
           </ul>
         </div>
         <div className="todo-list__controls-section">
-          <div className="todo-list__add-button">
+          <Link
+            className="todo-list__add-button"
+            to="/add-todo"
+          >
             +
-          </div>
+          </Link>
         </div>
       </div>
     )
