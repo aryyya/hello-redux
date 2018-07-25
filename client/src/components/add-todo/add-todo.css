@@ -1,0 +1,72 @@
+.add-todo {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.add-todo__form {
+  flex: 5;
+  padding: 50px;
+}
+
+.add-todo__buttons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-todo__add-button {
+
+}
+
+.add-todo__add-button {
+  background-color: #5b89ff;
+  padding: 15px 25px;
+  width: 85%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.add-todo__add-button:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.add-todo__add-button:active {
+  opacity: 0.7;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.45);
+  transform: translateY(+2px);
+}
+
+.add-todo__text {
+  width: 100%;
+  font-size: 36px;
+  border: none;
+  outline: none;
+}
+
+.add-todo__text::placeholder {
+  color: #bbb;
+}
+
+.add-todo__close {
+
+}
+
+.add-todo__close-icon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.75;
+  margin-left: -5px;
+}
