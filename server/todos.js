@@ -43,7 +43,31 @@ addTodo({
 addTodo({
   id: uuid(),
   createdAt: new Date().toISOString(),
+  text: 'Make breakfast.',
+  completed: false,
+  priority: 'high'
+})
+
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
   text: 'Catch the school bus.',
+  completed: false,
+  priority: 'low'
+})
+
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
+  text: 'Attend class.',
+  completed: false,
+  priority: 'medium'
+})
+
+addTodo({
+  id: uuid(),
+  createdAt: new Date().toISOString(),
+  text: 'Eat lunch.',
   completed: false,
   priority: 'high'
 })
