@@ -8,14 +8,15 @@ class AddTodo extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      text: ''
+      text: '',
+      priority: 'low'
     }
   }
   addTodo (event) {
     if (event) {
       event.preventDefault()
     }
-    this.props.addTodo(this.state.text)
+    this.props.addTodo(this.state.text, this.state.priority)
     this.props.history.push('/')
   }
   render () {
@@ -47,6 +48,44 @@ class AddTodo extends Component {
               placeholder="Write task here"
             />
           </div>
+          <div className="add-todo__priorities">
+            <div>
+              <input
+                className="add-todo__priority add-todo__priority--low"
+                id="low-priority"
+                type="radio"
+                name="priority"
+                checked={this.state.priority === 'low'}
+                readOnly
+                onChange={() => this.setState({ priority: 'low' })}
+              />
+              Low priority
+            </div>
+            <div>
+              <input
+                className="add-todo__priority add-todo__priority--medium"
+                id="medium-priority"
+                type="radio"
+                name="priority"
+                checked={this.state.priority === 'medium'}
+                readOnly
+                onChange={() => this.setState({ priority: 'medium' })}
+              />
+              Medium priority
+            </div>
+            <div>
+              <input
+                className="add-todo__priority add-todo__priority--high"
+                id="medium-priority"
+                type="radio"
+                name="priority"
+                checked={this.state.priority === 'high'}
+                readOnly
+                onChange={() => this.setState({ priority: 'high' })}
+              />
+              High priority
+            </div>
+          </div>
         </form>
         <div className="add-todo__buttons">
           <div
@@ -63,7 +102,7 @@ class AddTodo extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: text => todosActions.addTodo(text)
+    addTodo: (text, priority) => todosActions.addTodo(text, priority),
   }
 }
 

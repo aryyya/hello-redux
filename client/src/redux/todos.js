@@ -14,13 +14,13 @@ const SET_PRIORITY = 'SET_PRIORITY'
 
 // action creators
 
-const addTodo = text => {
+const addTodo = (text, priority = 'low') => {
   const todo = {
     id: uuid(),
     createdAt: new Date().toISOString(),
     text,
     completed: false,
-    priority: 'low'
+    priority
   }
   store.dispatch(serverAddTodo(todo))
   return {
