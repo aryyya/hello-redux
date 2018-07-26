@@ -59,7 +59,9 @@ class AddTodo extends Component {
                 readOnly
                 onChange={() => this.setState({ priority: 'low' })}
               />
-              Low priority
+              <label htmlFor="low-priority">
+                Low priority
+              </label>
             </div>
             <div>
               <input
@@ -71,19 +73,23 @@ class AddTodo extends Component {
                 readOnly
                 onChange={() => this.setState({ priority: 'medium' })}
               />
-              Medium priority
+              <label htmlFor="medium-priority">
+                Medium priority
+              </label>
             </div>
             <div>
               <input
                 className="add-todo__priority add-todo__priority--high"
-                id="medium-priority"
+                id="high-priority"
                 type="radio"
                 name="priority"
                 checked={this.state.priority === 'high'}
                 readOnly
                 onChange={() => this.setState({ priority: 'high' })}
               />
-              High priority
+              <label htmlFor="high-priority">
+                High priority
+              </label>
             </div>
           </div>
         </form>
