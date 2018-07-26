@@ -28,3 +28,10 @@ body {
 .icon:active {
   opacity: 1;
 }
+
+@keyframes slide-in-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}

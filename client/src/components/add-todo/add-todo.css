@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  animation: slide-in-from-left 0.3s ease;
 }
 
 .add-todo__form {

@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
+  animation: slide-in-from-left 0.3s ease;
 }
 
 .todo-list__top::webkit-scrollbar {
