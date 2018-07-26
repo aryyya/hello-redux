@@ -60,8 +60,8 @@
   color: #bbb;
 }
 
-.add-todo__close {
-
+.add-todo__close-icon {
+  margin-bottom: 25px;
 }
 
 .add-todo__close-icon {
@@ -72,7 +72,7 @@
 }
 
 .add-todo__priorities {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .add-todo__priority {
@@ -81,5 +81,5 @@
 }
 
 .add-todo__priority--low {
-  
+
 }

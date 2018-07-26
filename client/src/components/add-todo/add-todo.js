@@ -45,7 +45,7 @@ class AddTodo extends Component {
               type="text"
               value={this.state.text}
               onChange={event => this.setState({ text: event.target.value })}
-              placeholder="Write task here"
+              placeholder="Write task here."
             />
           </div>
           <div className="add-todo__priorities">
