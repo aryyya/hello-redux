@@ -16,5 +16,6 @@ An experiment in state management with React and Redux.
 - [ ] Add registration and authentication.
 - [ ] Synchronize data between client and server.
 - [ ] Write tests.
+- [ ] Implement unlisted url public todos (with and without public editing).
 
 More to come.
