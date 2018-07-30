@@ -10,6 +10,7 @@ An experiment in state management with React and Redux.
 - [ ] Consolidate CSS (make global styles for uniformity).
 - [ ] Determine typography scheme.
 - [ ] Add animations.
+- [ ] Change to responsive layout.
 - [ ] Implement multiple todo lists.
 - [ ] Implement todo lists page.
 - [ ] Add user accounts to server.
