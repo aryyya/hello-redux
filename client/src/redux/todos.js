@@ -1,6 +1,5 @@
 import store from '../redux/store'
 import uuid from 'uuid/v4'
-import { VisibilityFilters } from './visibility-filter';
 
 // action types
 
@@ -11,6 +10,7 @@ const REQUEST_TODOS = 'REQUEST_TODOS'
 const RECEIVE_TODOS = 'RECEIVE_TODOS'
 const SELECT_TODO = 'SELECT_TODO'
 const SET_PRIORITY = 'SET_PRIORITY'
+const EDIT_TODO = 'EDIT_TODO'
 
 // action creators
 
@@ -199,13 +199,26 @@ const serverSetPriority = (id, priority) => {
   }
 }
 
+const editTodo = (id, { text, completed, priority }) => {
+  return {
+    type: EDIT_TODO,
+    payload: {
+      id,
+      text,
+      completed,
+      priority
+    }
+  }
+}
+
 export const todosActions = {
   addTodo,
   toggleTodo,
   deleteTodo,
   selectTodo,
   fetchTodos,
-  setPriority
+  setPriority,
+  editTodo
 }
 
 // default state
@@ -220,7 +233,6 @@ const defaultState = {
       priority: 'low'
     }
   },
-  visibilityFilter: VisibilityFilters.SHOW_ALL,
   isFetching: false,
   selectedTodoId: ''
 }
@@ -281,6 +293,9 @@ export const todosReducer = (state = defaultState, action) => {
           }
         }
       }
+    case EDIT_TODO:
+      console.error('EDIT_TODO reducer not implemented yet!')
+      return state
     default:
       return state
   }
