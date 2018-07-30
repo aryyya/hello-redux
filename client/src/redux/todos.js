@@ -211,6 +211,10 @@ const editTodo = (id, { text, completed, priority }) => {
   }
 }
 
+const serverEditTodo = (id, { text, completed, priority }) => {
+  throw new Error('NOT IMPLEMENTED!') 
+}
+
 export const todosActions = {
   addTodo,
   toggleTodo,

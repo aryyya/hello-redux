@@ -49,7 +49,8 @@ TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   toggleTodo: PropTypes.func.isRequired,
   selectTodo: PropTypes.func.isRequired,
-  selectedTodoId: PropTypes.string.isRequired
+  selectedTodoId: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => {
