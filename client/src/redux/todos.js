@@ -263,7 +263,7 @@ export const todosReducer = (state = defaultState, action) => {
         }
       }
     case DELETE_TODO:
-      let newState = { ...state }
+      const newState = { ...state }
       delete newState.todos[action.payload.id]
       return newState
     case REQUEST_TODOS:
@@ -294,8 +294,13 @@ export const todosReducer = (state = defaultState, action) => {
         }
       }
     case EDIT_TODO:
-      console.error('EDIT_TODO reducer not implemented yet!')
-      return state
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          [action.payload.id]: Object.assign(state.todos[action.payload.id], action.payload)
+        }
+      }
     default:
       return state
   }

@@ -6,10 +6,14 @@ import Checkbox from '../checkbox/checkbox'
 import Priority from '../priority/priority'
 import TodoItemPanel from '../todo-item-panel/todo-item-panel'
 import { todosActions } from '../../redux/todos'
+import { withRouter } from 'react-router-dom'
 
 const TodoItem = props => {
   return (
-    <li className={`todo-item ${props.todo.completed ? 'todo-item--completed' : ''} ${props.todo.id === props.selectedTodoId ? 'todo-item--selected' : ''}`}>
+    <li
+      className={`todo-item ${props.todo.completed ? 'todo-item--completed' : ''} ${props.todo.id === props.selectedTodoId ? 'todo-item--selected' : ''}`}
+      onClick={() => props.history.push(`/edit-todo/${props.todo.id}`)}
+    >
       <div className="todo-item__top">
         <div className="todo-item__text-wrapper">
           <Priority
@@ -61,4 +65,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItem)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRouter(
+    TodoItem
+  )
+)
