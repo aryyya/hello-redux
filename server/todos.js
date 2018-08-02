@@ -1,5 +1,9 @@
 const uuid = require('uuid/v4')
 
+const exists = object => {
+  return typeof object !== 'undefined'
+}
+
 const todos = {}
 
 const getTodos = () => {
@@ -17,9 +21,9 @@ const deleteTodo = id => {
 }
 
 const editTodo = (id, { text, completed, priority }) => {
-  if (typeof text !== 'undefined') todos[id].text = text
-  if (typeof completed !== 'undefined') todos[id].completed = completed
-  if (typeof priority !== 'undefined') todos[id].priority = priority
+  if (exists(text)) todos[id].text = text
+  if (exists(completed)) todos[id].completed = completed
+  if (exists(priority)) todos[id].priority = priority
 }
 
 addTodo({
