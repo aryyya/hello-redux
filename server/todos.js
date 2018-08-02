@@ -12,16 +12,14 @@ const addTodo = todo => {
   }
 }
 
-const toggleTodo = id => {
-  todos[id].completed = !todos[id].completed
-}
-
 const deleteTodo = id => {
   delete todos[id]
 }
 
-const setPriority = (id, priority) => {
-  todos[id].priority = priority
+const editTodo = (id, { text, completed, priority }) => {
+  if (typeof text !== 'undefined') todos[id].text = text
+  if (typeof completed !== 'undefined') todos[id].completed = completed
+  if (typeof priority !== 'undefined') todos[id].priority = priority
 }
 
 addTodo({
@@ -75,7 +73,6 @@ addTodo({
 module.exports = {
   getTodos,
   addTodo,
-  toggleTodo,
   deleteTodo,
-  setPriority
+  editTodo
 }

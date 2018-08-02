@@ -3,7 +3,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const path = require('path')
-const { getTodos, addTodo, toggleTodo, deleteTodo, setPriority } = require('./todos')
+const { getTodos, addTodo, deleteTodo, editTodo } = require('./todos')
 
 // server
 
@@ -44,13 +44,8 @@ server.post('/todos', (req, res) => {
 
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
-  const { toggle, priority } = req.body
-  if (toggle) {
-    toggleTodo(id)
-  }
-  if (priority) {
-    setPriority(id, priority)
-  }
+  const { text, completed, priority } = req.body
+  editTodo(id, { text, completed, priority })
   res.json({ status: 'ok' })
 })
 

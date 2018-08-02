@@ -200,6 +200,7 @@ const serverSetPriority = (id, priority) => {
 }
 
 const editTodo = (id, { text, completed, priority }) => {
+  store.dispatch(serverEditTodo(id, { text, completed, priority }))
   return {
     type: EDIT_TODO,
     payload: {
@@ -212,7 +213,30 @@ const editTodo = (id, { text, completed, priority }) => {
 }
 
 const serverEditTodo = (id, { text, completed, priority }) => {
-  throw new Error('NOT IMPLEMENTED!') 
+  return dispatch => {
+    return fetch(`/todos/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text,
+        completed,
+        priority
+      })
+    })
+      .then(
+        res => {
+          return res.json()
+        },
+        err => {
+          console.error(`An error occurred: ${err}`)
+        }
+      )
+      .then(todos => {
+
+      })
+  }
 }
 
 export const todosActions = {
@@ -298,6 +322,7 @@ export const todosReducer = (state = defaultState, action) => {
         }
       }
     case EDIT_TODO:
+      console.log(action.payload)
       return {
         ...state,
         todos: {

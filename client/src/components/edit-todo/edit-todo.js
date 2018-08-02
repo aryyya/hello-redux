@@ -17,7 +17,11 @@ class EditTodo extends Component {
   }
   onSubmit (event) {
     event.preventDefault()
-    this.props.editTodo(this.props.match.params.id, { text: this.state.text })
+    this.props.editTodo(this.props.match.params.id, {
+      text: this.state.text,
+      priority: this.state.priority,
+      completed: this.state.completed
+    })
     this.props.history.push('/')
   }
   render () {
@@ -33,10 +37,42 @@ class EditTodo extends Component {
           onChange={event => this.setState({ text: event.target.value })}
           autoFocus
         />
-        <input type="radio" name="priority" id="low" />
-        <input type="radio" name="priority" id="medium" />
-        <input type="radio" name="priority" id="high" />
-        <input type="submit" value="edit" />
+        low: 
+        <input
+          type="radio"
+          name="priority"
+          id="low"
+          checked={this.state.priority === 'low'}
+          onChange={() => this.setState({ priority: 'low' })}
+        />
+        medium: 
+        <input
+          type="radio"
+          name="priority"
+          id="medium"
+          checked={this.state.priority === 'medium'}
+          onChange={() => this.setState({ priority: 'medium' })}
+        />
+        high: 
+        <input
+          type="radio"
+          name="priority"
+          id="high"
+          checked={this.state.priority === 'high'}
+          onChange={() => this.setState({ priority: 'high' })}
+        />
+        completed: 
+        <input
+          type="checkbox"
+          name="completed"
+          id="completed"
+          checked={this.state.completed}
+          onChange={() => this.setState({ completed: !this.state.completed })}
+        />
+        <input
+          type="submit"
+          value="edit"
+        />
       </form>
     )
   }
@@ -54,7 +90,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editTodo: (id, { text }) => dispatch(todosActions.editTodo(id, { text }))
+    editTodo: (id, { text, completed, priority }) => dispatch(todosActions.editTodo(id, { text, completed, priority }))
   }
 }
 
