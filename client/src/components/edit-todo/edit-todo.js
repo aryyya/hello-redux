@@ -37,6 +37,7 @@ class EditTodo extends Component {
           onChange={event => this.setState({ text: event.target.value })}
           autoFocus
         />
+        <br />
         low: 
         <input
           type="radio"
@@ -45,6 +46,7 @@ class EditTodo extends Component {
           checked={this.state.priority === 'low'}
           onChange={() => this.setState({ priority: 'low' })}
         />
+        <br />
         medium: 
         <input
           type="radio"
@@ -53,6 +55,7 @@ class EditTodo extends Component {
           checked={this.state.priority === 'medium'}
           onChange={() => this.setState({ priority: 'medium' })}
         />
+        <br />
         high: 
         <input
           type="radio"
@@ -61,6 +64,7 @@ class EditTodo extends Component {
           checked={this.state.priority === 'high'}
           onChange={() => this.setState({ priority: 'high' })}
         />
+        <br />
         completed: 
         <input
           type="checkbox"
@@ -69,6 +73,7 @@ class EditTodo extends Component {
           checked={this.state.completed}
           onChange={() => this.setState({ completed: !this.state.completed })}
         />
+        <br />
         <input
           type="submit"
           value="edit"
