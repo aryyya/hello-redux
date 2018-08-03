@@ -1,22 +1,35 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import './checkbox.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { todosActions } from '../../redux/todos'
 
-const Checkbox = props => {
-  const { checked, onClick } = props
-  return (
-    <span
-      className={`checkbox checkbox--${checked ? 'checked' : 'unchecked'}`}
-      onClick={onClick}
-    >
-      ✓
-    </span>
-  )
+class Checkbox extends Component {
+  onClick (event) {
+    event.stopPropagation()
+    this.props.toggleTodo(this.props.todo.id)
+  }
+  render () {
+    return (
+      <span
+        className={`checkbox checkbox--${this.props.todo.completed ? 'checked' : 'unchecked'}`}
+        onClick={this.onClick.bind(this)}
+      >
+        ✓
+      </span>
+    )
+  }
 }
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  todo: PropTypes.object.isRequired,
+  toggleTodo: PropTypes.func.isRequired
 }
 
-export default Checkbox
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleTodo: id => dispatch(todosActions.toggleTodo(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Checkbox)

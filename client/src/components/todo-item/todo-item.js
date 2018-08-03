@@ -22,8 +22,7 @@ const TodoItem = props => {
         </div>
         <div className="todo-item__buttons">
           <Checkbox
-            checked={props.todo.completed}
-            onClick={() => props.toggleTodo(props.todo.id)}
+            todo={props.todo}
           />
         </div>
       </div>
