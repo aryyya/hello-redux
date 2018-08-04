@@ -322,7 +322,6 @@ export const todosReducer = (state = defaultState, action) => {
         }
       }
     case EDIT_TODO:
-      console.log(action.payload)
       return {
         ...state,
         todos: {
