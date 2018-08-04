@@ -1,5 +1,6 @@
 import store from '../redux/store'
-import uuid from 'uuid/v4'
+import getUniqueId from '../utility/get-unique-id'
+// import uuid from 'uuid/v4'
 
 // action types
 
@@ -16,7 +17,7 @@ const EDIT_TODO = 'EDIT_TODO'
 
 const addTodo = (text, priority = 'low') => {
   const todo = {
-    id: uuid(),
+    id: getUniqueId(),
     createdAt: new Date().toISOString(),
     text,
     completed: false,
@@ -163,42 +164,6 @@ const selectTodo = id => {
   }
 }
 
-const setPriority = (id, priority) => {
-  store.dispatch(serverSetPriority(id, priority))
-  return {
-    type: SET_PRIORITY,
-    payload: {
-      id,
-      priority
-    }
-  }
-}
-
-const serverSetPriority = (id, priority) => {
-  return dispatch => {
-    return fetch(`/todos/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        priority
-      })
-    })
-      .then(
-        res => {
-          return res.json()
-        },
-        err => {
-          console.error(`An error occurred: ${err}`)
-        }
-      )
-      .then(todos => {
-
-      })
-  }
-}
-
 const editTodo = (id, { text, completed, priority }) => {
   store.dispatch(serverEditTodo(id, { text, completed, priority }))
   return {
@@ -245,13 +210,20 @@ export const todosActions = {
   deleteTodo,
   selectTodo,
   fetchTodos,
-  setPriority,
   editTodo
 }
 
 // default state
 
 const defaultState = {
+  // todoLists: {
+  //   '0': {
+
+  //   }
+  // },
+  // todoItems: {
+
+  // },
   todos: {
     '0': {
       id: '0',
