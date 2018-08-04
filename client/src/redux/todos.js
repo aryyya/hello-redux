@@ -12,6 +12,7 @@ const RECEIVE_TODOS = 'RECEIVE_TODOS'
 const SELECT_TODO = 'SELECT_TODO'
 const SET_PRIORITY = 'SET_PRIORITY'
 const EDIT_TODO = 'EDIT_TODO'
+const ADD_TODO_LIST = 'ADD_TODO_LIST'
 
 // action creators
 
@@ -216,25 +217,30 @@ export const todosActions = {
 // default state
 
 const defaultState = {
-  // todoLists: {
-  //   '0': {
-
-  //   }
-  // },
-  // todoItems: {
-
-  // },
   todos: {
     '0': {
       id: '0',
       createdAt: new Date().toISOString(),
-      text: 'Wake up.',
-      completed: false,
+      text: 'Get fruits.',
+      completed: true,
       priority: 'low'
+    },
+    '1': {
+      id: '1',
+      createdAt: new Date().toISOString(),
+      text: 'Get milk.',
+      completed: false,
+      priority: 'medium'
+    },
+    '2': {
+      id: '2',
+      createdAt: new Date().toISOString(),
+      text: 'Return bottles.',
+      completed: false,
+      priority: 'high'
     }
   },
-  isFetching: false,
-  selectedTodoId: ''
+  isFetching: false
 }
 
 // reducers
