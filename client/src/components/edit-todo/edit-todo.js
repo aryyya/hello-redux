@@ -24,6 +24,10 @@ class EditTodo extends Component {
     })
     this.props.history.push('/')
   }
+  onDelete () {
+    this.props.deleteTodo(this.props.match.params.id)
+    this.props.history.push('/')
+  }
   render () {
     return (
       <div className="edit-todo">
@@ -110,6 +114,14 @@ class EditTodo extends Component {
                 Completed
               </label>
             </div>
+            <div>
+              <button
+                className="edit-todo__delete"
+                onClick={this.onDelete.bind(this)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
           <div className="edit-todo__buttons">
             <input
@@ -125,7 +137,9 @@ class EditTodo extends Component {
 }
 
 EditTodo.propTypes = {
-  todos: PropTypes.object.isRequired
+  todos: PropTypes.object.isRequired,
+  editTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -136,7 +150,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editTodo: (id, { text, completed, priority }) => dispatch(todosActions.editTodo(id, { text, completed, priority }))
+    editTodo: (id, { text, completed, priority }) => dispatch(todosActions.editTodo(id, { text, completed, priority })),
+    deleteTodo: id => dispatch(todosActions.deleteTodo(id))
   }
 }
 
