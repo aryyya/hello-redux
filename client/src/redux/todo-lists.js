@@ -30,7 +30,8 @@ const addTodoItem = (todoListId, todoItemId) => {
 }
 
 export const todoListsActions = {
-  addTodoList
+  addTodoList,
+  addTodoItem
 }
 
 // default state
