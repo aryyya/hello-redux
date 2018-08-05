@@ -12,7 +12,6 @@ const RECEIVE_TODOS = 'RECEIVE_TODOS'
 const SELECT_TODO = 'SELECT_TODO'
 const SET_PRIORITY = 'SET_PRIORITY'
 const EDIT_TODO = 'EDIT_TODO'
-const ADD_TODO_LIST = 'ADD_TODO_LIST'
 
 // action creators
 
