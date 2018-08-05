@@ -11,13 +11,15 @@ const addTodoList = name => {
   return {
     type: ADD_TODO_LIST,
     payload: {
-      todoList: {
-        id: getUniqueId(),
-        createdAt: getDateString(),
-        name
-      }
+      id: getUniqueId(),
+      createdAt: getDateString(),
+      name
     }
   }
+}
+
+export const todoListsActions = {
+  addTodoList
 }
 
 // default state
@@ -42,7 +44,7 @@ export const todoListsReducer = (state = defaultState, action) => {
     case ADD_TODO_LIST:
       return {
         ...state,
-        [action.payload.todoList.id]: { ...action.payload.todoList }
+        [action.payload.id]: { ...action.payload }
       }
     default:
       return state
