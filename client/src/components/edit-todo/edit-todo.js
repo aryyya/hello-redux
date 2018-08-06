@@ -24,11 +24,11 @@ class EditTodo extends Component {
       priority: this.state.priority,
       completed: this.state.completed
     })
-    this.props.history.push('/todo-list/1')
+    this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   onDelete () {
     this.props.deleteTodo(this.props.match.params.id)
-    this.props.history.push('/todo-list/1')
+    this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   render () {
     return (
@@ -41,7 +41,7 @@ class EditTodo extends Component {
             <div>
               <Link
                 className="edit-todo__close"
-                to="/todo-list/1"
+                to={`/todo-list/${this.props.match.params.todoListId}`}
               >
                 <img
                   className="edit-todo__close-icon"

@@ -31,7 +31,7 @@ class TodoList extends Component {
         <div className="todo-list__controls-section">
           <Link
             className="todo-list__add-button"
-            to="/todo-list/1/add-todo-item"
+            to={`/todo-list/${this.props.match.params.todoListId}/add-todo-item`}
           >
             +
           </Link>

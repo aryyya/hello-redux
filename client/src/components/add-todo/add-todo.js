@@ -31,7 +31,7 @@ class AddTodo extends Component {
           <div>
             <Link
               className="add-todo__close"
-              to="/todo-list/1"
+              to={`/todo-list/${this.props.match.params.todoListId}`}
             >
               <img
                 className="add-todo__close-icon"
