@@ -4,22 +4,18 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TodoItem from '../todo-item/todo-item'
-import { VisibilityFilters } from '../../redux/visibility-filter'
 import { todosActions } from '../../redux/todos'
 
 class TodoList extends Component {
   componentDidMount () {
-    this.props.fetchTodos()
-
-    const { todoListId } = this.props.match.params
-    console.log(todoListId)
+    // this.props.fetchTodos()
   }
   render () {
     const props = this.props
     return (
       <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
         <div className="todo-list__title-section">
-          <h1 className="todo-list__title">Task List.</h1>
+          <h1 className="todo-list__title">{this.props.todoList.name}</h1>
           <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
         </div>
         <div className="todo-list__todos-section">
@@ -47,23 +43,17 @@ class TodoList extends Component {
 
 TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
-  visibilityFilter: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   fetchTodos: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { todoListId } = ownProps.match.params
+  const todoList = state.todoListsReducer[todoListId]
+  const todoItems = todoList.todoItems.map(todoItemId => state.todosReducer.todos[todoItemId])
   return {
-    todos: (() => {
-      const filters = {
-        [VisibilityFilters.SHOW_ALL]: todo => todo,
-        [VisibilityFilters.SHOW_COMPLETE]: todo => todo.completed,
-        [VisibilityFilters.SHOW_INCOMPLETE]: todo => !todo.completed
-      }
-      const todosArray = Object.keys(state.todosReducer.todos).map(id => state.todosReducer.todos[id])
-      return todosArray.filter(filters[state.visibilityFilterReducer])
-    })(),
-    visibilityFilter: state.visibilityFilterReducer,
+    todoList,
+    todos: todoItems,
     isFetching: state.todosReducer.isFetching
   }
 }

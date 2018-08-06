@@ -15,8 +15,7 @@ class EditTodo extends Component {
       completed: todo.completed
     }
 
-    const { todoItemId } = this.props.match.params
-    console.log(todoItemId)
+    // const { todoItemId } = this.props.match.params
   }
   onSubmit (event) {
     event.preventDefault()
