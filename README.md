@@ -7,9 +7,9 @@ An experiment in state management with React and Redux.
 - [x] Implement todo list page.
 - [x] Implement todo add page.
 - [x] Implement todo edit page.
+- [x] Switch to simpler and shorter unique ids.
+- [x] Decide on a routing scheme.
 - [ ] Make todo list name editable.
-- [ ] Switch to simpler and shorter unique ids.
-- [ ] Decide on a routing scheme.
 - [ ] Consolidate CSS (make global styles for uniformity).
 - [ ] Determine typography scheme.
 - [ ] Add animations.
