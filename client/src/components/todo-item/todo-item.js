@@ -11,7 +11,7 @@ const TodoItem = props => {
   return (
     <li
       className={`todo-item ${props.todo.completed ? 'todo-item--completed' : ''}`}
-      onClick={() => props.history.push(`/edit-todo/${props.todo.id}`)}
+      onClick={() => props.history.push(`/todo-list/1/edit-todo-item/${props.todo.id}`)}
     >
       <div className="todo-item__top">
         <div className="todo-item__text-wrapper">

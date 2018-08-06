@@ -11,17 +11,19 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route
-              path="/"
-              exact
+              path="/todo-list/:todoListId"
               component={TodoList}
+              exact
             />
             <Route
-              path="/add-todo"
-              component={AddTodo}
-            />
-            <Route
-              path="/edit-todo/:id"
+              path="/todo-list/:todoListId/edit-todo-item/:todoItemId"
               component={EditTodo}
+              exact
+            />
+            <Route
+              path="/todo-list/:todoListId/add-todo-item"
+              component={AddTodo}
+              exact
             />
           </div>
         </BrowserRouter>

@@ -8,12 +8,15 @@ import { todosActions } from '../../redux/todos'
 class EditTodo extends Component {
   constructor (props) {
     super(props)
-    const todo = this.props.todos[this.props.match.params.id]
+    const todo = this.props.todos[this.props.match.params.todoItemId]
     this.state = {
       text: todo.text,
       priority: todo.priority,
       completed: todo.completed
     }
+
+    const { todoItemId } = this.props.match.params
+    console.log(todoItemId)
   }
   onSubmit (event) {
     event.preventDefault()

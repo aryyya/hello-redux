@@ -3,8 +3,6 @@ import './todo-list.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import FilterList from '../filter-list/filter-list'
-// import TodoInput from '../todo-input/todo-input'
 import TodoItem from '../todo-item/todo-item'
 import { VisibilityFilters } from '../../redux/visibility-filter'
 import { todosActions } from '../../redux/todos'
@@ -12,6 +10,9 @@ import { todosActions } from '../../redux/todos'
 class TodoList extends Component {
   componentDidMount () {
     this.props.fetchTodos()
+
+    const { todoListId } = this.props.match.params
+    console.log(todoListId)
   }
   render () {
     const props = this.props
@@ -34,7 +35,7 @@ class TodoList extends Component {
         <div className="todo-list__controls-section">
           <Link
             className="todo-list__add-button"
-            to="/add-todo"
+            to="/todo-list/1/add-todo-item"
           >
             +
           </Link>
