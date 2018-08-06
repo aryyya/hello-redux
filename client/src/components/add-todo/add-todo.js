@@ -18,7 +18,7 @@ class AddTodo extends Component {
       event.preventDefault()
     }
     this.props.addTodo(this.state.text, this.state.priority)
-    this.props.history.push('/')
+    this.props.history.push('/todo-list/1')
   }
   render () {
     return (
@@ -30,7 +30,7 @@ class AddTodo extends Component {
           <div>
             <Link
               className="add-todo__close"
-              to="/"
+              to="/todo-list/1"
             >
               <img
                 className="add-todo__close-icon"

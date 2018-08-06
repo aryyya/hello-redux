@@ -20,16 +20,16 @@ class EditTodo extends Component {
   }
   onSubmit (event) {
     event.preventDefault()
-    this.props.editTodo(this.props.match.params.id, {
+    this.props.editTodo(this.props.match.params.todoItemId, {
       text: this.state.text,
       priority: this.state.priority,
       completed: this.state.completed
     })
-    this.props.history.push('/')
+    this.props.history.push('/todo-list/1')
   }
   onDelete () {
     this.props.deleteTodo(this.props.match.params.id)
-    this.props.history.push('/')
+    this.props.history.push('/todo-list/1')
   }
   render () {
     return (
@@ -42,7 +42,7 @@ class EditTodo extends Component {
             <div>
               <Link
                 className="edit-todo__close"
-                to="/"
+                to="/todo-list/1"
               >
                 <img
                   className="edit-todo__close-icon"
