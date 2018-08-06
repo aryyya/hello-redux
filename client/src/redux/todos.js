@@ -1,6 +1,6 @@
 import store from '../redux/store'
 import getUniqueId from '../utility/get-unique-id'
-// import uuid from 'uuid/v4'
+import getDateString from '../utility/get-unique-id'
 
 // action types
 
@@ -219,21 +219,21 @@ const defaultState = {
   todos: {
     '0': {
       id: '0',
-      createdAt: new Date().toISOString(),
+      createdAt: getDateString(),
       text: 'Get fruits.',
       completed: true,
       priority: 'low'
     },
     '1': {
       id: '1',
-      createdAt: new Date().toISOString(),
+      createdAt: getDateString(),
       text: 'Get milk.',
       completed: false,
       priority: 'medium'
     },
     '2': {
       id: '2',
-      createdAt: new Date().toISOString(),
+      createdAt: getDateString(),
       text: 'Return bottles.',
       completed: false,
       priority: 'high'
