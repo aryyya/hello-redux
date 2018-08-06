@@ -1,6 +1,7 @@
 import store from '../redux/store'
 import getUniqueId from '../utility/get-unique-id'
-import getDateString from '../utility/get-unique-id'
+import getDateString from '../utility/get-date-string'
+import { todoListsActions } from './todo-lists'
 
 // action types
 
@@ -15,14 +16,16 @@ const EDIT_TODO = 'EDIT_TODO'
 
 // action creators
 
-const addTodo = (text, priority = 'low') => {
+const addTodo = (todoListId, text, priority) => {
+  const todoItemId = getUniqueId()
   const todo = {
-    id: getUniqueId(),
-    createdAt: new Date().toISOString(),
+    id: todoItemId,
+    createdAt: getDateString(),
     text,
     completed: false,
     priority
   }
+  store.dispatch(todoListsActions.addTodoItem(todoListId, todoItemId))
   store.dispatch(serverAddTodo(todo))
   return {
     type: ADD_TODO,

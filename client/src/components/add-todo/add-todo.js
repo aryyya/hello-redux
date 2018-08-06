@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './add-todo.css'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todos';
 
@@ -17,8 +17,9 @@ class AddTodo extends Component {
     if (event) {
       event.preventDefault()
     }
-    this.props.addTodo(this.state.text, this.state.priority)
-    this.props.history.push('/todo-list/1')
+    const { todoListId } = this.props.match.params
+    this.props.addTodo(todoListId, this.state.text, this.state.priority)
+    this.props.history.push(`/todo-list/${todoListId}`)
   }
   render () {
     return (
@@ -113,8 +114,12 @@ AddTodo.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: (text, priority) => todosActions.addTodo(text, priority),
+    addTodo: (todoListId, text, priority) => dispatch(todosActions.addTodo(todoListId, text, priority)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddTodo)
+export default connect(null, mapDispatchToProps)(
+  withRouter(
+    AddTodo
+  )
+)
