@@ -267,10 +267,10 @@ export const todosReducer = (state = defaultState, action) => {
           }
         }
       }
-    case DELETE_TODO:
-      const newState = { ...state }
-      delete newState.todos[action.payload.id]
+    case DELETE_TODO: {
+      const { [action.payload.id]: _, ...newState } = state
       return newState
+    }
     case REQUEST_TODOS:
       return {
         ...state,

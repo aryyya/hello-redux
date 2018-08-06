@@ -5,16 +5,17 @@ import getDateString from '../utility/get-date-string'
 
 const ADD_TODO_LIST = 'ADD_TODO_LIST'
 const ADD_TODO_ITEM = 'ADD_TODO_ITEM'
+const DELETE_TODO_LIST = 'DELETE_TODO_LIST'
 
 // action creators
 
-const addTodoList = name => {
+const addTodoList = todoListName => {
   return {
     type: ADD_TODO_LIST,
     payload: {
-      id: getUniqueId(),
+      todoListId: getUniqueId(),
       createdAt: getDateString(),
-      name
+      name: todoListName
     }
   }
 }
@@ -29,9 +30,19 @@ const addTodoItem = (todoListId, todoItemId) => {
   }
 }
 
+const deleteTodoList = todoListId => {
+  return {
+    type: DELETE_TODO_LIST,
+    payload: {
+      todoListId
+    }
+  }
+}
+
 export const todoListsActions = {
   addTodoList,
-  addTodoItem
+  addTodoItem,
+  deleteTodoList
 }
 
 // default state
@@ -54,10 +65,10 @@ const defaultState = {
 export const todoListsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO_LIST: {
-      const { id } = action.payload
+      const { todoListId } = action.payload
       return {
         ...state,
-        [id]: {
+        [todoListId]: {
           ...action.payload
         }
       }
@@ -74,6 +85,11 @@ export const todoListsReducer = (state = defaultState, action) => {
           ]
         }
       }
+    }
+    case DELETE_TODO_LIST: {
+      const { todoListId } = action.payload
+      const { [todoListId]: _, ...newState } = state
+      return newState
     }
     default:
       return state
