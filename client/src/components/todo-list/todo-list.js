@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TodoItem from '../todo-item/todo-item'
 import { todosActions } from '../../redux/todos'
+import backImage from '../../back-icon.svg'
 
 class TodoList extends Component {
   componentDidMount () {
@@ -14,6 +15,16 @@ class TodoList extends Component {
     const props = this.props
     return (
       <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
+        <Link
+          className="add-todo__close"
+          to="/todo-list"
+        >
+          <img
+            className="add-todo__close-icon"
+            src={backImage}
+            alt="Close."
+          />
+        </Link>
         <div className="todo-list__title-section">
           <h1 className="todo-list__title">{this.props.todoList.name}</h1>
           <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
