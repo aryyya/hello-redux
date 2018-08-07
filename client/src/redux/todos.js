@@ -220,22 +220,22 @@ export const todosActions = {
 
 const defaultState = {
   todos: {
-    '0': {
-      id: '0',
+    'hiryypvnnxkmpyab': {
+      id: 'hiryypvnnxkmpyab',
       createdAt: getDateString(),
       text: 'Get fruits.',
       completed: true,
       priority: 'low'
     },
-    '1': {
-      id: '1',
+    'ydnjabstrcbynlax': {
+      id: 'ydnjabstrcbynlax',
       createdAt: getDateString(),
       text: 'Get milk.',
       completed: false,
       priority: 'medium'
     },
-    '2': {
-      id: '2',
+    'wdqpsqcibutpfzpp': {
+      id: 'wdqpsqcibutpfzpp',
       createdAt: getDateString(),
       text: 'Return bottles.',
       completed: false,

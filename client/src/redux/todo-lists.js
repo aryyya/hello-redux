@@ -48,15 +48,15 @@ export const todoListsActions = {
 // default state
 
 const defaultState = {
-  '0': {
-    id: '0',
+  'cwdhyycelvldqmlu': {
+    id: 'cwdhyycelvldqmlu',
     name: 'Groceries',
-    todoItems: [ '0', '1' ]
+    todoItems: [ 'hiryypvnnxkmpyab', 'ydnjabstrcbynlax' ]
   },
-  '1': {
-    id: '1',
+  'nalmysgkeutlsema': {
+    id: 'nalmysgkeutlsema',
     name: 'Shopping',
-    todoItems: [ '2' ]
+    todoItems: [ 'wdqpsqcibutpfzpp' ]
   }
 }
 
