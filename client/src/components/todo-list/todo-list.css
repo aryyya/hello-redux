@@ -10,6 +10,16 @@
   display: none;
 }
 
+
+.todo-list__back {
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+.todo-list__back-icon {
+  width: 30px;
+}
+
 .todo-list__title-section {
   flex: 1.25;
   display: flex;

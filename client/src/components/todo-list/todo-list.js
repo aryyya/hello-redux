@@ -16,11 +16,11 @@ class TodoList extends Component {
     return (
       <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
         <Link
-          className="add-todo__close"
+          className="todo-list__back"
           to="/todo-list"
         >
           <img
-            className="add-todo__close-icon"
+            className="todo-list__back-icon"
             src={backImage}
             alt="Close."
           />
