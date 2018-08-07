@@ -27,7 +27,7 @@ class EditTodo extends Component {
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   onDelete () {
-    this.props.deleteTodo(this.props.match.params.id)
+    this.props.deleteTodo(this.props.match.params.todoItemId)
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   render () {
