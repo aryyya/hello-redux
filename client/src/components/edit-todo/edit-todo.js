@@ -14,7 +14,6 @@ class EditTodo extends Component {
       priority: todo.priority,
       completed: todo.completed
     }
-
     // const { todoItemId } = this.props.match.params
   }
   onSubmit (event) {
@@ -80,7 +79,7 @@ class EditTodo extends Component {
                   id="medium-priority"
                   type="radio"
                   name="priority"
-                  checked={this.state.priority === 'low'}
+                  checked={this.state.priority === 'medium'}
                   readOnly
                   onChange={() => this.setState({ priority: 'medium' })}
                 />
