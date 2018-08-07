@@ -26,7 +26,7 @@ const addTodo = (todoListId, text, priority) => {
     priority
   }
   store.dispatch(todoListsActions.addTodoItem(todoListId, todoItemId))
-  store.dispatch(serverAddTodo(todo))
+  // store.dispatch(serverAddTodo(todo))
   return {
     type: ADD_TODO,
     payload: {
@@ -59,7 +59,7 @@ const serverAddTodo = todo => {
 }
 
 const toggleTodo = id => {
-  store.dispatch(serverToggleTodo(id))
+  // store.dispatch(serverToggleTodo(id))
   return {
     type: TOGGLE_TODO,
     payload: {
@@ -94,7 +94,7 @@ const serverToggleTodo = id => {
 }
 
 const deleteTodo = id => {
-  store.dispatch(serverDeleteTodo(id))
+  // store.dispatch(serverDeleteTodo(id))
   return {
     type: DELETE_TODO,
     payload: {
@@ -168,7 +168,7 @@ const selectTodo = id => {
 }
 
 const editTodo = (id, { text, completed, priority }) => {
-  store.dispatch(serverEditTodo(id, { text, completed, priority }))
+  // store.dispatch(serverEditTodo(id, { text, completed, priority }))
   return {
     type: EDIT_TODO,
     payload: {
