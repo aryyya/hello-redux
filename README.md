@@ -10,6 +10,7 @@ An experiment in state management with React and Redux.
 - [x] Switch to simpler and shorter unique ids.
 - [x] Decide on a routing scheme.
 - [ ] Make todo list name editable.
+- [ ] Implement button component.
 - [ ] Consolidate CSS (make global styles for uniformity).
 - [ ] Determine typography scheme.
 - [ ] Add animations.
