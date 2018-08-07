@@ -3,7 +3,8 @@ import './add-todo.css'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { todosActions } from '../../redux/todos';
+import { todosActions } from '../../redux/todos'
+import closeImage from '../../close-icon.svg'
 
 class AddTodo extends Component {
   constructor (props) {
@@ -35,7 +36,7 @@ class AddTodo extends Component {
             >
               <img
                 className="add-todo__close-icon"
-                src="close-icon.svg"
+                src={closeImage}
                 alt="Close."
               />
             </Link>
