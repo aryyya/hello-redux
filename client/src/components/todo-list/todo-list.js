@@ -12,9 +12,9 @@ class TodoList extends Component {
     // this.props.fetchTodos()
   }
   render () {
-    const props = this.props
+    const { history, isFetching, todoList, todos } = this.props
     return (
-      <div className={`todo-list ${props.isFetching ? 'todo-list--loading' : ''}`}>
+      <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
         <Link
           className="todo-list__back"
           to="/todo-list"
@@ -26,12 +26,12 @@ class TodoList extends Component {
           />
         </Link>
         <div className="todo-list__title-section">
-          <h1 className="todo-list__title">{this.props.todoList.name}</h1>
+          <h1 className="todo-list__title" onClick={() => history.push(`/todo-list/${todoList.id}/edit-todo-list`)}>{todoList.name}</h1>
           <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
         </div>
         <div className="todo-list__todos-section">
           <ul className="todo-list__list">
-            {props.todos.map(todo =>
+            {todos.map(todo =>
               <TodoItem
                 todo={todo}
                 key={todo.id}
@@ -42,7 +42,7 @@ class TodoList extends Component {
         <div className="todo-list__controls-section">
           <Link
             className="todo-list__add-button"
-            to={`/todo-list/${this.props.match.params.todoListId}/add-todo-item`}
+            to={`/todo-list/${todoList.id}/add-todo-item`}
           >
             +
           </Link>
@@ -53,6 +53,7 @@ class TodoList extends Component {
 }
 
 TodoList.propTypes = {
+  history: PropTypes.object.isRequired,
   todos: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   fetchTodos: PropTypes.func.isRequired
