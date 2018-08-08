@@ -17,7 +17,7 @@ class TodoLists extends Component {
             <Link
               to={`/todo-list/${todoList.id}`}
             >
-              {todoList.name}
+              {todoList.name} ({todoList.todoItems.length} items)
             </Link>
           </div>
         ))}
