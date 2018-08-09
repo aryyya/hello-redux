@@ -29,7 +29,11 @@ class EditTodoList extends Component {
   }
 
   deleteTodoList () {
+    const { todoList, deleteTodoList, history } = this.props
 
+    deleteTodoList(todoList.id)
+
+    history.push(`/todo-list`)
   }
 
   render () {
@@ -79,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editTodoList: (todoListId, { name }) => dispatch(todoListsActions.editTodoList(todoListId, { name }))
+    editTodoList: (todoListId, { name }) => dispatch(todoListsActions.editTodoList(todoListId, { name })),
+    deleteTodoList: todoListId => dispatch(todoListsActions.deleteTodoList(todoListId))
   }
 }
 
