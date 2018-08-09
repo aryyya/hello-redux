@@ -1,5 +1,7 @@
 import getUniqueId from '../utility/get-unique-id'
 import getDateString from '../utility/get-date-string'
+import store from './store'
+import { todosActions } from './todos'
 
 // action types
 
@@ -32,6 +34,11 @@ const addTodoItem = (todoListId, todoItemId) => {
 }
 
 const deleteTodoList = todoListId => {
+  const todoLists = store.getState().todoListsReducer
+  todoLists[todoListId].todoItems.forEach(todoItem => {
+    store.dispatch(todosActions.deleteTodo(todoItem))
+  })
+
   return {
     type: DELETE_TODO_LIST,
     payload: {
