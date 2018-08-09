@@ -50,11 +50,17 @@ const setTodoListName = (todoListId, name) => {
   }
 }
 
+const editTodoList = (todoListId, { name }) => {
+  if (name) {
+    return setTodoListName(todoListId, name)
+  }
+}
+
 export const todoListsActions = {
   addTodoList,
   addTodoItem,
   deleteTodoList,
-  setTodoListName
+  editTodoList
 }
 
 // default state
