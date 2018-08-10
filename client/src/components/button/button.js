@@ -12,20 +12,22 @@ const getIconImage = name => {
 }
 
 const Button = props => {
-  const { icon, altText } = props
+  const { icon, altText, action } = props
 
   return (
     <img
       className="button"
       alt={altText || 'A button'}
       src={getIconImage(icon)}
+      onClick={action}
     />
   )
 }
 
 Button.propTypes = {
   icon: PropTypes.string.isRequired,
-  altText: PropTypes.string
+  altText: PropTypes.string,
+  action: PropTypes.func.isRequired
 }
 
 export default Button
