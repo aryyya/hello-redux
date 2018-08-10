@@ -1,3 +1,15 @@
 .button {
-  
+
+}
+
+.button--small {
+  width: 16px;
+}
+
+.button--medium {
+  width: 32px;
+}
+
+.button--large {
+  width: 64px;
 }

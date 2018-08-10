@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todos'
-import closeImage from '../../close-icon.svg'
+import Button from '../button/button'
 
 class AddTodo extends Component {
   constructor (props) {
@@ -23,6 +23,9 @@ class AddTodo extends Component {
     this.props.history.push(`/todo-list/${todoListId}`)
   }
   render () {
+    const { history } = this.props
+    const { todoListId } = this.props.match.params
+
     return (
       <div className="add-todo">
         <form
@@ -30,16 +33,10 @@ class AddTodo extends Component {
           onSubmit={this.addTodo.bind(this)}
         >
           <div>
-            <Link
-              className="add-todo__close"
-              to={`/todo-list/${this.props.match.params.todoListId}`}
-            >
-              <img
-                className="add-todo__close-icon"
-                src={closeImage}
-                alt="Close."
-              />
-            </Link>
+            <Button
+              icon="close"
+              action={() => history.push(`/todo-list/${todoListId}`)}
+            />
           </div>
           <div>
             <input
