@@ -14,15 +14,20 @@ class AddTodoList extends Component {
     }
   }
 
-  static propTypes = {}
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    addTodoList: PropTypes.func.isRequired
+  }
 
   addTodoList (event) {
     event.preventDefault()
 
     const { name } = this.state
-    const { addTodoList } = this.props
+    const { addTodoList, history } = this.props
 
     addTodoList(name)
+
+    history.push('/todo-list')
   }
 
   render () {
