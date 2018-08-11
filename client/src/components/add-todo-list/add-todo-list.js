@@ -26,3 +26,5 @@ class AddTodoList extends Component {
     )
   }
 }
+
+export default AddTodoList
