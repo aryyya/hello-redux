@@ -17,7 +17,8 @@ class AddTodoList extends Component {
 
   static propTypes = {
     history: PropTypes.object.isRequired,
-    addTodoList: PropTypes.func.isRequired
+    addTodoList: PropTypes.func.isRequired,
+    newestTodoListId: PropTypes.string.isRequired
   }
 
   addTodoList (event) {
