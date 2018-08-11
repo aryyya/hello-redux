@@ -10,7 +10,8 @@ class AddTodoList extends Component {
     super(props)
 
     this.state = {
-      name: ''
+      name: '',
+      waitingForRedirectToNewTodoList: false
     }
   }
 
@@ -23,11 +24,20 @@ class AddTodoList extends Component {
     event.preventDefault()
 
     const { name } = this.state
-    const { addTodoList, history } = this.props
+    const { addTodoList } = this.props
 
     addTodoList(name)
 
-    history.push('/todo-list')
+    this.setState({ waitingForRedirectToNewTodoList: true })
+  }
+  
+  componentDidUpdate () {
+    const { waitingForRedirectToNewTodoList } = this.state
+    const { newestTodoListId, history } = this.props
+
+    if (waitingForRedirectToNewTodoList) {
+      history.push(`/todo-list/${newestTodoListId}`)
+    }
   }
 
   render () {
@@ -55,10 +65,18 @@ class AddTodoList extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const todoLists = Object.keys(state.todoListsReducer).map(todoListId => state.todoListsReducer[todoListId])
+
+  return {
+    newestTodoListId: todoLists.sort((todoListX, todoListY) => new Date(todoListX.createdAt) < new Date(todoListY.createdAt))[0].id
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addTodoList: name => dispatch(todoListsActions.addTodoList(name))
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddTodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodoList)
