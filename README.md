@@ -12,6 +12,7 @@ An experiment in state management with React and Redux.
 - [ ] Implement todo list edit page.
 - [ ] Implement todo list add page.
 - [ ] Implement button component.
+- [ ] Change "todo" to "todo item" throughout the project.
 - [ ] Consolidate CSS (make global styles for uniformity).
 - [ ] Determine typography scheme.
 - [ ] Add animations.
