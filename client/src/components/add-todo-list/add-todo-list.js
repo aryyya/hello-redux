@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import './add-todo-list.css'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 class AddTodoList extends Component {
 
   constructor (props) {
     super(props)
   }
-  
+
+  static propTypes = {}
+
   render () {
     return (
       <form className="add-todo-list">
@@ -28,4 +31,4 @@ class AddTodoList extends Component {
   }
 }
 
-export default AddTodoList
+export default connect(null, null)(AddTodoList)
