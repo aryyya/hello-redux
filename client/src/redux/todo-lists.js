@@ -16,7 +16,7 @@ const addTodoList = todoListName => {
   return {
     type: ADD_TODO_LIST,
     payload: {
-      todoListId: getUniqueId(),
+      id: getUniqueId(),
       createdAt: getDateString(),
       name: todoListName,
       todoItems: []
@@ -76,11 +76,13 @@ export const todoListsActions = {
 const defaultState = {
   'cwdhyycelvldqmlu': {
     id: 'cwdhyycelvldqmlu',
+    createdAt: getDateString(),
     name: 'Groceries',
-    todoItems: [ 'hiryypvnnxkmpyab', 'ydnjabstrcbynlax' ]
+    todoItems: [ 'hiryypvnnxkmpyab', 'ydnjabstrcbynlax' ],
   },
   'nalmysgkeutlsema': {
     id: 'nalmysgkeutlsema',
+    createdAt: getDateString(),
     name: 'Shopping',
     todoItems: [ 'wdqpsqcibutpfzpp' ]
   }
@@ -91,10 +93,10 @@ const defaultState = {
 export const todoListsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO_LIST: {
-      const { todoListId } = action.payload
+      const { id } = action.payload
       return {
         ...state,
-        [todoListId]: {
+        [id]: {
           ...action.payload
         }
       }
