@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './add-todo-list.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { todoListsActions } from '../../redux/todo-lists';
 
 class AddTodoList extends Component {
 
@@ -19,8 +20,9 @@ class AddTodoList extends Component {
     event.preventDefault()
 
     const { name } = this.state
+    const { addTodoList } = this.props
 
-    console.log(`Creating new todo list called '${name}'.`)
+    addTodoList(name)
   }
 
   render () {
@@ -48,4 +50,10 @@ class AddTodoList extends Component {
   }
 }
 
-export default connect(null, null)(AddTodoList)
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodoList: name => dispatch(todoListsActions.addTodoList(name))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddTodoList)

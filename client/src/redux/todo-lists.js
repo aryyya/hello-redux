@@ -18,7 +18,8 @@ const addTodoList = todoListName => {
     payload: {
       todoListId: getUniqueId(),
       createdAt: getDateString(),
-      name: todoListName
+      name: todoListName,
+      todoItems: []
     }
   }
 }
