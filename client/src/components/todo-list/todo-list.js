@@ -8,9 +8,18 @@ import { todosActions } from '../../redux/todos'
 import Button from '../button/button'
 
 class TodoList extends Component {
+
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    todos: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    fetchTodos: PropTypes.func.isRequired
+  }
+
   componentDidMount () {
     // this.props.fetchTodos()
   }
+
   render () {
     const { history, isFetching, todoList, todos } = this.props
     return (
@@ -46,13 +55,6 @@ class TodoList extends Component {
       </div>
     )
   }
-}
-
-TodoList.propTypes = {
-  history: PropTypes.object.isRequired,
-  todos: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  fetchTodos: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
