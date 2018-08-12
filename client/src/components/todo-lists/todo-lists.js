@@ -6,21 +6,29 @@ import { Link } from 'react-router-dom'
 class TodoLists extends Component {
   render () {
     return (
-      <div
-        className="todo-lists"
-      >
-        {this.props.todoLists.map(todoList => (
-          <div
-            className="todo-lists__todo-list"
-            key={todoList.name}
-          >
-            <Link
-              to={`/todo-list/${todoList.id}`}
+      <div className="todo-lists">
+        <div className="todo-lists__todo-lists">
+          {this.props.todoLists.map(todoList => (
+            <div
+              className="todo-lists__todo-list"
+              key={todoList.name}
             >
-              {todoList.name} ({todoList.todoItems.length} items)
-            </Link>
-          </div>
-        ))}
+              <Link
+                to={`/todo-list/${todoList.id}`}
+              >
+                {todoList.name} ({todoList.todoItems.length} items)
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div className="todo-lists__controls">
+          <Link
+            className="todo-list__add-button"
+            to="/add-todo-list"
+          >
+            +
+          </Link>
+        </div>
       </div>
     )
   }
