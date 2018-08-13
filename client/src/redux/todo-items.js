@@ -5,18 +5,18 @@ import { todoListsActions } from './todo-lists'
 
 // action types
 
-const ADD_TODO = 'ADD_TODO'
-const TOGGLE_TODO = 'TOGGLE_TODO'
-const DELETE_TODO = 'DELETE_TODO'
-const REQUEST_TODOS = 'REQUEST_TODOS'
-const RECEIVE_TODOS = 'RECEIVE_TODOS'
-const SELECT_TODO = 'SELECT_TODO'
-const SET_PRIORITY = 'SET_PRIORITY'
-const EDIT_TODO = 'EDIT_TODO'
+const TODO_ITEMS__ADD_TODO_ITEM = 'TODO_ITEMS__ADD_TODO_ITEM'
+const TODO_ITEMS__TOGGLE_TODO_ITEM = 'TODO_ITEMS__TOGGLE_TODO_ITEM'
+const TODO_ITEMS__DELETE_TODO_ITEM = 'TODO_ITEMS__DELETE_TODO_ITEM'
+const TODO_ITEMS__REQUEST_TODO_ITEMS = 'TODO_ITEMS__REQUEST_TODO_ITEMS'
+const TODO_ITEMS__RECEIVE_TODO_ITEMS = 'TODO_ITEMS__RECEIVE_TODO_ITEMS'
+const TODO_ITEMS__SELECT_TODO_ITEM = 'TODO_ITEMS__SELECT_TODO_ITEM'
+const TODO_ITEMS__SET_PRIORITY = 'TODO_ITEMS__SET_PRIORITY'
+const TODO_ITEMS__EDIT_TODO_ITEM = 'TODO_ITEMS__EDIT_TODO_ITEM'
 
 // action creators
 
-const addTodo = (todoListId, text, priority) => {
+const addTodoItem = (todoListId, text, priority) => {
   const todoItemId = getUniqueId()
   const todo = {
     id: todoItemId,
@@ -26,16 +26,16 @@ const addTodo = (todoListId, text, priority) => {
     priority
   }
   store.dispatch(todoListsActions.addTodoItem(todoListId, todoItemId))
-  // store.dispatch(serverAddTodo(todo))
+  // store.dispatch(serverAddTodoItem(todo))
   return {
-    type: ADD_TODO,
+    type: TODO_ITEMS__ADD_TODO_ITEM,
     payload: {
       todo
     }
   }
 }
 
-const serverAddTodo = todo => {
+const serverAddTodoItem = todo => {
   return dispatch => {
     fetch('/todos', {
       method: 'POST',
@@ -58,17 +58,17 @@ const serverAddTodo = todo => {
   }
 }
 
-const toggleTodo = id => {
-  // store.dispatch(serverToggleTodo(id))
+const toggleTodoItem = id => {
+  // store.dispatch(serverToggleTodoItem(id))
   return {
-    type: TOGGLE_TODO,
+    type: TODO_ITEMS__TOGGLE_TODO_ITEM,
     payload: {
       id
     }
   }
 }
 
-const serverToggleTodo = id => {
+const serverToggleTodoItem = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'PATCH',
@@ -93,17 +93,17 @@ const serverToggleTodo = id => {
   }
 }
 
-const deleteTodo = id => {
-  // store.dispatch(serverDeleteTodo(id))
+const deleteTodoItem = id => {
+  // store.dispatch(serverDeleteTodoItem(id))
   return {
-    type: DELETE_TODO,
+    type: TODO_ITEMS__DELETE_TODO_ITEM,
     payload: {
       id
     }
   }
 }
 
-const serverDeleteTodo = id => {
+const serverDeleteTodoItem = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'DELETE'
@@ -122,15 +122,15 @@ const serverDeleteTodo = id => {
     }
 }
 
-const requestTodos = () => {
+const requestTodoItems = () => {
   return {
-    type: REQUEST_TODOS
+    type: TODO_ITEMS__REQUEST_TODO_ITEMS
   }
 }
 
-const receiveTodos = todos => {
+const receiveTodoItems = todos => {
   return {
-    type: RECEIVE_TODOS,
+    type: TODO_ITEMS__RECEIVE_TODO_ITEMS,
     payload: {
       todos,
       receivedAt: Date.now()
@@ -138,9 +138,9 @@ const receiveTodos = todos => {
   }
 }
 
-const fetchTodos = () => {
+const fetchTodoItems = () => {
   return dispatch => {
-    dispatch(requestTodos())
+    dispatch(requestTodoItems())
     return fetch('/todos')
       .then(
         res => {
@@ -152,25 +152,25 @@ const fetchTodos = () => {
       )
       .then(todos => {
         if (todos) {
-          dispatch(receiveTodos(todos))
+          dispatch(receiveTodoItems(todos))
         }
       })
   }
 }
 
-const selectTodo = id => {
+const selectTodoItems = id => {
   return {
-    type: SELECT_TODO,
+    type: TODO_ITEMS__SELECT_TODO_ITEM,
     payload: {
       id
     }
   }
 }
 
-const editTodo = (id, { text, completed, priority }) => {
-  // store.dispatch(serverEditTodo(id, { text, completed, priority }))
+const editTodoItem = (id, { text, completed, priority }) => {
+  // store.dispatch(serverEditTodoItem(id, { text, completed, priority }))
   return {
-    type: EDIT_TODO,
+    type: TODO_ITEMS__EDIT_TODO_ITEM,
     payload: {
       id,
       text,
@@ -180,7 +180,7 @@ const editTodo = (id, { text, completed, priority }) => {
   }
 }
 
-const serverEditTodo = (id, { text, completed, priority }) => {
+const serverEditTodoItem = (id, { text, completed, priority }) => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
       method: 'PATCH',
@@ -208,18 +208,18 @@ const serverEditTodo = (id, { text, completed, priority }) => {
 }
 
 export const todosActions = {
-  addTodo,
-  toggleTodo,
-  deleteTodo,
-  selectTodo,
-  fetchTodos,
-  editTodo
+  addTodoItem,
+  toggleTodoItem,
+  deleteTodoItem,
+  selectTodoItems,
+  fetchTodoItems,
+  editTodoItem
 }
 
 // default state
 
 const defaultState = {
-  todos: {
+  todoItems: {
     'hiryypvnnxkmpyab': {
       id: 'hiryypvnnxkmpyab',
       createdAt: getDateString(),
@@ -247,67 +247,67 @@ const defaultState = {
 
 // reducers
 
-export const todosReducer = (state = defaultState, action) => {
+export const todoItemsReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case TODO_ITEMS__ADD_TODO_ITEM:
       return {
         ...state,
-        todos: {
-          ...state.todos,
+        todoItems: {
+          ...state.todoItems,
           [action.payload.todo.id]: {
             ...action.payload.todo
           }
         }
       }
-    case TOGGLE_TODO:
+    case TODO_ITEMS__TOGGLE_TODO_ITEM:
       return {
         ...state,
-        todos: {
-          ...state.todos,
+        todoItems: {
+          ...state.todoItems,
           [action.payload.id]: {
-            ...state.todos[action.payload.id],
-            completed: !state.todos[action.payload.id].completed
+            ...state.todoItems[action.payload.id],
+            completed: !state.todoItems[action.payload.id].completed
           }
         }
       }
-    case DELETE_TODO: {
+    case TODO_ITEMS__DELETE_TODO_ITEM: {
       const newState = { ...state }
-      delete newState.todos[action.payload.id]
+      delete newState.todoItems[action.payload.id]
       return newState
     }
-    case REQUEST_TODOS:
+    case TODO_ITEMS__REQUEST_TODO_ITEMS:
       return {
         ...state,
         isFetching: true
       }
-    case RECEIVE_TODOS:
+    case TODO_ITEMS__RECEIVE_TODO_ITEMS:
       return {
         ...state,
         isFetching: false,
-        todos: action.payload.todos
+        todoItems: action.payload.todoItems
       }
-    case SELECT_TODO:
+    case TODO_ITEMS__SELECT_TODO_ITEM:
       return {
         ...state,
         selectedTodoId: state.selectedTodoId !== action.payload.id ? action.payload.id : ''
       }
-    case SET_PRIORITY:
+    case TODO_ITEMS__SET_PRIORITY:
       return {
         ...state,
-        todos: {
-          ...state.todos,
+        todoItems: {
+          ...state.todoItems,
           [action.payload.id]: {
-            ...state.todos[action.payload.id],
+            ...state.todoItems[action.payload.id],
             priority: action.payload.priority
           }
         }
       }
-    case EDIT_TODO:
+    case TODO_ITEMS__EDIT_TODO_ITEM:
       return {
         ...state,
-        todos: {
-          ...state.todos,
-          [action.payload.id]: Object.assign(state.todos[action.payload.id], action.payload)
+        todoItems: {
+          ...state.todoItems,
+          [action.payload.id]: Object.assign(state.todoItems[action.payload.id], action.payload)
         }
       }
     default:

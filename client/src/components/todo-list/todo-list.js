@@ -11,17 +11,17 @@ class TodoList extends Component {
 
   static propTypes = {
     history: PropTypes.object.isRequired,
-    todos: PropTypes.array.isRequired,
+    todoItems: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    fetchTodos: PropTypes.func.isRequired
+    fetchTodoItems: PropTypes.func.isRequired
   }
 
   componentDidMount () {
-    // this.props.fetchTodos()
+    // this.props.fetchTodoItems()
   }
 
   render () {
-    const { history, isFetching, todoList, todos } = this.props
+    const { history, isFetching, todoList, todoItems } = this.props
     return (
       <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
         <div className="todo-list__back">
@@ -36,7 +36,7 @@ class TodoList extends Component {
         </div>
         <div className="todo-list__todos-section">
           <ul className="todo-list__list">
-            {todos.map(todo =>
+            {todoItems.map(todo =>
               <TodoItem
                 todo={todo}
                 key={todo.id}
@@ -60,17 +60,17 @@ class TodoList extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { todoListId } = ownProps.match.params
   const todoList = state.todoListsReducer[todoListId]
-  const todoItems = todoList.todoItems.map(todoItemId => state.todosReducer.todos[todoItemId])
+  const todoItems = todoList.todoItems.map(todoItemId => state.todoItemsReducer.todoItems[todoItemId])
   return {
     todoList,
-    todos: todoItems,
-    isFetching: state.todosReducer.isFetching
+    todoItems: todoItems,
+    isFetching: state.todoItemsReducer.isFetching
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchTodos: () => dispatch(todosActions.fetchTodos())
+    fetchTodoItems: () => dispatch(todosActions.fetchTodoItems())
   }
 }
 

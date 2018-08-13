@@ -9,7 +9,7 @@ import closeImage from '../../close-icon.svg'
 class EditTodo extends Component {
   constructor (props) {
     super(props)
-    const todo = this.props.todos[this.props.match.params.todoItemId]
+    const todo = this.props.todoItems[this.props.match.params.todoItemId]
     this.state = {
       text: todo.text,
       priority: todo.priority,
@@ -19,7 +19,7 @@ class EditTodo extends Component {
   }
   onSubmit (event) {
     event.preventDefault()
-    this.props.editTodo(this.props.match.params.todoItemId, {
+    this.props.editTodoItem(this.props.match.params.todoItemId, {
       text: this.state.text,
       priority: this.state.priority,
       completed: this.state.completed
@@ -27,7 +27,7 @@ class EditTodo extends Component {
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   onDelete () {
-    this.props.deleteTodo(this.props.match.params.todoItemId)
+    this.props.deleteTodoItem(this.props.match.params.todoItemId)
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   render () {
@@ -139,21 +139,21 @@ class EditTodo extends Component {
 }
 
 EditTodo.propTypes = {
-  todos: PropTypes.object.isRequired,
-  editTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired
+  todoItems: PropTypes.object.isRequired,
+  editTodoItem: PropTypes.func.isRequired,
+  deleteTodoItem: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
   return {
-    todos: state.todosReducer.todos
+    todoItems: state.todoItemsReducer.todoItems
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    editTodo: (id, { text, completed, priority }) => dispatch(todosActions.editTodo(id, { text, completed, priority })),
-    deleteTodo: id => dispatch(todosActions.deleteTodo(id))
+    editTodoItem: (id, { text, completed, priority }) => dispatch(todosActions.editTodoItem(id, { text, completed, priority })),
+    deleteTodoItem: id => dispatch(todosActions.deleteTodoItem(id))
   }
 }
 

@@ -10,23 +10,23 @@ const getTodos = () => {
   return todos
 }
 
-const addTodo = todo => {
+const addTodoItem = todo => {
   todos[todo.id] = {
     ...todo
   }
 }
 
-const deleteTodo = id => {
+const deleteTodoItem = id => {
   delete todos[id]
 }
 
-const editTodo = (id, { text, completed, priority }) => {
+const editTodoItem = (id, { text, completed, priority }) => {
   if (exists(text)) todos[id].text = text
   if (exists(completed)) todos[id].completed = completed
   if (exists(priority)) todos[id].priority = priority
 }
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Wake up.',
@@ -34,7 +34,7 @@ addTodo({
   priority: 'low'
 })
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Get out of bed.',
@@ -42,7 +42,7 @@ addTodo({
   priority: 'medium'
 })
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Make breakfast.',
@@ -50,7 +50,7 @@ addTodo({
   priority: 'high'
 })
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Catch the school bus.',
@@ -58,7 +58,7 @@ addTodo({
   priority: 'low'
 })
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Attend class.',
@@ -66,7 +66,7 @@ addTodo({
   priority: 'medium'
 })
 
-addTodo({
+addTodoItem({
   id: uuid(),
   createdAt: new Date().toISOString(),
   text: 'Eat lunch.',
@@ -76,7 +76,7 @@ addTodo({
 
 module.exports = {
   getTodos,
-  addTodo,
-  deleteTodo,
-  editTodo
+  addTodoItem,
+  deleteTodoItem,
+  editTodoItem
 }

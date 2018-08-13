@@ -7,7 +7,7 @@ import { todosActions } from '../../redux/todo-items'
 class Checkbox extends Component {
   onClick (event) {
     event.stopPropagation()
-    this.props.toggleTodo(this.props.todo.id)
+    this.props.toggleTodoItem(this.props.todo.id)
   }
   render () {
     return (
@@ -23,12 +23,12 @@ class Checkbox extends Component {
 
 Checkbox.propTypes = {
   todo: PropTypes.object.isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  toggleTodoItem: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleTodo: id => dispatch(todosActions.toggleTodo(id))
+    toggleTodoItem: id => dispatch(todosActions.toggleTodoItem(id))
   }
 }
 

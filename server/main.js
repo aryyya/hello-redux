@@ -3,7 +3,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const path = require('path')
-const { getTodos, addTodo, deleteTodo, editTodo } = require('./todo-items')
+const { getTodos, addTodoItem, deleteTodoItem, editTodoItem } = require('./todo-items')
 
 // server
 
@@ -38,20 +38,20 @@ server.get('/todos', (req, res) => {
 
 server.post('/todos', (req, res) => {
   const { todo } = req.body
-  addTodo(todo)
+  addTodoItem(todo)
   res.json({ status: 'ok' })
 })
 
 server.patch('/todos/:id', (req, res) => {
   const { id } = req.params
   const { text, completed, priority } = req.body
-  editTodo(id, { text, completed, priority })
+  editTodoItem(id, { text, completed, priority })
   res.json({ status: 'ok' })
 })
 
 server.delete('/todos/:id', (req, res) => {
   const { id } = req.params
-  deleteTodo(id)
+  deleteTodoItem(id)
   res.json({ status: 'ok' })
 })
 

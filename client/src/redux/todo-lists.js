@@ -5,16 +5,16 @@ import { todosActions } from './todo-items'
 
 // action types
 
-const ADD_TODO_LIST = 'ADD_TODO_LIST'
-const ADD_TODO_ITEM = 'ADD_TODO_ITEM'
-const DELETE_TODO_LIST = 'DELETE_TODO_LIST'
-const SET_TODO_LIST_NAME = 'SET_TODO_LIST_NAME'
+const TODO_LISTS__ADD_TODO_LIST = 'TODO_LISTS__ADD_TODO_LIST'
+const TODO_LISTS__ADD_TODO_ITEM = 'TODO_LISTS__ADD_TODO_ITEM'
+const TODO_LISTS__DELETE_TODO_LIST = 'TODO_LISTS__DELETE_TODO_LIST'
+const TODO_LISTS__SET_TODO_LIST_NAME = 'TODO_LISTS__SET_TODO_LIST_NAME'
 
 // action creators
 
 const addTodoList = todoListName => {
   return {
-    type: ADD_TODO_LIST,
+    type: TODO_LISTS__ADD_TODO_LIST,
     payload: {
       id: getUniqueId(),
       createdAt: getDateString(),
@@ -26,7 +26,7 @@ const addTodoList = todoListName => {
 
 const addTodoItem = (todoListId, todoItemId) => {
   return {
-    type: ADD_TODO_ITEM,
+    type: TODO_LISTS__ADD_TODO_ITEM,
     payload: {
       todoListId,
       todoItemId
@@ -37,11 +37,11 @@ const addTodoItem = (todoListId, todoItemId) => {
 const deleteTodoList = todoListId => {
   const todoLists = store.getState().todoListsReducer
   todoLists[todoListId].todoItems.forEach(todoItem => {
-    store.dispatch(todosActions.deleteTodo(todoItem))
+    store.dispatch(todosActions.deleteTodoItem(todoItem))
   })
 
   return {
-    type: DELETE_TODO_LIST,
+    type: TODO_LISTS__DELETE_TODO_LIST,
     payload: {
       todoListId
     }
@@ -50,7 +50,7 @@ const deleteTodoList = todoListId => {
 
 const setTodoListName = (todoListId, name) => {
   return {
-    type: SET_TODO_LIST_NAME,
+    type: TODO_LISTS__SET_TODO_LIST_NAME,
     payload: {
       todoListId,
       name
@@ -92,7 +92,7 @@ const defaultState = {
 
 export const todoListsReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_TODO_LIST: {
+    case TODO_LISTS__ADD_TODO_LIST: {
       const { id } = action.payload
       return {
         ...state,
@@ -101,7 +101,7 @@ export const todoListsReducer = (state = defaultState, action) => {
         }
       }
     }
-    case ADD_TODO_ITEM: {
+    case TODO_LISTS__ADD_TODO_ITEM: {
       const { todoListId, todoItemId } = action.payload
       return {
         ...state,
@@ -114,12 +114,12 @@ export const todoListsReducer = (state = defaultState, action) => {
         }
       }
     }
-    case DELETE_TODO_LIST: {
+    case TODO_LISTS__DELETE_TODO_LIST: {
       const { todoListId } = action.payload
       const { [todoListId]: _, ...newState } = state
       return newState
     }
-    case SET_TODO_LIST_NAME: {
+    case TODO_LISTS__SET_TODO_LIST_NAME: {
       const { todoListId, name } = action.payload
       return {
         ...state,

@@ -32,13 +32,13 @@ const TodoItem = props => {
 
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
-  toggleTodo: PropTypes.func.isRequired,
+  toggleTodoItem: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleTodo: id => dispatch(todosActions.toggleTodo(id))
+    toggleTodoItem: id => dispatch(todosActions.toggleTodoItem(id))
   }
 }
 
