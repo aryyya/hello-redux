@@ -9,6 +9,7 @@ const TODO_LISTS__ADD_TODO_LIST = 'TODO_LISTS__ADD_TODO_LIST'
 const TODO_LISTS__ADD_TODO_ITEM = 'TODO_LISTS__ADD_TODO_ITEM'
 const TODO_LISTS__DELETE_TODO_LIST = 'TODO_LISTS__DELETE_TODO_LIST'
 const TODO_LISTS__SET_TODO_LIST_NAME = 'TODO_LISTS__SET_TODO_LIST_NAME'
+const TODO_LISTS__DELETE_TODO_ITEM = 'TODO_LISTS__DELETE_TODO_ITEM'
 
 // action creators
 
@@ -64,11 +65,22 @@ const editTodoList = (todoListId, { name }) => {
   }
 }
 
+const deleteTodoItem = (todoListId, todoItemId) => {
+  return {
+    type: TODO_LISTS__DELETE_TODO_ITEM,
+    payload: {
+      todoListId,
+      todoItemId
+    }
+  }
+}
+
 export const todoListsActions = {
   addTodoList,
   addTodoItem,
   deleteTodoList,
-  editTodoList
+  editTodoList,
+  deleteTodoItem
 }
 
 // default state
@@ -128,6 +140,12 @@ export const todoListsReducer = (state = defaultState, action) => {
           name
         }
       }
+    }
+    case TODO_LISTS__DELETE_TODO_ITEM: {
+      const { todoListId, todoItemId } = action.payload
+      const newState = { ...state }
+      newState[todoListId].todoItems = newState[todoListId].todoItems.filter(todoItem => todoItem !== todoItemId)
+      return newState
     }
     default:
       return state

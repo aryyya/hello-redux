@@ -27,7 +27,9 @@ class EditTodo extends Component {
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   onDelete () {
-    this.props.deleteTodoItem(this.props.match.params.todoItemId)
+    const { todoItemId, todoListId } = this.props.match.params
+
+    this.props.deleteTodoItem(todoItemId, todoListId)
     this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
   }
   render () {
@@ -153,7 +155,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     editTodoItem: (id, { text, completed, priority }) => dispatch(todosActions.editTodoItem(id, { text, completed, priority })),
-    deleteTodoItem: id => dispatch(todosActions.deleteTodoItem(id))
+    deleteTodoItem: (todoItemId, todoListId) => dispatch(todosActions.deleteTodoItem(todoItemId, todoListId))
   }
 }
 

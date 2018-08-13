@@ -93,12 +93,13 @@ const serverToggleTodoItem = id => {
   }
 }
 
-const deleteTodoItem = id => {
+const deleteTodoItem = (todoItemId, todoListId) => {
+  store.dispatch(todoListsActions.deleteTodoItem(todoListId, todoItemId))
   // store.dispatch(serverDeleteTodoItem(id))
   return {
     type: TODO_ITEMS__DELETE_TODO_ITEM,
     payload: {
-      id
+      todoItemId
     }
   }
 }
