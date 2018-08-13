@@ -66,11 +66,17 @@ const editTodoList = (todoListId, { name }) => {
 }
 
 const deleteTodoItem = (todoListId, todoItemId) => {
-  return {
-    type: TODO_LISTS__DELETE_TODO_ITEM,
-    payload: {
-      todoListId,
-      todoItemId
+  if (store.getState().todoListsReducer[todoListId]) {
+    return {
+      type: TODO_LISTS__DELETE_TODO_ITEM,
+      payload: {
+        todoListId,
+        todoItemId
+      }
+    }
+  } else {
+    return {
+      type: 'NO_ACTION'
     }
   }
 }
