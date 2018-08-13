@@ -3,7 +3,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const path = require('path')
-const { getTodos, addTodo, deleteTodo, editTodo } = require('./todos')
+const { getTodos, addTodo, deleteTodo, editTodo } = require('./todo-items')
 
 // server
 

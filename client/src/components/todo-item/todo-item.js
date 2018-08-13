@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './todo-item.css'
 import Checkbox from '../checkbox/checkbox'
 import Priority from '../priority/priority'
-import { todosActions } from '../../redux/todos'
+import { todosActions } from '../../redux/todo-items'
 import { withRouter } from 'react-router-dom'
 
 const TodoItem = props => {

@@ -1,7 +1,7 @@
 import getUniqueId from '../utility/get-unique-id'
 import getDateString from '../utility/get-date-string'
 import store from './store'
-import { todosActions } from './todos'
+import { todosActions } from './todo-items'
 
 // action types
 

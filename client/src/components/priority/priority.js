@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './priority.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { todosActions } from '../../redux/todos'
+import { todosActions } from '../../redux/todo-items'
 
 const priorities = [
   'low',

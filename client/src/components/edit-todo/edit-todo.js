@@ -3,7 +3,7 @@ import './edit-todo.css'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { todosActions } from '../../redux/todos'
+import { todosActions } from '../../redux/todo-items'
 import closeImage from '../../close-icon.svg'
 
 class EditTodo extends Component {

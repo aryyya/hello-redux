@@ -3,7 +3,7 @@ import './add-todo.css'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { todosActions } from '../../redux/todos'
+import { todosActions } from '../../redux/todo-items'
 import Button from '../button/button'
 
 class AddTodo extends Component {

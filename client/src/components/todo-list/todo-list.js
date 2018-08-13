@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TodoItem from '../todo-item/todo-item'
-import { todosActions } from '../../redux/todos'
+import { todosActions } from '../../redux/todo-items'
 import Button from '../button/button'
 
 class TodoList extends Component {
