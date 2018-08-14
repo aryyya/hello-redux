@@ -1,30 +1,46 @@
 import React, { Component } from 'react'
 import './add-todo.css'
 import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todo-items'
 import Button from '../button/button'
 
 class AddTodo extends Component {
+
   constructor (props) {
     super(props)
+
     this.state = {
       text: '',
       priority: 'low'
     }
   }
+  
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    addTodoItem: PropTypes.func.isRequired
+  }
+
   addTodoItem (event) {
     if (event) {
       event.preventDefault()
     }
+
+    const { addTodoItem, history } = this.props
     const { todoListId } = this.props.match.params
-    this.props.addTodoItem(todoListId, this.state.text, this.state.priority)
-    this.props.history.push(`/todo-list/${todoListId}`)
+    const { text, priority } = this.state
+
+    addTodoItem(todoListId, text, priority)
+
+    history.push(`/todo-list/${todoListId}`)
   }
+
   render () {
     const { history } = this.props
     const { todoListId } = this.props.match.params
+    const { state } = this
 
     return (
       <div className="add-todo">
@@ -43,7 +59,7 @@ class AddTodo extends Component {
               className="add-todo__text"
               autoFocus
               type="text"
-              value={this.state.text}
+              value={state.text}
               onChange={event => this.setState({ text: event.target.value })}
               placeholder="Write task here."
             />
@@ -55,7 +71,7 @@ class AddTodo extends Component {
                 id="low-priority"
                 type="radio"
                 name="priority"
-                checked={this.state.priority === 'low'}
+                checked={state.priority === 'low'}
                 readOnly
                 onChange={() => this.setState({ priority: 'low' })}
               />
@@ -69,7 +85,7 @@ class AddTodo extends Component {
                 id="medium-priority"
                 type="radio"
                 name="priority"
-                checked={this.state.priority === 'medium'}
+                checked={state.priority === 'medium'}
                 readOnly
                 onChange={() => this.setState({ priority: 'medium' })}
               />
@@ -83,7 +99,7 @@ class AddTodo extends Component {
                 id="high-priority"
                 type="radio"
                 name="priority"
-                checked={this.state.priority === 'high'}
+                checked={state.priority === 'high'}
                 readOnly
                 onChange={() => this.setState({ priority: 'high' })}
               />
@@ -104,10 +120,6 @@ class AddTodo extends Component {
       </div>
     )
   }
-}
-
-AddTodo.propTypes = {
-  addTodoItem: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
