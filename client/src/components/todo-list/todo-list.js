@@ -11,6 +11,7 @@ class TodoList extends Component {
 
   static propTypes = {
     history: PropTypes.object.isRequired,
+    todoList: PropTypes.object.isRequired,
     todoItems: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     fetchTodoItems: PropTypes.func.isRequired
@@ -22,6 +23,7 @@ class TodoList extends Component {
 
   render () {
     const { history, isFetching, todoList, todoItems } = this.props
+
     return (
       <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
         <div className="todo-list__back">
@@ -61,6 +63,7 @@ const mapStateToProps = (state, ownProps) => {
   const { todoListId } = ownProps.match.params
   const todoList = state.todoListsReducer[todoListId]
   const todoItems = todoList.todoItems.map(todoItemId => state.todoItemsReducer.todoItems[todoItemId])
+
   return {
     todoList,
     todoItems: todoItems,
