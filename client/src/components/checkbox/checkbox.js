@@ -5,25 +5,32 @@ import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todo-items'
 
 class Checkbox extends Component {
+
+  static propTypes = {
+    todo: PropTypes.object.isRequired,
+    toggleTodoItem: PropTypes.func.isRequired
+  }
+
   onClick (event) {
     event.stopPropagation()
-    this.props.toggleTodoItem(this.props.todo.id)
+
+    const { todo, toggleTodoItem } = this.props
+
+    toggleTodoItem(todo.id)
   }
+
   render () {
+    const { todo } = this.props
+    
     return (
       <span
-        className={`checkbox checkbox--${this.props.todo.completed ? 'checked' : 'unchecked'}`}
+        className={`checkbox checkbox--${todo.completed ? 'checked' : 'unchecked'}`}
         onClick={this.onClick.bind(this)}
       >
         ✓
       </span>
     )
   }
-}
-
-Checkbox.propTypes = {
-  todo: PropTypes.object.isRequired,
-  toggleTodoItem: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
