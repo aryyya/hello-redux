@@ -35,6 +35,7 @@ const addTodoItem = (todoListId, text, priority) => {
   }
 }
 
+// eslint-disable-next-line
 const serverAddTodoItem = todo => {
   return dispatch => {
     fetch('/todos', {
@@ -68,6 +69,7 @@ const toggleTodoItem = id => {
   }
 }
 
+// eslint-disable-next-line
 const serverToggleTodoItem = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
@@ -104,6 +106,7 @@ const deleteTodoItem = (todoItemId, todoListId) => {
   }
 }
 
+// eslint-disable-next-line
 const serverDeleteTodoItem = id => {
   return dispatch => {
     return fetch(`/todos/${id}`, {
@@ -181,6 +184,7 @@ const editTodoItem = (id, { text, completed, priority }) => {
   }
 }
 
+// eslint-disable-next-line
 const serverEditTodoItem = (id, { text, completed, priority }) => {
   return dispatch => {
     return fetch(`/todos/${id}`, {

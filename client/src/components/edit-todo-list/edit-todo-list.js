@@ -46,7 +46,6 @@ class EditTodoList extends Component {
 
   render () {
     const { state, updateTodoList } = this
-    const { todoList } = this.props
 
     return (
       <form
