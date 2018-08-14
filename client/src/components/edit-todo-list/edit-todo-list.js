@@ -7,6 +7,14 @@ import { todoListsActions } from '../../redux/todo-lists';
 
 class EditTodoList extends Component {
 
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    todoList: PropTypes.object.isRequired,
+    editTodoList: PropTypes.func.isRequired,
+    deleteTodoList: PropTypes.func.isRequired
+  }
+
   constructor (props) {
     super(props)
 
@@ -66,11 +74,6 @@ class EditTodoList extends Component {
       </form>
     )
   }
-}
-
-EditTodoList.propTypes = {
-  match: PropTypes.object.isRequired,
-  todoList: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
