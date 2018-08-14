@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import './todo-lists.css'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 class TodoLists extends Component {
-  
+
+  static propTypes = {
+    todoLists: PropTypes.array.isRequired
+  }
+
   render () {
     const { todoLists } = this.props
 
