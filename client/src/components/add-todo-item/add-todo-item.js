@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './add-todo.css'
+import './add-todo-item.css'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -43,9 +43,9 @@ class AddTodo extends Component {
     const { state } = this
 
     return (
-      <div className="add-todo">
+      <div className="add-todo-item">
         <form
-          className="add-todo__form"
+          className="add-todo-item__form"
           onSubmit={this.addTodoItem.bind(this)}
         >
           <div>
@@ -56,7 +56,7 @@ class AddTodo extends Component {
           </div>
           <div>
             <input
-              className="add-todo__text"
+              className="add-todo-item__text"
               autoFocus
               type="text"
               value={state.text}
@@ -64,10 +64,10 @@ class AddTodo extends Component {
               placeholder="Write task here."
             />
           </div>
-          <div className="add-todo__priorities">
+          <div className="add-todo-item__priorities">
             <div>
               <input
-                className="add-todo__priority add-todo__priority--low"
+                className="add-todo-item__priority add-todo-item__priority--low"
                 id="low-priority"
                 type="radio"
                 name="priority"
@@ -81,7 +81,7 @@ class AddTodo extends Component {
             </div>
             <div>
               <input
-                className="add-todo__priority add-todo__priority--medium"
+                className="add-todo-item__priority add-todo-item__priority--medium"
                 id="medium-priority"
                 type="radio"
                 name="priority"
@@ -95,7 +95,7 @@ class AddTodo extends Component {
             </div>
             <div>
               <input
-                className="add-todo__priority add-todo__priority--high"
+                className="add-todo-item__priority add-todo-item__priority--high"
                 id="high-priority"
                 type="radio"
                 name="priority"
@@ -109,9 +109,9 @@ class AddTodo extends Component {
             </div>
           </div>
         </form>
-        <div className="add-todo__buttons">
+        <div className="add-todo-item__buttons">
           <div
-            className="add-todo__add-button"
+            className="add-todo-item__add-button"
             onClick={this.addTodoItem.bind(this)}
           >
             Add Todo

@@ -1,27 +1,27 @@
-.add-todo {
+.add-todo-item {
   display: flex;
   flex-direction: column;
   height: 100vh;
   animation: slide-in-from-left 0.3s ease;
 }
 
-.add-todo__form {
+.add-todo-item__form {
   flex: 5;
   padding: 25px;
 }
 
-.add-todo__buttons {
+.add-todo-item__buttons {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.add-todo__add-button {
+.add-todo-item__add-button {
 
 }
 
-.add-todo__add-button {
+.add-todo-item__add-button {
   background-color: #5b89ff;
   padding: 15px 25px;
   width: 85%;
@@ -38,49 +38,49 @@
   text-decoration: none;
 }
 
-.add-todo__add-button:hover {
+.add-todo-item__add-button:hover {
   opacity: 0.9;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
-.add-todo__add-button:active {
+.add-todo-item__add-button:active {
   opacity: 0.7;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.45);
   transform: translateY(+2px);
 }
 
-.add-todo__text {
+.add-todo-item__text {
   width: 100%;
   font-size: 36px;
   border: none;
   outline: none;
 }
 
-.add-todo__text::placeholder {
+.add-todo-item__text::placeholder {
   color: #bbb;
 }
 
-.add-todo__close-icon {
+.add-todo-item__close-icon {
   margin-bottom: 25px;
 }
 
-.add-todo__close-icon {
+.add-todo-item__close-icon {
   width: 32px;
   height: 32px;
   opacity: 0.75;
   margin-left: -5px;
 }
 
-.add-todo__priorities {
+.add-todo-item__priorities {
   margin-top: 30px;
 }
 
-.add-todo__priority {
+.add-todo-item__priority {
   margin: 7px 0;
   margin-right: 5px;
 }
 
-.add-todo__priority--low {
+.add-todo-item__priority--low {
 
 }
