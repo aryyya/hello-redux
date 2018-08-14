@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import TodoLists from './components/todo-lists/todo-lists'
 import AddTodo from './components/add-todo/add-todo'
-import EditTodo from './components/edit-todo/edit-todo'
+import EditTodoItem from './components/edit-todo-item/edit-todo-item'
 import TodoList from './components/todo-list/todo-list'
 import AddTodoList from './components/add-todo-list/add-todo-list'
 import EditTodoList from './components/edit-todo-list/edit-todo-list'
@@ -25,7 +25,7 @@ class App extends Component {
             />
             <Route
               path="/todo-list/:todoListId/edit-todo-item/:todoItemId"
-              component={EditTodo}
+              component={EditTodoItem}
               exact
             />
             <Route

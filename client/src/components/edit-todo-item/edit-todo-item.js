@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './edit-todo.css'
+import './edit-todo-item.css'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -7,46 +7,70 @@ import { todosActions } from '../../redux/todo-items'
 import closeImage from '../../close-icon.svg'
 
 class EditTodo extends Component {
+
   constructor (props) {
     super(props)
-    const todo = this.props.todoItems[this.props.match.params.todoItemId]
+
+    const { todo } = this.props
+
     this.state = {
       text: todo.text,
       priority: todo.priority,
       completed: todo.completed
     }
-    // const { todoItemId } = this.props.match.params
   }
+
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    todo: PropTypes.object.isRequired,
+    editTodoItem: PropTypes.func.isRequired,
+    deleteTodoItem: PropTypes.func.isRequired
+  }
+
   onSubmit (event) {
     event.preventDefault()
-    this.props.editTodoItem(this.props.match.params.todoItemId, {
-      text: this.state.text,
-      priority: this.state.priority,
-      completed: this.state.completed
+
+    const { todoItemId, todoListId } = this.props.match.params
+    const { text, priority, completed } = this.state
+    const { editTodoItem, history } = this.props
+
+    editTodoItem(todoItemId, {
+      text,
+      priority,
+      completed
     })
-    this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
+
+    history.push(`/todo-list/${todoListId}`)
   }
+
   onDelete () {
     const { todoItemId, todoListId } = this.props.match.params
+    const { deleteTodoItem, history } = this.props
 
-    this.props.deleteTodoItem(todoItemId, todoListId)
-    this.props.history.push(`/todo-list/${this.props.match.params.todoListId}`)
+    deleteTodoItem(todoItemId, todoListId)
+
+    history.push(`/todo-list/${todoListId}`)
   }
+
   render () {
+    const { state } = this
+    const { todoListId } = this.props.match.params
+
     return (
-      <div className="edit-todo">
+      <div className="edit-todo-item">
         <form
-          className="edit-todo__form"
+          className="edit-todo-item__form"
           onSubmit={this.onSubmit.bind(this)}
         >
           <div>
             <div>
               <Link
-                className="edit-todo__close"
-                to={`/todo-list/${this.props.match.params.todoListId}`}
+                className="edit-todo-item__close"
+                to={`/todo-list/${todoListId}`}
               >
                 <img
-                  className="edit-todo__close-icon"
+                  className="edit-todo-item__close-icon"
                   src={closeImage}
                   alt="Close."
                 />
@@ -54,21 +78,21 @@ class EditTodo extends Component {
             </div>
             <div>
               <input
-                className="edit-todo__text"
+                className="edit-todo-item__text"
                 type="text"
-                value={this.state.text}
+                value={state.text}
                 onChange={event => this.setState({ text: event.target.value })}
                 autoFocus
               />
             </div>
-            <div className="edit-todo__priorities">
+            <div className="edit-todo-item__priorities">
               <div>
                 <input
-                  className="edit-todo__priority edit-todo__priority--low"
+                  className="edit-todo-item__priority edit-todo-item__priority--low"
                   id="low-priority"
                   type="radio"
                   name="priority"
-                  checked={this.state.priority === 'low'}
+                  checked={state.priority === 'low'}
                   readOnly
                   onChange={() => this.setState({ priority: 'low' })}
                 />
@@ -78,11 +102,11 @@ class EditTodo extends Component {
               </div>
               <div>
                 <input
-                  className="edit-todo__priority edit-todo__priority--medium"
+                  className="edit-todo-item__priority edit-todo-item__priority--medium"
                   id="medium-priority"
                   type="radio"
                   name="priority"
-                  checked={this.state.priority === 'medium'}
+                  checked={state.priority === 'medium'}
                   readOnly
                   onChange={() => this.setState({ priority: 'medium' })}
                 />
@@ -92,11 +116,11 @@ class EditTodo extends Component {
               </div>
               <div>
                 <input
-                  className="edit-todo__priority edit-todo__priority--high"
+                  className="edit-todo-item__priority edit-todo-item__priority--high"
                   id="high-priority"
                   type="radio"
                   name="priority"
-                  checked={this.state.priority === 'high'}
+                  checked={state.priority === 'high'}
                   readOnly
                   onChange={() => this.setState({ priority: 'high' })}
                 />
@@ -107,12 +131,12 @@ class EditTodo extends Component {
             </div>
             <div>
               <input
-                className="edit-todo__completed"
+                className="edit-todo-item__completed"
                 type="checkbox"
                 name="completed"
                 id="completed"
-                checked={this.state.completed}
-                onChange={() => this.setState({ completed: !this.state.completed })}
+                checked={state.completed}
+                onChange={() => this.setState({ completed: !state.completed })}
               />
               <label htmlFor="completed">
                 Completed
@@ -120,16 +144,16 @@ class EditTodo extends Component {
             </div>
             <div>
               <button
-                className="edit-todo__delete"
+                className="edit-todo-item__delete"
                 onClick={this.onDelete.bind(this)}
               >
                 Delete
               </button>
             </div>
           </div>
-          <div className="edit-todo__buttons">
+          <div className="edit-todo-item__buttons">
             <input
-              className="edit-todo__edit-button"
+              className="edit-todo-item__edit-button"
               type="submit"
               value="Update Todo"
             />
@@ -140,15 +164,12 @@ class EditTodo extends Component {
   }
 }
 
-EditTodo.propTypes = {
-  todoItems: PropTypes.object.isRequired,
-  editTodoItem: PropTypes.func.isRequired,
-  deleteTodoItem: PropTypes.func.isRequired
-}
+const mapStateToProps = (state, ownProps) => {
+  const { todoItems } = state.todoItemsReducer
+  const { todoItemId } = ownProps.match.params
 
-const mapStateToProps = state => {
   return {
-    todoItems: state.todoItemsReducer.todoItems
+    todo: todoItems[todoItemId]
   }
 }
 
@@ -164,4 +185,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(
     EditTodo
   )
 )
-
