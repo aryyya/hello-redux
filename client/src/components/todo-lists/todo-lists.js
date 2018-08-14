@@ -4,18 +4,19 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 class TodoLists extends Component {
+  
   render () {
+    const { todoLists } = this.props
+
     return (
       <div className="todo-lists">
         <div className="todo-lists__todo-lists">
-          {this.props.todoLists.map(todoList => (
+          {todoLists.map(todoList => (
             <div
               className="todo-lists__todo-list"
               key={todoList.name}
             >
-              <Link
-                to={`/todo-list/${todoList.id}`}
-              >
+              <Link to={`/todo-list/${todoList.id}`}>
                 {todoList.name} ({todoList.todoItems.length} items)
               </Link>
             </div>
@@ -35,9 +36,11 @@ class TodoLists extends Component {
 }
 
 const mapStateToProps = state => {
+  const { todoListsReducer } = state
+
   return {
     todoLists: (() => {
-      return Object.keys(state.todoListsReducer).map(todoListId => state.todoListsReducer[todoListId])
+      return Object.keys(todoListsReducer).map(todoListId => todoListsReducer[todoListId])
     })()
   }
 }
