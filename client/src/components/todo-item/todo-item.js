@@ -23,7 +23,7 @@ class TodoItem extends Component {
       >
         <div className="todo-item__top">
           <div className="todo-item__text-wrapper">
-            <Priority todo={todo} />
+            <Priority priority={todo.priority} />
             <span className={`todo-item__text todo-item__text--${todo.priority}`}>{todo.text}</span>
           </div>
           <div className="todo-item__buttons">

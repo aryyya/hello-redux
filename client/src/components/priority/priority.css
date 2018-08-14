@@ -4,27 +4,10 @@
   justify-content: center;
 }
 
-.priority__options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .priority__selected {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-}
-
-.priority__selection {
-  width: 9px;
-  height: 9px;
-  margin-left: 8px;
-  border-radius: 50%;
-}
-
-.priority__selection:hover {
-  opacity: 0.8;
 }
 
 .priority__selection--low {
