@@ -3,6 +3,7 @@ import './checkbox.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todo-items'
+import classNames from 'classnames'
 
 class Checkbox extends Component {
 
@@ -24,7 +25,7 @@ class Checkbox extends Component {
     
     return (
       <span
-        className={`checkbox checkbox--${todo.completed ? 'checked' : 'unchecked'}`}
+        className={classNames('checkbox', { 'checkbox--checked': todo.completed })}
         onClick={this.onClick.bind(this)}
       >
         ✓

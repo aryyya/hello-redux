@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Checkbox from '../checkbox/checkbox'
 import Priority from '../priority/priority'
 import { withRouter } from 'react-router-dom'
+import classNames from 'classnames'
 
 class TodoItem extends Component {
 
@@ -18,7 +19,7 @@ class TodoItem extends Component {
   
     return (
       <li
-        className={`todo-item ${todo.completed ? 'todo-item--completed' : ''}`}
+        className={classNames('todo-item', { 'todo-item--completed': todo.completed })}
         onClick={() => history.push(`/todo-list/${todoListId}/edit-todo-item/${todo.id}`)}
       >
         <div className="todo-item__top">

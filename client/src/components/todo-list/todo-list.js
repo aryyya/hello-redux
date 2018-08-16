@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import TodoItem from '../todo-item/todo-item'
 import { todosActions } from '../../redux/todo-items'
 import Button from '../button/button'
+import classNames from 'classnames'
 
 class TodoList extends Component {
 
@@ -25,7 +26,7 @@ class TodoList extends Component {
     const { history, isFetching, todoList, todoItems } = this.props
 
     return (
-      <div className={`todo-list ${isFetching ? 'todo-list--loading' : ''}`}>
+      <div className={classNames('todo-list', { 'todo-list--loading': isFetching })}>
         <div className="todo-list__back">
           <Button
             icon="arrow"

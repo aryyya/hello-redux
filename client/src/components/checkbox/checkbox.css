@@ -7,12 +7,9 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  color: transparent;
 }
 
 .checkbox--checked {
   color: black;
-}
-
-.checkbox--unchecked {
-  color: transparent;
 }
