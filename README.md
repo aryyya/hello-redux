@@ -14,6 +14,7 @@ An experiment in state management with React and Redux.
 - [x] Change "todo" to "todo item" throughout the project.
 - [x] Refactor for style and remove warnings.
 - [x] Integrate SASS and convert existing stylesheets.
+- [ ] Integrate styled components and convert existing components.
 - [ ] Add graphic or gradient select to todo list creation and page.
 - [ ] Implement button component.
 - [ ] Consolidate CSS (make global styles for uniformity).
