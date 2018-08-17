@@ -12,7 +12,7 @@ const StyledPriority = styled.div`
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: ${({ priority }) => getDotBackgroundColor(priority)}
+  background-color: ${({ priority }) => getDotBackgroundColor(priority)};
 `
 
 class Priority extends Component {
