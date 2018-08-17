@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
-import './priority.css'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const getDotBackgroundColor = priority => ({
+  'low': '#47e4c2',
+  'medium': '#fcc300',
+  'high': '#ff88a6'
+}[priority])
+
+const StyledPriority = styled.div`
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: ${({ priority }) => getDotBackgroundColor(priority)}
+`
 
 class Priority extends Component {
 
@@ -12,9 +25,7 @@ class Priority extends Component {
     const { priority } = this.props
 
     return (
-      <div className="priority">
-        <div className={`priority__selected priority__selection--${priority}`} />
-      </div>
+      <StyledPriority priority={priority} />
     )
   }
 }
