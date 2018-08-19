@@ -8,10 +8,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
-// styles
-
-import './index.css'
-
 // components
 
 import App from './App';

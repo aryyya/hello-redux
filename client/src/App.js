@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import { injectGlobal } from 'styled-components'
 import TodoLists from './components/todo-lists/todo-lists'
 import AddTodoItem from './components/add-todo-item/add-todo-item'
 import EditTodoItem from './components/edit-todo-item/edit-todo-item'
@@ -49,5 +50,28 @@ class App extends Component {
     )
   }
 }
+
+injectGlobal`
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+
+  body {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  @keyframes slide-in-from-left {
+    from {
+      opacity: 0;
+      transform: translateX(-25px);
+    }
+  }
+`
 
 export default App
