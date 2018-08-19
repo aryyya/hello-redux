@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import './todo-item.css'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Checkbox from '../checkbox/checkbox'
 import Priority from '../priority/priority'
 import { withRouter } from 'react-router-dom'
-import classNames from 'classnames'
 
 class TodoItem extends Component {
 
@@ -13,27 +12,59 @@ class TodoItem extends Component {
     history: PropTypes.object.isRequired
   }
 
-  render () {
+  onClickTodoItem () {
     const { history, todo } = this.props
-    const { todoListId } = this.props.match.params
+    const { todoListId } = this.props.match.params 
+
+    history.push(`/todo-list/${todoListId}/edit-todo-item/${todo.id}`)
+  }
+
+  render () {
+    const { todo } = this.props
   
     return (
-      <li
-        className={classNames('todo-item', { 'todo-item--completed': todo.completed })}
-        onClick={() => history.push(`/todo-list/${todoListId}/edit-todo-item/${todo.id}`)}
-      >
-        <div className="todo-item__top">
-          <div className="todo-item__text-wrapper">
-            <Priority priority={todo.priority} />
-            <span className={`todo-item__text todo-item__text--${todo.priority}`}>{todo.text}</span>
-          </div>
-          <div className="todo-item__buttons">
-            <Checkbox todo={todo} />
-          </div>
-        </div>
-      </li>
-    )    
+      <StyledTodoItem onClick={this.onClickTodoItem.bind(this)}>
+        <StyledPriorityAndTextContainer>
+          <Priority priority={todo.priority} />
+          <StyledText completed={todo.completed} priority={todo.priority}>
+            {todo.text}
+          </StyledText>
+        </StyledPriorityAndTextContainer>
+        <Checkbox todo={todo} />
+      </StyledTodoItem>
+    )
   }
 }
+
+const StyledTodoItem = styled.li`
+  user-select: none;
+  margin: 5px;
+  font-size: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const StyledPriorityAndTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+`
+
+const StyledText = styled.p`
+  margin-left: 10px;
+  text-decoration: ${({completed}) =>
+    completed ? 'line-through' : 'none'
+  };
+  font-weight: ${({priority}) => ({
+    'low': 300,
+    'medium': 400,
+    'high': 500
+  }[priority])};
+`
 
 export default withRouter(TodoItem)
