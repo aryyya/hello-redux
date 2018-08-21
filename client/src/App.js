@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
+import Landing from './components/landing/landing'
 import TodoLists from './components/todo-lists/todo-lists'
 import AddTodoItem from './components/add-todo-item/add-todo-item'
 import EditTodoItem from './components/edit-todo-item/edit-todo-item'
@@ -15,6 +16,11 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <div>
+              <Route
+                path="/"
+                component={Landing}
+                exact
+              />
               <Route
                 path="/todo-list"
                 component={TodoLists}
@@ -63,6 +69,10 @@ injectGlobal`
     box-sizing: inherit;
   }
 
+  html {
+    font-size: 67.5%;
+  }
+
   body {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -77,7 +87,12 @@ injectGlobal`
 `
 
 const theme = {
-  color: 'black'
+  colors: {
+    main: {
+      color: '#fff',
+      backgroundImage: 'linear-gradient(to bottom, #46529d, #46529d, #46529d, #46529d, #46529d)'
+    }
+  }
 }
 
 export default App
