@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import getArrayFromMap from '../../utility/get-array-from-map'
 
 class Landing extends Component {
 
   render () {
+    const { remainingTodoItems } = this.props
+
     return (
       <StyledLanding>
         <StyledGreeting>
           Hello Nancy
         </StyledGreeting>
         <StyledTaskInfo>
-          You have 7 tasks to complete.
+          You have {remainingTodoItems} tasks to complete.
         </StyledTaskInfo>
       </StyledLanding>
     )
@@ -37,4 +41,10 @@ const StyledTaskInfo = styled.h2`
   font-weight: 300;
 `
 
-export default Landing
+const mapStateToProps = state => {
+  return {
+    remainingTodoItems: getArrayFromMap(state.todoItemsReducer.todoItems).filter(todoItem => !todoItem.completed).length
+  }
+}
+
+export default connect(mapStateToProps, null)(Landing)
