@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
 import TodoLists from './components/todo-lists/todo-lists'
 import AddTodoItem from './components/add-todo-item/add-todo-item'
 import EditTodoItem from './components/edit-todo-item/edit-todo-item'
@@ -12,40 +12,42 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
-          <div>
-            <Route
-              path="/todo-list"
-              component={TodoLists}
-              exact
-            />
-            <Route
-              path="/todo-list/:todoListId"
-              component={TodoList}
-              exact
-            />
-            <Route
-              path="/todo-list/:todoListId/edit-todo-item/:todoItemId"
-              component={EditTodoItem}
-              exact
-            />
-            <Route
-              path="/todo-list/:todoListId/add-todo-item"
-              component={AddTodoItem}
-              exact
-            />
-            <Route
-              path="/todo-list/:todoListId/edit-todo-list"
-              component={EditTodoList}
-              exact
-            />
-            <Route
-              path="/add-todo-list"
-              component={AddTodoList}
-              exact
-            />
-          </div>
-        </BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <div>
+              <Route
+                path="/todo-list"
+                component={TodoLists}
+                exact
+              />
+              <Route
+                path="/todo-list/:todoListId"
+                component={TodoList}
+                exact
+              />
+              <Route
+                path="/todo-list/:todoListId/edit-todo-item/:todoItemId"
+                component={EditTodoItem}
+                exact
+              />
+              <Route
+                path="/todo-list/:todoListId/add-todo-item"
+                component={AddTodoItem}
+                exact
+              />
+              <Route
+                path="/todo-list/:todoListId/edit-todo-list"
+                component={EditTodoList}
+                exact
+              />
+              <Route
+                path="/add-todo-list"
+                component={AddTodoList}
+                exact
+              />
+            </div>
+          </BrowserRouter>
+        </ThemeProvider>
       </div>
     )
   }
@@ -73,5 +75,9 @@ injectGlobal`
     }
   }
 `
+
+const theme = {
+  color: 'black'
+}
 
 export default App
