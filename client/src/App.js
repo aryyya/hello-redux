@@ -90,6 +90,8 @@ const theme = {
   colors: {
     main: {
       color: '#fff',
+      altColor: '#767FB6',
+      linkColor: '#3B9DD7',
       backgroundImage: 'linear-gradient(to bottom, #46529d, #46529d, #46529d, #46529d, #46529d)'
     }
   }
