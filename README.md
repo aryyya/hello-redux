@@ -4,31 +4,39 @@ An experiment in state management with React and Redux.
 
 ## Roadmap
 
-- [x] Implement todo list page.
-- [x] Implement todo add page.
-- [x] Implement todo edit page.
-- [x] Switch to simpler and shorter unique ids.
+### Pages
+
+- [x] Todo list page.
+- [x] Todo item add page.
+- [x] Todo item edit page.
+- [x] Todo list add page.
+- [x] Todo list edit page.
+- [ ] Todo item aggregate page.
+
+### Architecture
+
+- [x] Switch to SASS and convert existing components.
+- [ ] Switch to styled components and convert existing components.
+- [ ] Add animations.
+- [ ] Add responsive layout.
+
+### Features
+
+- [ ] Add user accounts.
+- [ ] Add registration and authentication.
+- [ ] Add unlisted public todo list urls.
+
+### Miscellaneous
+
+- [x] Switch to simpler unique IDs.
 - [x] Decide on a routing scheme.
-- [x] Implement todo list edit page.
-- [x] Implement todo list add page.
 - [x] Change "todo" to "todo item" throughout the project.
 - [x] Refactor for style and remove warnings.
-- [x] Integrate SASS and convert existing stylesheets.
-- [ ] Integrate styled components and convert existing components.
-- [ ] Reorganize roadmap.
-- [ ] Implement all todos page.
-- [ ] Add graphic or gradient select to todo list creation and page.
-- [ ] Implement button component.
-- [ ] Consolidate CSS (make global styles for uniformity).
+- [x] Reorganize roadmap.
 - [ ] Determine typography scheme.
-- [ ] Add animations.
-- [ ] Change to responsive layout.
-- [ ] Implement multiple todo lists.
-- [ ] Implement todo lists page.
-- [ ] Add user accounts to server.
-- [ ] Add registration and authentication.
-- [ ] Synchronize data between client and server.
+
+### Testing
+
 - [ ] Write tests.
-- [ ] Implement unlisted url public todos (with and without public editing).
 
 More to come.
