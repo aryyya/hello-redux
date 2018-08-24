@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import getArrayFromMap from '../../utility/get-array-from-map'
@@ -6,14 +7,19 @@ import { Link } from 'react-router-dom'
 
 class Landing extends Component {
 
+  static propTypes = {
+    remainingTodoItems: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired
+  }
+
   render () {
-    const { remainingTodoItems } = this.props
+    const { remainingTodoItems, firstName } = this.props
 
     return (
       <StyledLanding>
         <StyledTopSection>
           <StyledGreeting>
-            Hello Nancy.
+            Hello {firstName},
           </StyledGreeting>
           <StyledTaskInfo>
             You have <StyledRemainingTasksLink to="/todo-list">{remainingTodoItems} tasks</StyledRemainingTasksLink> remaining.
@@ -28,6 +34,15 @@ class Landing extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    firstName: state.userReducer.firstName,
+    remainingTodoItems: getArrayFromMap(state.todoItemsReducer.todoItems).filter(todoItem => !todoItem.completed).length
+  }
+}
+
+export default connect(mapStateToProps, null)(Landing)
 
 const StyledLanding = styled.div`
   height: 100vh;
@@ -74,11 +89,3 @@ const StyledTaskListLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.main.linkColor};
 `
-
-const mapStateToProps = state => {
-  return {
-    remainingTodoItems: getArrayFromMap(state.todoItemsReducer.todoItems).filter(todoItem => !todoItem.completed).length
-  }
-}
-
-export default connect(mapStateToProps, null)(Landing)
