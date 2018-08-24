@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import reducers from './reducers'
 
-const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {}
+const persistedState = localStorage.getItem('store') ? JSON.parse(localStorage.getItem('store')) : {}
 
 const store = createStore(
   reducers,
@@ -16,7 +16,7 @@ const store = createStore(
 )
 
 store.subscribe(() => {
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+  localStorage.setItem('store', JSON.stringify(store.getState()))
 })
 
 export default store
