@@ -22,7 +22,7 @@ class Landing extends Component {
             Hello {firstName},
           </StyledGreeting>
           <StyledTaskInfo>
-            You have <StyledRemainingTasksLink to="/todo-list">{remainingTodoItems} tasks</StyledRemainingTasksLink> remaining.
+            You have <StyledRemainingTasksLink to="/all-todo-items">{remainingTodoItems} tasks</StyledRemainingTasksLink> remaining.
           </StyledTaskInfo>
         </StyledTopSection>
         <StyledBottomSection>

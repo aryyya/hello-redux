@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 import Landing from './components/landing/landing'
 import TodoLists from './components/todo-lists/todo-lists'
+import AllTodoItems from './components/all-todo-items/all-todo-items'
 import AddTodoItem from './components/add-todo-item/add-todo-item'
 import EditTodoItem from './components/edit-todo-item/edit-todo-item'
 import TodoList from './components/todo-list/todo-list'
@@ -19,6 +20,11 @@ class App extends Component {
               <Route
                 path="/"
                 component={Landing}
+                exact
+              />
+              <Route
+                path="/all-todo-items"
+                component={AllTodoItems}
                 exact
               />
               <Route
