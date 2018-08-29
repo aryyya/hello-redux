@@ -224,30 +224,27 @@ export const todosActions = {
 // default state
 
 const defaultState = {
-  todoItems: {
-    'hiryypvnnxkmpyab': {
-      id: 'hiryypvnnxkmpyab',
-      createdAt: getDateString(),
-      text: 'Get fruits.',
-      completed: true,
-      priority: 'low'
-    },
-    'ydnjabstrcbynlax': {
-      id: 'ydnjabstrcbynlax',
-      createdAt: getDateString(),
-      text: 'Get milk.',
-      completed: false,
-      priority: 'medium'
-    },
-    'wdqpsqcibutpfzpp': {
-      id: 'wdqpsqcibutpfzpp',
-      createdAt: getDateString(),
-      text: 'Return bottles.',
-      completed: false,
-      priority: 'high'
-    }
+  'hiryypvnnxkmpyab': {
+    id: 'hiryypvnnxkmpyab',
+    createdAt: getDateString(),
+    text: 'Get fruits.',
+    completed: true,
+    priority: 'low'
   },
-  isFetching: false
+  'ydnjabstrcbynlax': {
+    id: 'ydnjabstrcbynlax',
+    createdAt: getDateString(),
+    text: 'Get milk.',
+    completed: false,
+    priority: 'medium'
+  },
+  'wdqpsqcibutpfzpp': {
+    id: 'wdqpsqcibutpfzpp',
+    createdAt: getDateString(),
+    text: 'Return bottles.',
+    completed: false,
+    priority: 'high'
+  }
 }
 
 // reducers
@@ -257,40 +254,23 @@ export const todoItemsReducer = (state = defaultState, action) => {
     case TODO_ITEMS__ADD_TODO_ITEM:
       return {
         ...state,
-        todoItems: {
-          ...state.todoItems,
-          [action.payload.todo.id]: {
-            ...action.payload.todo
-          }
+        [action.payload.todo.id]: {
+          ...action.payload.todo
         }
       }
     case TODO_ITEMS__TOGGLE_TODO_ITEM:
       return {
         ...state,
-        todoItems: {
-          ...state.todoItems,
-          [action.payload.id]: {
-            ...state.todoItems[action.payload.id],
-            completed: !state.todoItems[action.payload.id].completed
-          }
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          completed: !state[action.payload.id].completed
         }
       }
     case TODO_ITEMS__DELETE_TODO_ITEM: {
       const newState = { ...state }
-      delete newState.todoItems[action.payload.id]
+      delete newState[action.payload.id]
       return newState
     }
-    case TODO_ITEMS__REQUEST_TODO_ITEMS:
-      return {
-        ...state,
-        isFetching: true
-      }
-    case TODO_ITEMS__RECEIVE_TODO_ITEMS:
-      return {
-        ...state,
-        isFetching: false,
-        todoItems: action.payload.todoItems
-      }
     case TODO_ITEMS__SELECT_TODO_ITEM:
       return {
         ...state,
@@ -299,21 +279,15 @@ export const todoItemsReducer = (state = defaultState, action) => {
     case TODO_ITEMS__SET_PRIORITY:
       return {
         ...state,
-        todoItems: {
-          ...state.todoItems,
-          [action.payload.id]: {
-            ...state.todoItems[action.payload.id],
-            priority: action.payload.priority
-          }
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          priority: action.payload.priority
         }
       }
     case TODO_ITEMS__EDIT_TODO_ITEM:
       return {
         ...state,
-        todoItems: {
-          ...state.todoItems,
-          [action.payload.id]: Object.assign(state.todoItems[action.payload.id], action.payload)
-        }
+        [action.payload.id]: Object.assign(state[action.payload.id], action.payload)
       }
     default:
       return state

@@ -14,7 +14,6 @@ class TodoList extends Component {
     history: PropTypes.object.isRequired,
     todoList: PropTypes.object.isRequired,
     todoItems: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     fetchTodoItems: PropTypes.func.isRequired
   }
 
@@ -23,10 +22,10 @@ class TodoList extends Component {
   }
 
   render () {
-    const { history, isFetching, todoList, todoItems } = this.props
+    const { history, todoList, todoItems } = this.props
 
     return (
-      <div className={classNames('todo-list', { 'todo-list--loading': isFetching })}>
+      <div className={classNames('todo-list')}>
         <div className="todo-list__back">
           <Button
             icon="arrow"
@@ -63,12 +62,11 @@ class TodoList extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { todoListId } = ownProps.match.params
   const todoList = state.todoListsReducer[todoListId]
-  const todoItems = todoList.todoItems.map(todoItemId => state.todoItemsReducer.todoItems[todoItemId])
+  const todoItems = todoList.todoItems.map(todoItemId => state.todoItemsReducer[todoItemId])
 
   return {
     todoList,
-    todoItems: todoItems,
-    isFetching: state.todoItemsReducer.isFetching
+    todoItems: todoItems
   }
 }
 

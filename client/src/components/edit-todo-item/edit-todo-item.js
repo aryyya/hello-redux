@@ -165,8 +165,8 @@ class EditTodo extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { todoItems } = state.todoItemsReducer
   const { todoItemId } = ownProps.match.params
+  const todoItems = state.todoItemsReducer
 
   return {
     todo: todoItems[todoItemId]

@@ -38,7 +38,7 @@ class Landing extends Component {
 const mapStateToProps = state => {
   return {
     firstName: state.userReducer.firstName,
-    remainingTodoItems: getArrayFromMap(state.todoItemsReducer.todoItems).filter(todoItem => !todoItem.completed).length
+    remainingTodoItems: getArrayFromMap(state.todoItemsReducer).filter(todoItem => !todoItem.completed).length
   }
 }
 

@@ -26,7 +26,7 @@ class AllTodoItems extends Component {
 }
 
 const mapStateToProps = state => {
-  const todoItems = getArrayFromMap(state.todoItemsReducer.todoItems)
+  const todoItems = getArrayFromMap(state.todoItemsReducer)
   const incompleteTodoItems = todoItems.filter(todoItem => !todoItem.completed)
 
   return {
