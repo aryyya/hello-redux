@@ -8,29 +8,29 @@ import { withRouter } from 'react-router-dom'
 class TodoItem extends Component {
 
   static propTypes = {
-    todo: PropTypes.object.isRequired,
+    todoItem: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
   }
 
   onClickTodoItem () {
-    const { history, todo } = this.props
+    const { history, todoItem } = this.props
     const { todoListId } = this.props.match.params 
 
-    history.push(`/todo-list/${todoListId}/edit-todo-item/${todo.id}`)
+    history.push(`/todo-list/${todoListId}/edit-todo-item/${todoItem.id}`)
   }
 
   render () {
-    const { todo } = this.props
+    const { todoItem } = this.props
   
     return (
       <StyledTodoItem onClick={this.onClickTodoItem.bind(this)}>
         <StyledPriorityAndTextContainer>
-          <Priority priority={todo.priority} />
-          <StyledText completed={todo.completed} priority={todo.priority}>
-            {todo.text}
+          <Priority priority={todoItem.priority} />
+          <StyledText completed={todoItem.completed} priority={todoItem.priority}>
+            {todoItem.text}
           </StyledText>
         </StyledPriorityAndTextContainer>
-        <Checkbox todo={todo} />
+        <Checkbox todoItem={todoItem} />
       </StyledTodoItem>
     )
   }

@@ -41,7 +41,7 @@ class TodoList extends Component {
           <ul className="todo-list__list">
             {todoItems.map(todo =>
               <TodoItem
-                todo={todo}
+                todoItem={todo}
                 key={todo.id}
               />
             )}

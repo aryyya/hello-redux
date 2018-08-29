@@ -18,7 +18,7 @@ class AllTodoItems extends Component {
       <StyledAllTodoItems>
         AllTodoItems component
         <StyledAllTodoItemsTodoItems>
-          {incompleteTodoItems.map(todoItem => <TodoItem todo={todoItem} key={todoItem.id} />)}
+          {incompleteTodoItems.map(todoItem => <TodoItem todoItem={todoItem} key={todoItem.id} />)}
         </StyledAllTodoItemsTodoItems>
       </StyledAllTodoItems>
     )
