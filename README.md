@@ -25,6 +25,7 @@ An experiment in state management with React and Redux.
 - [ ] Add user accounts.
 - [ ] Add registration and authentication.
 - [ ] Add unlisted public todo list urls.
+- [ ] Add undo feature (for toggling/deleting todo items).
 
 ### Miscellaneous
 
@@ -34,6 +35,7 @@ An experiment in state management with React and Redux.
 - [x] Refactor for style and remove warnings.
 - [x] Reorganize roadmap.
 - [ ] Determine typography scheme.
+- [ ] Come up with a cohesive brand image.
 
 ### Testing
 
