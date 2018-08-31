@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
-import { injectGlobal, ThemeProvider } from 'styled-components'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 import Landing from './components/landing/landing'
 import TodoLists from './components/todo-lists/todo-lists'
 import AllTodoItems from './components/all-todo-items/all-todo-items'
@@ -13,10 +13,10 @@ import EditTodoList from './components/edit-todo-list/edit-todo-list'
 class App extends Component {
   render() {
     return (
-      <div>
+      <StyledApp>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
-            <div>
+            <Switch>
               <Route
                 path="/"
                 component={Landing}
@@ -57,10 +57,10 @@ class App extends Component {
                 component={AddTodoList}
                 exact
               />
-            </div>
+            </Switch>
           </BrowserRouter>
         </ThemeProvider>
-      </div>
+      </StyledApp>
     )
   }
 }
@@ -89,6 +89,14 @@ injectGlobal`
       opacity: 0;
       transform: translateX(-25px);
     }
+  }
+`
+
+const StyledApp = styled.div`
+  height: 100vh;
+
+  > div {
+    height: 100%;
   }
 `
 
