@@ -9,12 +9,12 @@ import { Page, PageSection } from '../page/page'
 class Landing extends Component {
 
   static propTypes = {
-    remainingTodoItems: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired
+    firstName: PropTypes.string.isRequired,
+    incompleteTodoItemsCount: PropTypes.number.isRequired
   }
 
   render () {
-    const { remainingTodoItems, firstName } = this.props
+    const { incompleteTodoItemsCount, firstName } = this.props
 
     return (
       <StyledLanding>
@@ -23,7 +23,7 @@ class Landing extends Component {
             Hello {firstName},
           </Greeting>
           <TaskInfo>
-            You have <RemainingTasksLink to="/all-todo-items">{remainingTodoItems} tasks</RemainingTasksLink> remaining.
+            You have <RemainingTasksLink to="/all-todo-items">{incompleteTodoItemsCount} tasks</RemainingTasksLink> remaining.
           </TaskInfo>
         </GreetingSection>
         <ControlsSection flex={1}>
@@ -37,9 +37,14 @@ class Landing extends Component {
 }
 
 const mapStateToProps = state => {
+  const todoItems = getArrayFromMap(state.todoItemsReducer)
+  const incompleteTodoItems = todoItems.filter(todoItem => !todoItem.completed)
+  const incompleteTodoItemsCount = incompleteTodoItems.length
+  const firstName = state.userReducer.firstName
+
   return {
-    firstName: state.userReducer.firstName,
-    remainingTodoItems: getArrayFromMap(state.todoItemsReducer).filter(todoItem => !todoItem.completed).length
+    firstName,
+    incompleteTodoItemsCount
   }
 }
 
