@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import getArrayFromMap from '../../utility/get-array-from-map'
 import { Link } from 'react-router-dom'
-import Page from '../page/page'
+import { Page, PageSection } from '../page/page'
 
 class Landing extends Component {
 
@@ -18,19 +18,19 @@ class Landing extends Component {
 
     return (
       <StyledLanding>
-        <StyledTopSection>
-          <StyledGreeting>
+        <GreetingSection flex={4}>
+          <Greeting>
             Hello {firstName},
-          </StyledGreeting>
-          <StyledTaskInfo>
-            You have <StyledRemainingTasksLink to="/all-todo-items">{remainingTodoItems} tasks</StyledRemainingTasksLink> remaining.
-          </StyledTaskInfo>
-        </StyledTopSection>
-        <StyledBottomSection>
-          <StyledTaskListLink to="/todo-list">
+          </Greeting>
+          <TaskInfo>
+            You have <RemainingTasksLink to="/all-todo-items">{remainingTodoItems} tasks</RemainingTasksLink> remaining.
+          </TaskInfo>
+        </GreetingSection>
+        <ControlsSection flex={1}>
+          <TaskListLink to="/todo-list">
             Task Lists 🠆
-          </StyledTaskListLink>
-        </StyledBottomSection>
+          </TaskListLink>
+        </ControlsSection>
       </StyledLanding>
     )
   }
@@ -49,41 +49,33 @@ const StyledLanding = styled(Page)`
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
   padding: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `
 
-const StyledGreeting = styled.h1`
+const Greeting = styled.h1`
   font-size: 3.5rem;
   font-weight: 300;
 `
 
-const StyledTaskInfo = styled.h2`
+const TaskInfo = styled.h2`
   font-size: 2rem;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.main.altColor};
 `
 
-const StyledTopSection = styled.div`
-  flex: 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+const GreetingSection = styled(PageSection)`
+  align-items: flex-start;
 `
 
-const StyledBottomSection = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+const ControlsSection = styled(PageSection)`
+  align-items: flex-end;
   justify-content: flex-end;
 `
 
-const StyledRemainingTasksLink = styled(Link)`
+const RemainingTasksLink = styled(Link)`
   color: inherit;
 `
 
-const StyledTaskListLink = styled(Link)`
+const TaskListLink = styled(Link)`
   font-size: 1.75rem;
   text-align: right;
   text-decoration: none;

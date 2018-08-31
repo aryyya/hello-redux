@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import TodoItem from '../todo-item/todo-item'
 import getArrayFromMap from '../../utility/get-array-from-map'
-import Page from '../page/page'
+import { Page } from '../page/page'
 
 class AllTodoItems extends Component {
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
+import { Page } from './components/page/page'
 import Landing from './components/landing/landing'
 import TodoLists from './components/todo-lists/todo-lists'
 import AllTodoItems from './components/all-todo-items/all-todo-items'
@@ -84,9 +85,18 @@ injectGlobal`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
+
+  #root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 `
 
-const StyledApp = styled.div``
+const StyledApp = styled(Page)`
+`
 
 const theme = {
   colors: {
