@@ -53,7 +53,6 @@ export default connect(mapStateToProps, null)(Landing)
 const StyledLanding = styled(Page)`
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
-  padding: 3.5rem;
 `
 
 const Greeting = styled.h1`
