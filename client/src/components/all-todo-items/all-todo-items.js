@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import TodoItem from '../todo-item/todo-item'
-import getArrayFromMap from '../../utility/get-array-from-map';
+import getArrayFromMap from '../../utility/get-array-from-map'
+import Page from '../page/page'
 
 class AllTodoItems extends Component {
 
@@ -36,6 +37,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(AllTodoItems)
 
-const StyledAllTodoItems = styled.div``
+const StyledAllTodoItems = styled(Page)``
 
 const StyledAllTodoItemsTodoItems = styled.ul``

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import getArrayFromMap from '../../utility/get-array-from-map'
 import { Link } from 'react-router-dom'
+import Page from '../page/page'
 
 class Landing extends Component {
 
@@ -44,7 +45,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(Landing)
 
-const StyledLanding = styled.div`
+const StyledLanding = styled(Page)`
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
   padding: 3.5rem;

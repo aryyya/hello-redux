@@ -92,13 +92,7 @@ injectGlobal`
   }
 `
 
-const StyledApp = styled.div`
-  height: 100vh;
-
-  > div {
-    height: 100%;
-  }
-`
+const StyledApp = styled.div``
 
 const theme = {
   colors: {
