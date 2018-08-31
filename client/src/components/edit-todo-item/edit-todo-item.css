@@ -5,14 +5,12 @@
 .edit-todo-item {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   animation: slide-in-from-left 0.3s ease;
 }
 
 .edit-todo-item__form {
   flex: 5;
   padding: 25px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: space-between;

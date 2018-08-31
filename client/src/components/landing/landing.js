@@ -45,7 +45,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, null)(Landing)
 
 const StyledLanding = styled.div`
-  height: 100vh;
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
   padding: 3.5rem;
