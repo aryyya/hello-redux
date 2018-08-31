@@ -43,7 +43,7 @@ An experiment in state management with React and Redux.
 
 ### Deployment
 
-- [ ] Version control on GitHub.
+- [x] Version control on GitHub.
 - [ ] Host on Heroku.
 - [ ] Set up continous deployment.
 
