@@ -11,6 +11,7 @@ import AddTodoList from './components/add-todo-list/add-todo-list'
 import EditTodoList from './components/edit-todo-list/edit-todo-list'
 
 class App extends Component {
+  
   render() {
     return (
       <StyledApp>
@@ -82,13 +83,6 @@ injectGlobal`
   body {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-  }
-
-  @keyframes slide-in-from-left {
-    from {
-      opacity: 0;
-      transform: translateX(-25px);
-    }
   }
 `
 
