@@ -17,6 +17,7 @@ An experiment in state management with React and Redux.
 
 - [x] Switch to SASS and convert existing components.
 - [ ] Switch to styled components and convert existing components.
+- [ ] Add helper methods to simplify store connections.
 - [ ] Add animations.
 - [ ] Add responsive layout.
 
