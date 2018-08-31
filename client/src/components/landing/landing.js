@@ -28,7 +28,7 @@ class Landing extends Component {
         </GreetingSection>
         <ControlsSection flex={1}>
           <TaskListLink to="/todo-list">
-            Task Lists 🠆
+            Task Lists <TaskListLinkArrow />
           </TaskListLink>
         </ControlsSection>
       </StyledLanding>
@@ -80,4 +80,14 @@ const TaskListLink = styled(Link)`
   text-align: right;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.main.linkColor};
+  display: flex;
+  align-items: center;
+`
+
+const TaskListLinkArrow = styled.svg`
+  mask: url('forward-arrow.svg');
+  background-color: ${({ theme }) => theme.colors.main.linkColor};
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: 0.2rem;
 `
