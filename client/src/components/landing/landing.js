@@ -92,7 +92,7 @@ const TaskListLink = styled(Link)`
 const TaskListLinkArrow = styled.svg`
   mask: url('forward-arrow.svg');
   background-color: ${({ theme }) => theme.colors.main.linkColor};
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-left: 0.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.3rem;
 `
