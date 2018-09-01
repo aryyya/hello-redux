@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 import { Page } from './components/page/page'
-import Landing from './components/landing/landing'
-import TodoLists from './components/todo-lists/todo-lists'
-import AllTodoItems from './components/all-todo-items/all-todo-items'
-import AddTodoItem from './components/add-todo-item/add-todo-item'
-import EditTodoItem from './components/edit-todo-item/edit-todo-item'
-import TodoList from './components/todo-list/todo-list'
-import AddTodoList from './components/add-todo-list/add-todo-list'
-import EditTodoList from './components/edit-todo-list/edit-todo-list'
+
+import LandingPage from './components/landing-page/landing-page'
+import TodoListsPage from './components/todo-lists-page/todo-lists-page'
+import AllTodoItemsPage from './components/all-todo-items-page/all-todo-items-page'
+import AddTodoItemPage from './components/add-todo-item-page/add-todo-item-page'
+import EditTodoItemPage from './components/edit-todo-item-page/edit-todo-item-page'
+import TodoListPage from './components/todo-list-page/todo-list-page'
+import AddTodoListPage from './components/add-todo-list-page/add-todo-list-page'
+import EditTodoListPage from './components/edit-todo-list-page/edit-todo-list-page'
 
 class App extends Component {
   
@@ -21,42 +22,42 @@ class App extends Component {
             <Switch>
               <Route
                 path="/"
-                component={Landing}
+                component={LandingPage}
                 exact
               />
               <Route
                 path="/all-todo-items"
-                component={AllTodoItems}
+                component={AllTodoItemsPage}
                 exact
               />
               <Route
                 path="/todo-list"
-                component={TodoLists}
+                component={TodoListsPage}
                 exact
               />
               <Route
                 path="/todo-list/:todoListId"
-                component={TodoList}
+                component={TodoListPage}
                 exact
               />
               <Route
                 path="/todo-list/:todoListId/edit-todo-item/:todoItemId"
-                component={EditTodoItem}
+                component={EditTodoItemPage}
                 exact
               />
               <Route
                 path="/todo-list/:todoListId/add-todo-item"
-                component={AddTodoItem}
+                component={AddTodoItemPage}
                 exact
               />
               <Route
                 path="/todo-list/:todoListId/edit-todo-list"
-                component={EditTodoList}
+                component={EditTodoListPage}
                 exact
               />
               <Route
                 path="/add-todo-list"
-                component={AddTodoList}
+                component={AddTodoListPage}
                 exact
               />
             </Switch>

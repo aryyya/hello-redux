@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './add-todo-item.css'
+import './add-todo-item-page.css'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todo-items'
 import Button from '../button/button'
 
-class AddTodo extends Component {
+class AddTodoItemPage extends Component {
 
   constructor (props) {
     super(props)
@@ -43,9 +43,9 @@ class AddTodo extends Component {
     const { state } = this
 
     return (
-      <div className="add-todo-item">
+      <div className="add-todo-item-page">
         <form
-          className="add-todo-item__form"
+          className="add-todo-item-page__form"
           onSubmit={this.addTodoItem.bind(this)}
         >
           <div>
@@ -56,7 +56,7 @@ class AddTodo extends Component {
           </div>
           <div>
             <input
-              className="add-todo-item__text"
+              className="add-todo-item-page__text"
               autoFocus
               type="text"
               value={state.text}
@@ -64,10 +64,10 @@ class AddTodo extends Component {
               placeholder="Write task here."
             />
           </div>
-          <div className="add-todo-item__priorities">
+          <div className="add-todo-item-page__priorities">
             <div>
               <input
-                className="add-todo-item__priority add-todo-item__priority--low"
+                className="add-todo-item-page__priority .add-todo-item-page__priority--low"
                 id="low-priority"
                 type="radio"
                 name="priority"
@@ -81,7 +81,7 @@ class AddTodo extends Component {
             </div>
             <div>
               <input
-                className="add-todo-item__priority add-todo-item__priority--medium"
+                className="add-todo-item-page__priority .add-todo-item-page__priority--medium"
                 id="medium-priority"
                 type="radio"
                 name="priority"
@@ -95,7 +95,7 @@ class AddTodo extends Component {
             </div>
             <div>
               <input
-                className="add-todo-item__priority add-todo-item__priority--high"
+                className="add-todo-item-page__priority .add-todo-item-page__priority--high"
                 id="high-priority"
                 type="radio"
                 name="priority"
@@ -109,9 +109,9 @@ class AddTodo extends Component {
             </div>
           </div>
         </form>
-        <div className="add-todo-item__buttons">
+        <div className="add-todo-item-page__buttons">
           <div
-            className="add-todo-item__add-button"
+            className="add-todo-item-page__add-button"
             onClick={this.addTodoItem.bind(this)}
           >
             Add Todo
@@ -130,6 +130,6 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(
   withRouter(
-    AddTodo
+    AddTodoItemPage
   )
 )

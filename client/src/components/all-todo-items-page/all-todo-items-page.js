@@ -6,7 +6,7 @@ import TodoItem from '../todo-item/todo-item'
 import getArrayFromMap from '../../utility/get-array-from-map'
 import { Page } from '../page/page'
 
-class AllTodoItems extends Component {
+class AllTodoItemsPage extends Component {
 
   static propTypes = {
     incompleteTodoItems: PropTypes.array.isRequired
@@ -17,7 +17,7 @@ class AllTodoItems extends Component {
 
     return (
       <StyledAllTodoItems>
-        AllTodoItems component
+        AllTodoItemsPage component
         <StyledTodoItems>
           {incompleteTodoItems.map(todoItem => <TodoItem todoItem={todoItem} key={todoItem.id} />)}
         </StyledTodoItems>
@@ -35,7 +35,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(AllTodoItems)
+export default connect(mapStateToProps, null)(AllTodoItemsPage)
 
 const StyledAllTodoItems = styled(Page)``
 

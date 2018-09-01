@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './todo-list.css'
+import './todo-list-page.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -25,19 +25,19 @@ class TodoList extends Component {
     const { history, todoList, todoItems } = this.props
 
     return (
-      <div className={classNames('todo-list')}>
-        <div className="todo-list__back">
+      <div className={classNames('todo-list-page')}>
+        <div className="todo-list-page__back">
           <Button
             icon="arrow"
             action={() => history.push('/todo-list')}
           />
         </div>
-        <div className="todo-list__title-section">
-          <h1 className="todo-list__title" onClick={() => history.push(`/todo-list/${todoList.id}/edit-todo-list`)}>{todoList.name}</h1>
-          <h2 className="todo-list__subtitle">{new Date().toDateString()}</h2>
+        <div className="todo-list-page__title-section">
+          <h1 className="todo-list-page__title" onClick={() => history.push(`/todo-list/${todoList.id}/edit-todo-list`)}>{todoList.name}</h1>
+          <h2 className="todo-list-page__subtitle">{new Date().toDateString()}</h2>
         </div>
-        <div className="todo-list__todos-section">
-          <ul className="todo-list__list">
+        <div className="todo-list-page__todos-section">
+          <ul className="todo-list-page__list">
             {todoItems.map(todo =>
               <TodoItem
                 todoItem={todo}
@@ -46,9 +46,9 @@ class TodoList extends Component {
             )}
           </ul>
         </div>
-        <div className="todo-list__controls-section">
+        <div className="todo-list-page__controls-section">
           <Link
-            className="todo-list__add-button"
+            className="todo-list-page__add-button"
             to={`/todo-list/${todoList.id}/add-todo-item`}
           >
             +

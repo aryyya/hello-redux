@@ -1,25 +1,25 @@
-.todo-list {
+.todo-list-page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   animation: slide-in-from-left 0.3s ease;
 }
 
-.todo-list__top::webkit-scrollbar {
+.todo-list-page__top::webkit-scrollbar {
   display: none;
 }
 
 
-.todo-list__back {
+.todo-list-page__back {
   margin-top: 25px;
   margin-left: 20px;
 }
 
-.todo-list__back-icon {
+.todo-list-page__back-icon {
   width: 30px;
 }
 
-.todo-list__title-section {
+.todo-list-page__title-section {
   flex: 1.25;
   display: flex;
   justify-content: center;
@@ -27,23 +27,23 @@
   flex-direction: column;
 }
 
-.todo-list__todos-section {
+.todo-list-page__todos-section {
   overflow-y: scroll;
   flex: 4;
 }
 
-.todo-list__controls-section {
+.todo-list-page__controls-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.todo-list--loading {
+.todo-list-page--loading {
   opacity: 0.5;
 }
 
-.todo-list__add-button {
+.todo-list-page__add-button {
   width: 55px;
   height: 55px;
   background-color: #5b89ff;
@@ -61,26 +61,26 @@
   text-decoration: none;
 }
 
-.todo-list__add-button:hover {
+.todo-list-page__add-button:hover {
   opacity: 0.9;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
-.todo-list__add-button:active {
+.todo-list-page__add-button:active {
   opacity: 0.7;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.45);
   transform: translateY(+2px);
 }
 
-.todo-list__title {
+.todo-list-page__title {
   font-size: 36px;
   font-weight: 700;
   padding-bottom: 10px;
   color: #333;
 }
 
-.todo-list__subtitle {
+.todo-list-page__subtitle {
   font-size: 14px;
   font-weight: 400;
   color: #777;

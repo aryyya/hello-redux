@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import './todo-lists.css'
 import styled from 'styled-components'
 import { Page, PageSection } from '../page/page'
 import PropTypes from 'prop-types'

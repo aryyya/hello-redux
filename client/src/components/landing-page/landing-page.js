@@ -6,7 +6,7 @@ import getArrayFromMap from '../../utility/get-array-from-map'
 import { Link } from 'react-router-dom'
 import { Page, PageSection } from '../page/page'
 
-class Landing extends Component {
+class LandingPage extends Component {
 
   static propTypes = {
     firstName: PropTypes.string.isRequired,
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Landing)
+export default connect(mapStateToProps, null)(LandingPage)
 
 const StyledLanding = styled(Page)`
   color: ${({ theme }) => theme.colors.main.color};

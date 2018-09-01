@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import './edit-todo-list.css'
+import './edit-todo-list-page.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { todoListsActions } from '../../redux/todo-lists';
 
-class EditTodoList extends Component {
+class EditTodoListPage extends Component {
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -49,22 +49,22 @@ class EditTodoList extends Component {
 
     return (
       <form
-        className="edit-todo-list"
+        className="edit-todo-list-page"
         onSubmit={updateTodoList.bind(this)}
       >
-        <div className="edit-todo-list__form-section">
+        <div className="edit-todo-list-page__form-section">
           <input
             type="text"
             value={state.name}
             onChange={event => this.setState({ name: event.target.value })}
           />
         </div>
-        <div className="edit-todo-list__form-section">
+        <div className="edit-todo-list-page__form-section">
           <button onClick={this.deleteTodoList.bind(this)}>
             Delete Todo List
           </button>
         </div>
-        <div className="edit-todo-list__form-section">
+        <div className="edit-todo-list-page__form-section">
           <input
             type="submit"
             value="Update Todo List"
@@ -92,6 +92,6 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withRouter(
-    EditTodoList
+    EditTodoListPage
   )
 )

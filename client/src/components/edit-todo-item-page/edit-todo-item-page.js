@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './edit-todo-item.css'
+import './edit-todo-item-page.css'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { todosActions } from '../../redux/todo-items'
 import closeImage from '../../close-icon.svg'
 
-class EditTodo extends Component {
+class EditTodoItemPage extends Component {
 
   constructor (props) {
     super(props)
@@ -58,19 +58,19 @@ class EditTodo extends Component {
     const { todoListId } = this.props.match.params
 
     return (
-      <div className="edit-todo-item">
+      <div className="edit-todo-item-page">
         <form
-          className="edit-todo-item__form"
+          className="edit-todo-item-page__form"
           onSubmit={this.onSubmit.bind(this)}
         >
           <div>
             <div>
               <Link
-                className="edit-todo-item__close"
+                className="edit-todo-item-page__close"
                 to={`/todo-list/${todoListId}`}
               >
                 <img
-                  className="edit-todo-item__close-icon"
+                  className="edit-todo-item-page__close-icon"
                   src={closeImage}
                   alt="Close."
                 />
@@ -78,17 +78,17 @@ class EditTodo extends Component {
             </div>
             <div>
               <input
-                className="edit-todo-item__text"
+                className="edit-todo-item-page__text"
                 type="text"
                 value={state.text}
                 onChange={event => this.setState({ text: event.target.value })}
                 autoFocus
               />
             </div>
-            <div className="edit-todo-item__priorities">
+            <div className="edit-todo-item-page__priorities">
               <div>
                 <input
-                  className="edit-todo-item__priority edit-todo-item__priority--low"
+                  className="edit-todo-item-page__priority edit-todo-item-page__priority--low"
                   id="low-priority"
                   type="radio"
                   name="priority"
@@ -102,7 +102,7 @@ class EditTodo extends Component {
               </div>
               <div>
                 <input
-                  className="edit-todo-item__priority edit-todo-item__priority--medium"
+                  className="edit-todo-item-page__priority edit-todo-item-page__priority--medium"
                   id="medium-priority"
                   type="radio"
                   name="priority"
@@ -116,7 +116,7 @@ class EditTodo extends Component {
               </div>
               <div>
                 <input
-                  className="edit-todo-item__priority edit-todo-item__priority--high"
+                  className="edit-todo-item-page__priority edit-todo-item-page__priority--high"
                   id="high-priority"
                   type="radio"
                   name="priority"
@@ -131,7 +131,7 @@ class EditTodo extends Component {
             </div>
             <div>
               <input
-                className="edit-todo-item__completed"
+                className="edit-todo-item-page__completed"
                 type="checkbox"
                 name="completed"
                 id="completed"
@@ -144,16 +144,16 @@ class EditTodo extends Component {
             </div>
             <div>
               <button
-                className="edit-todo-item__delete"
+                className="edit-todo-item-page__delete"
                 onClick={this.onDelete.bind(this)}
               >
                 Delete
               </button>
             </div>
           </div>
-          <div className="edit-todo-item__buttons">
+          <div className="edit-todo-item-page__buttons">
             <input
-              className="edit-todo-item__edit-button"
+              className="edit-todo-item-page__edit-button"
               type="submit"
               value="Update Todo"
             />
@@ -182,6 +182,6 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withRouter(
-    EditTodo
+    EditTodoItemPage
   )
 )

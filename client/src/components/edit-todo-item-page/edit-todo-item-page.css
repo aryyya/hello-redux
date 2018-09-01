@@ -1,26 +1,33 @@
-.add-todo-item {
+.edit-todo-item-page {
+  animation: slide-in-from-left 0.3s ease;
+}
+
+.edit-todo-item-page {
   display: flex;
   flex-direction: column;
   animation: slide-in-from-left 0.3s ease;
 }
 
-.add-todo-item__form {
+.edit-todo-item-page__form {
   flex: 5;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
 }
 
-.add-todo-item__buttons {
-  flex: 1;
+.edit-todo-item-page__buttons {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.add-todo-item__add-button {
-
+.edit-todo-item-page__edit-button {
+  border: none;
 }
 
-.add-todo-item__add-button {
+.edit-todo-item-page__edit-button {
   background-color: #5b89ff;
   padding: 15px 25px;
   width: 85%;
@@ -37,49 +44,60 @@
   text-decoration: none;
 }
 
-.add-todo-item__add-button:hover {
+.edit-todo-item-page__edit-button:hover {
   opacity: 0.9;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
-.add-todo-item__add-button:active {
+.edit-todo-item-page__edit-button:active {
   opacity: 0.7;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.45);
   transform: translateY(+2px);
 }
 
-.add-todo-item__text {
+.edit-todo-item-page__text {
   width: 100%;
   font-size: 36px;
   border: none;
   outline: none;
 }
 
-.add-todo-item__text::placeholder {
+.edit-todo-item-page__text::placeholder {
   color: #bbb;
 }
 
-.add-todo-item__close-icon {
+.edit-todo-item-page__close-icon {
   margin-bottom: 25px;
 }
 
-.add-todo-item__close-icon {
+.edit-todo-item-page__close-icon {
   width: 32px;
   height: 32px;
   opacity: 0.75;
   margin-left: -5px;
 }
 
-.add-todo-item__priorities {
+.edit-todo-item-page__priorities {
   margin-top: 30px;
 }
 
-.add-todo-item__priority {
+.edit-todo-item-page__priority {
   margin: 7px 0;
   margin-right: 5px;
 }
 
-.add-todo-item__priority--low {
+.edit-todo-item-page__priority--low {
 
+}
+
+.edit-todo-item-page__completed {
+  margin-top: 30px;
+}
+
+.edit-todo-item-page__delete {
+  margin-top: 30px;
+  background: none;
+  border: none;
+  color: red;
 }

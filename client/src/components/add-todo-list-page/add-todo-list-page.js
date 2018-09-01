@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './add-todo-list.css'
+import './add-todo-list-page.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { todoListsActions } from '../../redux/todo-lists';
 
-class AddTodoList extends Component {
+class AddTodoListPage extends Component {
 
   constructor (props) {
     super(props)
@@ -44,10 +44,10 @@ class AddTodoList extends Component {
   render () {
     return (
       <form
-        className="add-todo-list"
+        className=".add-todo-list-page"
         onSubmit={this.addTodoList.bind(this)}
       >
-        <div className="add-todo-list__section">
+        <div className=".add-todo-list-page__section">
           <input
             type="text"
             placeholder="Enter list name here."
@@ -55,7 +55,7 @@ class AddTodoList extends Component {
             onChange={event => this.setState({ name: event.target.value })}
           />
         </div>
-        <div className="add-todo-list__section">
+        <div className=".add-todo-list-page__section">
           <input
             type="submit"
             value="Add Todo List"
@@ -80,4 +80,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodoListPage)
