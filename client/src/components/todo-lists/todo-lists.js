@@ -17,7 +17,12 @@ class TodoLists extends Component {
 
     return (
       <StyledTodoLists>
-        <TodoListsSection flex={4}>
+        <TopControlsSection flex={1}>
+          <ExitLink to="/">
+            <ExitLinkIcon />
+          </ExitLink>
+        </TopControlsSection>
+        <TodoListsSection flex={3}>
           {todoLists.map(todoList => (
             <div key={todoList.id}>
               <Link to={`/todo-list/${todoList.id}`}>
@@ -27,14 +32,14 @@ class TodoLists extends Component {
             </div>
           ))}
         </TodoListsSection>
-        <ControlsSection flex={1}>
+        <BottomControlsSection flex={1}>
           <Link
             className="todo-list__add-button"
             to="/add-todo-list"
             >
             +
           </Link>
-        </ControlsSection>
+        </BottomControlsSection>
       </StyledTodoLists>
     )
   }
@@ -54,8 +59,25 @@ export default connect(mapStateToProps, null)(TodoLists)
 
 const StyledTodoLists = styled(Page)`
   animation: slide-in-from-left 0.3s ease;
+  color: ${({ theme }) => theme.colors.main.color};
+  background-image: ${({ theme }) => theme.colors.main.backgroundImage};
 `
 
-const TodoListsSection = styled(PageSection)``
+const TodoListsSection = styled(PageSection)`
+`
 
-const ControlsSection = styled(PageSection)``
+const ExitLink = styled(Link)``
+
+const ExitLinkIcon = styled.svg`
+  mask: url('x.svg');
+  background-color: ${({ theme }) => theme.colors.main.linkColor};
+  width: 3.5rem;
+  height: 3.5rem;
+`
+
+const TopControlsSection = styled(PageSection)`
+  align-items: flex-start;
+  justify-content: flex-start;
+`
+
+const BottomControlsSection = styled(PageSection)``
