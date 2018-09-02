@@ -24,14 +24,14 @@ class TodoListPage extends Component {
       <TodoListPageStyled>
         <TodoListPageHeader flex={2} todoList={todoList} />
         <ItemsSection flex={3}>
-          <ul className="todo-list-page__list">
+          <Items>
             {todoItems.map(todo =>
               <TodoItem
               todoItem={todo}
               key={todo.id}
               />
             )}
-          </ul>
+          </Items>
         </ItemsSection>
         <ControlsSection flex={1}>
           <Link
@@ -69,7 +69,11 @@ const TodoListPageStyled = styled(Page)``
 
 const ItemsSection = styled(PageSection)`
   justify-content: flex-start;
-  align-items: flex-start;
+`
+
+const Items = styled.ul`
+  width: 100%;
+  height: 100%;
 `
 
 const ControlsSection = styled(PageSection)``

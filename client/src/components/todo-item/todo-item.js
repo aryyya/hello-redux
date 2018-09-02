@@ -43,6 +43,8 @@ const TodoItemStyled = styled.li`
   padding: 15px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   &:hover {
     cursor: pointer;

@@ -56,4 +56,8 @@ const Title = styled.h1`
   color: white;
 `
 
-const RightSection = styled(PageSection)``
+const RightSection = styled(PageSection)`
+  justify-content: flex-end;
+  padding: 0;
+  color: white;
+`
