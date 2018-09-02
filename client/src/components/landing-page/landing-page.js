@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import getArrayFromMap from '../../utility/get-array-from-map'
 import { Link } from 'react-router-dom'
 import { Page, PageSection } from '../page/page'
+import forwardArrow from '../../svg/forward-arrow.svg'
 
 class LandingPage extends Component {
 
@@ -89,7 +90,7 @@ const TaskListLink = styled(Link)`
 `
 
 const TaskListLinkArrow = styled.svg`
-  mask: url('forward-arrow.svg');
+  mask: url(${forwardArrow});
   background-color: ${({ theme }) => theme.colors.main.linkColor};
   width: 2.5rem;
   height: 2.5rem;

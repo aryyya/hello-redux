@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TodoList from '../todo-list/todo-list'
+import x from '../../svg/x.svg'
 
 class TodoListsPage extends Component {
 
@@ -19,7 +20,7 @@ class TodoListsPage extends Component {
       <StyledTodoLists>
         <TopControlsSection flex={1}>
           <ExitLink to="/">
-            <ExitLinkIcon />
+            <ExitLinkIcon icon={x} />
           </ExitLink>
         </TopControlsSection>
         <TodoListsSection flex={3}>
@@ -72,7 +73,7 @@ const TodoLists = styled.ul`
 const ExitLink = styled(Link)``
 
 const ExitLinkIcon = styled.svg`
-  mask: url('x.svg');
+  mask: url(${x});
   background-color: ${({ theme }) => theme.colors.main.linkColor};
   width: 3.5rem;
   height: 3.5rem;
