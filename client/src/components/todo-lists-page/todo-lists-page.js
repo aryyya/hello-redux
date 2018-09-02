@@ -4,8 +4,9 @@ import { Page, PageSection } from '../page/page'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import TodoList from '../todo-list/todo-list'
 
-class TodoLists extends Component {
+class TodoListsPage extends Component {
 
   static propTypes = {
     todoLists: PropTypes.array.isRequired
@@ -22,20 +23,20 @@ class TodoLists extends Component {
           </ExitLink>
         </TopControlsSection>
         <TodoListsSection flex={3}>
-          {todoLists.map(todoList => (
-            <div key={todoList.id}>
-              <Link to={`/todo-list/${todoList.id}`}>
-                {todoList.name} ({todoList.todoItems.length} items)
-              </Link>
-              <br />
-            </div>
-          ))}
+          <TodoLists>
+            {todoLists.map(todoList =>
+              <TodoList
+                todoList={todoList}
+                key={todoList.id}
+              />
+            )}
+          </TodoLists>
         </TodoListsSection>
         <BottomControlsSection flex={1}>
           <Link
             className="todo-list__add-button"
             to="/add-todo-list"
-            >
+          >
             +
           </Link>
         </BottomControlsSection>
@@ -54,7 +55,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(TodoLists)
+export default connect(mapStateToProps, null)(TodoListsPage)
 
 const StyledTodoLists = styled(Page)`
   animation: slide-in-from-left 0.3s ease;
@@ -62,7 +63,10 @@ const StyledTodoLists = styled(Page)`
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
 `
 
-const TodoListsSection = styled(PageSection)`
+const TodoListsSection = styled(PageSection)``
+
+const TodoLists = styled.ul`
+  width: 100%;
 `
 
 const ExitLink = styled(Link)``
