@@ -18,7 +18,7 @@ const PageSection = styled.div`
   };
   align-items: center;
   justify-content: center;
-  padding: 3.5rem;
+  padding: 3rem;
   `
 
 export {
