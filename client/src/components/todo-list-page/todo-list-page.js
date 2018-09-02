@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './todo-list-page.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -7,7 +6,7 @@ import TodoItem from '../todo-item/todo-item'
 import { todosActions } from '../../redux/todo-items'
 import styled from 'styled-components'
 import { Page, PageSection } from '../page/page'
-import mountains from '../../img/mountains.jpg'
+import TodoListPageHeader from '../todo-list-page-header/todo-list-page-header'
 
 class TodoListPage extends Component {
 
@@ -23,16 +22,7 @@ class TodoListPage extends Component {
 
     return (
       <TodoListPageStyled>
-        <HeaderSection flex={2}>
-          <HeaderContent>
-            <HeaderLeft>
-              <h1>{todoList.name}</h1>
-            </HeaderLeft>
-            <HeaderRight>
-              <h2>hi</h2>
-            </HeaderRight>
-          </HeaderContent>
-        </HeaderSection>
+        <TodoListPageHeader flex={2} todoList={todoList} />
         <ItemsSection flex={3}>
           <ul className="todo-list-page__list">
             {todoItems.map(todo =>
@@ -76,38 +66,6 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(TodoListPage)
 
 const TodoListPageStyled = styled(Page)``
-
-const HeaderSection = styled(PageSection)`
-  background-image: url(${mountains});
-  background-size: cover;
-  position: relative;
-`
-
-const HeaderContent = styled.div`
-  background-color: rgba(0, 0, 255, 0.3);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-
-  > * {
-    height: 100%;
-  }
-`
-
-const HeaderLeft = styled.div`
-  font-size: 2rem;
-  h1 {font-weight: 300 !important;}
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 2;
-`
-
-const HeaderRight = styled.div`
-  flex: 1;
-`
 
 const ItemsSection = styled(PageSection)`
   justify-content: flex-start;

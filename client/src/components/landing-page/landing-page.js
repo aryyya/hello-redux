@@ -18,8 +18,8 @@ class LandingPage extends Component {
     const { incompleteTodoItemsCount, firstName } = this.props
 
     return (
-      <LandingPageStyled>
-        <GreetingSection flex={4}>
+      <LandingPageStyled vertical>
+        <GreetingSection flex={4} vertical>
           <Greeting>
             Hello {firstName},
           </Greeting>
@@ -27,7 +27,7 @@ class LandingPage extends Component {
             You have <RemainingTasksLink to="/all-todo-items">{incompleteTodoItemsCount} tasks</RemainingTasksLink> remaining.
           </TaskInfo>
         </GreetingSection>
-        <ControlsSection flex={1}>
+        <ControlsSection flex={1} horizontal>
           <TaskListLink to="/todo-list">
             Task Lists <TaskListLinkArrow />
           </TaskListLink>
