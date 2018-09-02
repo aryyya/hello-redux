@@ -18,7 +18,7 @@ class LandingPage extends Component {
     const { incompleteTodoItemsCount, firstName } = this.props
 
     return (
-      <StyledLanding>
+      <LandingPageStyled>
         <GreetingSection flex={4}>
           <Greeting>
             Hello {firstName},
@@ -32,7 +32,7 @@ class LandingPage extends Component {
             Task Lists <TaskListLinkArrow />
           </TaskListLink>
         </ControlsSection>
-      </StyledLanding>
+      </LandingPageStyled>
     )
   }
 }
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(LandingPage)
 
-const StyledLanding = styled(Page)`
+const LandingPageStyled = styled(Page)`
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
 `

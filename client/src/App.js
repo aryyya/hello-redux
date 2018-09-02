@@ -16,7 +16,7 @@ class App extends Component {
   
   render() {
     return (
-      <StyledApp>
+      <AppStyled>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Switch>
@@ -63,7 +63,7 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         </ThemeProvider>
-      </StyledApp>
+      </AppStyled>
     )
   }
 }
@@ -96,7 +96,7 @@ injectGlobal`
   }
 `
 
-const StyledApp = styled(Page)`
+const AppStyled = styled(Page)`
 `
 
 const theme = {

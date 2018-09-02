@@ -16,12 +16,12 @@ class AllTodoItemsPage extends Component {
     const { incompleteTodoItems } = this.props
 
     return (
-      <StyledAllTodoItems>
+      <AllTodoItemsStyled>
         AllTodoItemsPage component
-        <StyledTodoItems>
+        <TodoItemsStyled>
           {incompleteTodoItems.map(todoItem => <TodoItem todoItem={todoItem} key={todoItem.id} />)}
-        </StyledTodoItems>
-      </StyledAllTodoItems>
+        </TodoItemsStyled>
+      </AllTodoItemsStyled>
     )
   }
 }
@@ -37,6 +37,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(AllTodoItemsPage)
 
-const StyledAllTodoItems = styled(Page)``
+const AllTodoItemsStyled = styled(Page)``
 
-const StyledTodoItems = styled.ul``
+const TodoItemsStyled = styled.ul``

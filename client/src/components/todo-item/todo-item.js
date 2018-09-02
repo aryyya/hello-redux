@@ -23,20 +23,20 @@ class TodoItem extends Component {
     const { todoItem } = this.props
   
     return (
-      <StyledTodoItem onClick={this.onClickTodoItem.bind(this)}>
-        <StyledPriorityAndTextContainer>
+      <TodoItemStyled onClick={this.onClickTodoItem.bind(this)}>
+        <PriorityAndTextContainerStyled>
           <Priority priority={todoItem.priority} />
-          <StyledText completed={todoItem.completed} priority={todoItem.priority}>
+          <TextStyled completed={todoItem.completed} priority={todoItem.priority}>
             {todoItem.text}
-          </StyledText>
-        </StyledPriorityAndTextContainer>
+          </TextStyled>
+        </PriorityAndTextContainerStyled>
         <Checkbox todoItem={todoItem} />
-      </StyledTodoItem>
+      </TodoItemStyled>
     )
   }
 }
 
-const StyledTodoItem = styled.li`
+const TodoItemStyled = styled.li`
   user-select: none;
   margin: 5px;
   font-size: 15px;
@@ -49,13 +49,13 @@ const StyledTodoItem = styled.li`
   }
 `
 
-const StyledPriorityAndTextContainer = styled.div`
+const PriorityAndTextContainerStyled = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
 `
 
-const StyledText = styled.p`
+const TextStyled = styled.p`
   margin-left: 10px;
   text-decoration: ${({completed}) =>
     completed ? 'line-through' : 'none'

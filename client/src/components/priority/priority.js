@@ -12,7 +12,7 @@ class Priority extends Component {
     const { priority } = this.props
 
     return (
-      <StyledPriority priority={priority} />
+      <PriorityStyled priority={priority} />
     )
   }
 }
@@ -23,7 +23,7 @@ const getDotBackgroundColor = priority => ({
   'high': '#ff88a6'
 }[priority])
 
-const StyledPriority = styled.div`
+const PriorityStyled = styled.div`
   width: 9px;
   height: 9px;
   border-radius: 50%;
