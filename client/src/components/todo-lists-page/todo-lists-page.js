@@ -87,7 +87,9 @@ const TopControlsSection = styled(PageSection)`
   justify-content: flex-start;
 `
 
-const BottomControlsSection = styled(PageSection)``
+const BottomControlsSection = styled(PageSection)`
+  position: relative;
+`
 
 const SettingsLink = styled(Link)`
   position: absolute;
@@ -104,8 +106,9 @@ const AddLink = styled(Link)`
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 12rem;
   height: 12rem;
+  width: 12rem;
+  max-height: 100%;
   clip-path: polygon(
     100% 0%,
     100% 0%,
@@ -117,9 +120,10 @@ const AddLink = styled(Link)`
 const AddLinkIcon = styled.svg`
   mask: url(${add});
   background-color: ${({ theme }) => theme.colors.main.backgroundColor};
-  width: 3.5rem;
-  height: 3.5rem;
-  bottom: 1.7rem;
-  right: 1.7rem;
+  width: 4rem;
+  height: 4rem;
+  right: 30%;
+  bottom: 30%;
+  transform: translate(50%, 50%);
   position: absolute;
 `
