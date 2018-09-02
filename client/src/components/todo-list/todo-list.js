@@ -40,7 +40,7 @@ const TodoListStyled = styled.li`
   list-style-type: none;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: 2rem 0;
 `
 
 const Name = styled.div``
