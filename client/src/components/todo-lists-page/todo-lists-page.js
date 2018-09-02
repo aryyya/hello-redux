@@ -18,7 +18,7 @@ class TodoListsPage extends Component {
     const { todoLists } = this.props
 
     return (
-      <TodoListsStyled>
+      <TodoListsPageStyled>
         <TopControlsSection flex={1}>
           <ExitLink to="/">
             <ExitLinkIcon />
@@ -42,7 +42,7 @@ class TodoListsPage extends Component {
             <AddLinkIcon />
           </AddLink>
         </BottomControlsSection>
-      </TodoListsStyled>
+      </TodoListsPageStyled>
     )
   }
 }
@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(TodoListsPage)
 
-const TodoListsStyled = styled(Page)`
+const TodoListsPageStyled = styled(Page)`
   animation: slide-in-from-left 0.3s ease;
   color: ${({ theme }) => theme.colors.main.color};
   background-image: ${({ theme }) => theme.colors.main.backgroundImage};
