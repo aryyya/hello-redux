@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TodoList from '../todo-list/todo-list'
 import x from '../../svg/x.svg'
+import add from '../../svg/add.svg'
 
 class TodoListsPage extends Component {
 
@@ -20,10 +21,10 @@ class TodoListsPage extends Component {
       <StyledTodoLists>
         <TopControlsSection flex={1}>
           <ExitLink to="/">
-            <ExitLinkIcon icon={x} />
+            <ExitLinkIcon />
           </ExitLink>
         </TopControlsSection>
-        <TodoListsSection flex={3}>
+        <TodoListsSection flex={6}>
           <TodoLists>
             {todoLists.map(todoList =>
               <TodoList
@@ -34,12 +35,12 @@ class TodoListsPage extends Component {
           </TodoLists>
         </TodoListsSection>
         <BottomControlsSection flex={1}>
-          <Link
-            className="todo-list__add-button"
-            to="/add-todo-list"
-          >
-            +
-          </Link>
+          <SettingsLink to="/">
+            Settings
+          </SettingsLink>
+          <AddLink to="/add-todo-list">
+            <AddLinkIcon />
+          </AddLink>
         </BottomControlsSection>
       </StyledTodoLists>
     )
@@ -85,3 +86,38 @@ const TopControlsSection = styled(PageSection)`
 `
 
 const BottomControlsSection = styled(PageSection)``
+
+const SettingsLink = styled(Link)`
+  position: absolute;
+  left: 0;
+  color: ${({ theme }) => theme.colors.main.altColor};
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: 300;
+  margin-left: 3.5rem;
+`
+
+const AddLink = styled(Link)`
+  background-color: ${({ theme }) => theme.colors.main.linkColor};
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 12rem;
+  height: 12rem;
+  clip-path: polygon(
+    100% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+`
+
+const AddLinkIcon = styled.svg`
+  mask: url(${add});
+  background-color: ${({ theme }) => theme.colors.main.backgroundColor};
+  width: 3.5rem;
+  height: 3.5rem;
+  bottom: 1.7rem;
+  right: 1.7rem;
+  position: absolute;
+`
