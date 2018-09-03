@@ -16,7 +16,7 @@ class TodoListPageHeader extends Component {
     return (
       <TodoListPageHeaderStyled {...this.props} horizontal>
         <Content>
-          <LeftSection flex={3}>
+          <LeftSection flex={2}>
             <Title>{todoList.name}</Title>
           </LeftSection>
           <RightSection flex={1}>
@@ -38,16 +38,16 @@ const TodoListPageHeaderStyled = styled(PageSection)`
 
 const Content = styled.div`
   display: flex;
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: rgba(0, 125, 255, 0.3);
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: inherit;
 `
 
 const LeftSection = styled(PageSection)`
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.2);
   justify-content: flex-start;
-  padding: 0;
 `
 
 const Title = styled.h1`
@@ -57,7 +57,6 @@ const Title = styled.h1`
 `
 
 const RightSection = styled(PageSection)`
-  justify-content: flex-end;
-  padding: 0;
   color: white;
+  background-color: rgba(0, 0, 0, 0.2);
 `
