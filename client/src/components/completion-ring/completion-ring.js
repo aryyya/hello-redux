@@ -14,7 +14,7 @@ class CompletionRing extends Component {
 
     return (
       <CompletionRingStyled>
-        <ProgressRing radius={70} stroke={15} progress={progress} />
+        <ProgressRing radius={65} stroke={14} progress={progress} />
         <Text>{progress}% done</Text>
       </CompletionRingStyled>
     )
