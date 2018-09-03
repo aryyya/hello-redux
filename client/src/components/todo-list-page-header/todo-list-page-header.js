@@ -3,25 +3,26 @@ import styled from 'styled-components'
 import { PageSection } from '../page/page'
 import PropTypes from 'prop-types'
 import mountains from '../../img/mountains.jpg'
-import CompletionDial from '../completion-dial/completion-dial'
+import CompletionRing from '../completion-ring/completion-ring'
 
 class TodoListPageHeader extends Component {
 
   static propTypes = {
-    todoList: PropTypes.object.isRequired
+    todoList: PropTypes.object.isRequired,
+    progress: PropTypes.number.isRequired
   }
 
   render () {
-    const { todoList } = this.props
+    const { todoList, progress } = this.props
 
     return (
       <TodoListPageHeaderStyled {...this.props} horizontal>
         <Content>
-          <LeftSection flex={2}>
+          <LeftSection flex={5}>
             <Title>{todoList.name}</Title>
           </LeftSection>
-          <RightSection flex={1}>
-            <CompletionDial />
+          <RightSection flex={4}>
+            <CompletionRing progress={progress} />
           </RightSection>
         </Content>
       </TodoListPageHeaderStyled>
@@ -60,4 +61,5 @@ const Title = styled.h1`
 const RightSection = styled(PageSection)`
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
+  padding: 0;
 `
