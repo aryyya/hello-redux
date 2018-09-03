@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { PageSection } from '../page/page'
 import PropTypes from 'prop-types'
 import mountains from '../../img/mountains.jpg'
+import CompletionDial from '../completion-dial/completion-dial'
 
 class TodoListPageHeader extends Component {
 
@@ -20,7 +21,7 @@ class TodoListPageHeader extends Component {
             <Title>{todoList.name}</Title>
           </LeftSection>
           <RightSection flex={1}>
-            <p>Other</p>
+            <CompletionDial />
           </RightSection>
         </Content>
       </TodoListPageHeaderStyled>
