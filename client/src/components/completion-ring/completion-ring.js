@@ -31,7 +31,7 @@ const CompletionRingStyled = styled.div`
 `
 
 const Text = styled.div`
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 300;
   opacity: 0.9;
 `

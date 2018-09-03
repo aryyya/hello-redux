@@ -54,7 +54,7 @@ const LeftSection = styled(PageSection)`
 
 const Title = styled.h1`
   font-weight: 300;
-  font-size: 3rem;
+  font-size: 2.75rem;
   color: white;
 `
 
