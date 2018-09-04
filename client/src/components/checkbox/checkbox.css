@@ -1,15 +1,18 @@
 .checkbox {
   border: 1px solid #333;
-  width: 15px;
-  height: 15px;
+  border-radius: 50%;
+  width: 22.5px;
+  height: 22.5px;
   display: inline-block;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  font-size: 22.5px;
   color: transparent;
+  transition: color 0.3s ease;
 }
 
 .checkbox--checked {
-  color: black;
+  color: #333;
 }
