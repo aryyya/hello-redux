@@ -12,6 +12,7 @@ An experiment in state management with React and Redux.
 - [x] Todo list add page.
 - [x] Todo list edit page.
 - [ ] Todo item aggregate page.
+- [ ] Settings page.
 
 ### Architecture
 
