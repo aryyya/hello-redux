@@ -49,6 +49,14 @@ const TodoItemStyled = styled.li`
   &:hover {
     cursor: pointer;
   }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 `
 
 const PriorityAndTextContainerStyled = styled.div`
@@ -58,10 +66,10 @@ const PriorityAndTextContainerStyled = styled.div`
 `
 
 const TextStyled = styled.p`
+  transition: text-decoration-color 0.3s ease;
   margin-left: 10px;
-  text-decoration: ${({completed}) =>
-    completed ? 'line-through' : 'none'
-  };
+  text-decoration: line-through;
+  text-decoration-color: ${({ completed }) => completed ? 'inhert' : 'transparent'};
   font-weight: ${({priority}) => ({
     'low': 300,
     'medium': 400,
