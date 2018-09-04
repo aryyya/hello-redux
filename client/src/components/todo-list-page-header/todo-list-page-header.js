@@ -47,8 +47,8 @@ const Content = styled.div`
 `
 
 const LeftSection = styled(PageSection)`
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 0 50px rgba(0, 0, 0, 0.25);
   justify-content: flex-start;
 `
 
