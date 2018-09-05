@@ -28,7 +28,7 @@ class TodoListPage extends Component {
           todoList={todoList}
           progress={progress}
         />
-        <ItemsSection flex={3}>
+        <ItemsSection flex={4}>
           <Items>
             {todoItems.map(todo =>
               <TodoItem

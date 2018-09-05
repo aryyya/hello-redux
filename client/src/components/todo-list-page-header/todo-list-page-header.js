@@ -18,10 +18,21 @@ class TodoListPageHeader extends Component {
     return (
       <TodoListPageHeaderStyled {...this.props} horizontal>
         <Content>
-          <LeftSection flex={5}>
+          <LeftSection flex={10}>
             <Title>{todoList.name}</Title>
           </LeftSection>
-          <RightSection flex={4}>
+          <RightSection flex={9}>
+            <Spacer />
+            <Counts>
+              <Count>
+                <Number>7</Number>
+                <Text>Tasks</Text>
+              </Count>
+              <Count>
+                <Number>4</Number>
+                <Text>Complete</Text>
+              </Count>
+            </Counts>
             <CompletionRing progress={progress} />
           </RightSection>
         </Content>
@@ -35,6 +46,7 @@ export default TodoListPageHeader
 const TodoListPageHeaderStyled = styled(PageSection)`
   background-image: url(${mountains});
   background-size: cover;
+  background-position: bottom;
   position: relative;
 `
 
@@ -62,4 +74,31 @@ const RightSection = styled(PageSection)`
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+
+  > * {
+    flex: 1;
+  }
+`
+
+const Spacer = styled.div``
+
+const Counts = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Count = styled.div`
+  text-align: right;
+  margin: 0 1rem;
+`
+
+const Number = styled.div`
+  font-size: 2rem;
+`
+
+const Text = styled.div`
+  opacity: 0.6;
 `
