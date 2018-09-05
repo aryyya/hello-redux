@@ -11,7 +11,6 @@ import TodoListPageHeader from '../todo-list-page-header/todo-list-page-header'
 class TodoListPage extends Component {
 
   static propTypes = {
-    history: PropTypes.object.isRequired,
     todoList: PropTypes.object.isRequired,
     todoItems: PropTypes.array.isRequired,
     fetchTodoItems: PropTypes.func.isRequired,
@@ -20,17 +19,17 @@ class TodoListPage extends Component {
   }
 
   render () {
-    const { history, todoList, todoItems, completedItems, totalItems } = this.props
+    const { todoList, todoItems, completedItems, totalItems } = this.props
 
     return (
       <TodoListPageStyled>
         <TodoListPageHeader
-          flex={2}
+          flex={3}
           todoList={todoList}
           completedItems={completedItems}
           totalItems={totalItems}
         />
-        <ItemsSection flex={4}>
+        <ItemsSection flex={5}>
           <Items>
             {todoItems.map(todo =>
               <TodoItem
