@@ -14,7 +14,7 @@ class CompletionRing extends Component {
 
     return (
       <CompletionRingStyled>
-        <ProgressRing radius={65} stroke={14} progress={progress} />
+        <ProgressRing radius={20} stroke={5} progress={progress} />
         <Text>{progress}% done</Text>
       </CompletionRingStyled>
     )
@@ -25,13 +25,14 @@ export default CompletionRing
 
 const CompletionRingStyled = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-right: 0.5rem;
+  width: 100%;
 `
 
 const Text = styled.div`
-  font-size: 1.75rem;
+  font-size: 1rem;
   font-weight: 300;
   opacity: 0.9;
 `
