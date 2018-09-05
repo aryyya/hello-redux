@@ -43,7 +43,7 @@ class ProgressRing extends Component {
 export default ProgressRing
 
 const Circle = styled.circle`
-  transition: stroke-dashoffset 0.5s;
+  transition: stroke-dashoffset 0.6s;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
 `
