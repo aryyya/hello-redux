@@ -15,18 +15,20 @@ class TodoListPage extends Component {
     todoList: PropTypes.object.isRequired,
     todoItems: PropTypes.array.isRequired,
     fetchTodoItems: PropTypes.func.isRequired,
-    progress: PropTypes.number.isRequired
+    completedItems: PropTypes.number.isRequired,
+    totalItems: PropTypes.number.isRequired
   }
 
   render () {
-    const { history, todoList, todoItems, progress } = this.props
+    const { history, todoList, todoItems, completedItems, totalItems } = this.props
 
     return (
       <TodoListPageStyled>
         <TodoListPageHeader
           flex={2}
           todoList={todoList}
-          progress={progress}
+          completedItems={completedItems}
+          totalItems={totalItems}
         />
         <ItemsSection flex={4}>
           <Items>
@@ -55,13 +57,14 @@ const mapStateToProps = (state, ownProps) => {
   const { todoListId } = ownProps.match.params
   const todoList = state.todoListsReducer[todoListId]
   const todoItems = todoList.todoItems.map(todoItemId => state.todoItemsReducer[todoItemId])
-  const completedTodoItemsCount = todoItems.filter(todoItem => todoItem.completed).length
-  const progress = Math.floor(completedTodoItemsCount / todoItems.length * 100)
+  const completedItems = todoItems.filter(todoItem => todoItem.completed).length
+  const totalItems = todoItems.length
   
   return {
     todoList,
     todoItems,
-    progress
+    completedItems,
+    totalItems
   }
 }
 

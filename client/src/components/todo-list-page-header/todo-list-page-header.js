@@ -9,11 +9,13 @@ class TodoListPageHeader extends Component {
 
   static propTypes = {
     todoList: PropTypes.object.isRequired,
-    progress: PropTypes.number.isRequired
+    completedItems: PropTypes.number.isRequired,
+    totalItems: PropTypes.number.isRequired
   }
 
   render () {
-    const { todoList, progress } = this.props
+    const { todoList, completedItems, totalItems } = this.props
+    const progress = Math.floor(completedItems / totalItems * 100)
 
     return (
       <TodoListPageHeaderStyled {...this.props} horizontal>
@@ -25,12 +27,12 @@ class TodoListPageHeader extends Component {
             <Spacer />
             <Counts>
               <Count>
-                <Number>7</Number>
+                <Number>{totalItems}</Number>
                 <Text>Tasks</Text>
               </Count>
               <Count>
-                <Number>4</Number>
-                <Text>Complete</Text>
+                <Number>{completedItems}</Number>
+                <Text>Completed</Text>
               </Count>
             </Counts>
             <CompletionRing progress={progress} />
