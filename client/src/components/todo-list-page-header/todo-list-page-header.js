@@ -4,6 +4,8 @@ import { PageSection } from '../page/page'
 import PropTypes from 'prop-types'
 import mountains from '../../img/mountains.jpg'
 import CompletionRing from '../completion-ring/completion-ring'
+import x from '../../svg/x.svg'
+import { Link } from 'react-router-dom'
 
 class TodoListPageHeader extends Component {
 
@@ -20,8 +22,12 @@ class TodoListPageHeader extends Component {
     return (
       <TodoListPageHeaderStyled {...this.props} horizontal>
         <Content>
-          <LeftSection flex={10}>
+          <LeftSection vertical flex={10}>
+            <ExitLink to="/todo-list">
+              <ExitLinkIcon />
+            </ExitLink>
             <Title>{todoList.name}</Title>
+            <Spacer />
           </LeftSection>
           <RightSection flex={9}>
             <Spacer />
@@ -63,13 +69,30 @@ const Content = styled.div`
 const LeftSection = styled(PageSection)`
   background-color: rgba(0, 0, 0, 0.05);
   box-shadow: 5px 0 50px rgba(0, 0, 0, 0.25);
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  > * {
+    flex: 1;
+  }
+`
+
+const ExitLink = styled(Link)`
+`
+
+const ExitLinkIcon = styled.svg`
+  mask: url(${x});
+  background-color: white;
+  width: 3.5rem;
+  height: 3.5rem;
 `
 
 const Title = styled.h1`
   font-weight: 300;
   font-size: 2.75rem;
   color: white;
+  display: flex;
+  align-items: center;
 `
 
 const RightSection = styled(PageSection)`
