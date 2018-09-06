@@ -11,6 +11,7 @@ import TodoListPageHeader from '../todo-list-page-header/todo-list-page-header'
 class TodoListPage extends Component {
 
   static propTypes = {
+    match: PropTypes.object.isRequired,
     todoList: PropTypes.object.isRequired,
     todoItems: PropTypes.array.isRequired,
     fetchTodoItems: PropTypes.func.isRequired,
