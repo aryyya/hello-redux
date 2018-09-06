@@ -7,6 +7,7 @@ import { todosActions } from '../../redux/todo-items'
 import styled from 'styled-components'
 import { Page, PageSection } from '../page/page'
 import TodoListPageHeader from '../todo-list-page-header/todo-list-page-header'
+import add from '../../svg/add.svg'
 
 class TodoListPage extends Component {
 
@@ -41,12 +42,9 @@ class TodoListPage extends Component {
           </Items>
         </ItemsSection>
         <ControlsSection flex={1}>
-          <Link
-            className="todo-list-page__add-button"
-            to={`/todo-list/${todoList.id}/add-todo-item`}
-          >
-            +
-          </Link>
+          <AddLink to={`/todo-list/${todoList.id}/add-todo-item`}>
+            <AddLinkIcon />
+          </AddLink>
         </ControlsSection>
       </TodoListPageStyled>
     )
@@ -80,6 +78,7 @@ const TodoListPageStyled = styled(Page)``
 
 const ItemsSection = styled(PageSection)`
   justify-content: flex-start;
+  overflow-y: scroll;
 `
 
 const Items = styled.ul`
@@ -87,4 +86,23 @@ const Items = styled.ul`
   height: 100%;
 `
 
-const ControlsSection = styled(PageSection)``
+const ControlsSection = styled(PageSection)`
+  position: relative;
+`
+
+const AddLink = styled(Link)`
+  position: absolute;
+  background-color: ${({ theme }) => theme.colors.main.linkColor};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  padding: 1rem;
+`
+
+const AddLinkIcon = styled.svg`
+  mask: url(${add});
+  background-color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+`
