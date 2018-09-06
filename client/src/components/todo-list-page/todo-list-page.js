@@ -98,6 +98,12 @@ const AddLink = styled(Link)`
   justify-content: center;
   border-radius: 0.25rem;
   padding: 1rem;
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+
+  &:active {
+    box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.5);
+  }
 `
 
 const AddLinkIcon = styled.svg`
