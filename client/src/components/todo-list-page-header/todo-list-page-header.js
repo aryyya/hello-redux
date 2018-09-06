@@ -68,7 +68,7 @@ const Content = styled.div`
 
 const LeftSection = styled(PageSection)`
   background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: 5px 0 50px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 0 50px rgba(0, 0, 0, 0.1);
   justify-content: space-between;
   align-items: flex-start;
 
@@ -97,7 +97,7 @@ const Title = styled.h1`
 
 const RightSection = styled(PageSection)`
   color: white;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 0;
   display: flex;
   flex-direction: column;
