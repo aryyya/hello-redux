@@ -60,7 +60,7 @@ const TodoListPageHeaderStyled = styled(PageSection)`
 
 const Content = styled.div`
   display: flex;
-  background-color: rgba(0, 125, 255, 0.3);
+  background-color: rgba(0, 125, 255, 0.75);
   position: absolute;
   width: 100%;
   height: 100%;
